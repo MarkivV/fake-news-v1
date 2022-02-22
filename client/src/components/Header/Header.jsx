@@ -7,7 +7,7 @@ const Header = () => {
 
     return (
         <div style={{textAlign: "center"}}>
-            <h1 style={{marginTop: '10px', fontWeight: 'bold'}}>Just News</h1>
+            <h1 style={{marginTop: '10px', fontWeight: 'bold'}}>JustNews</h1>
                 <hr/>
         </div>
     );
