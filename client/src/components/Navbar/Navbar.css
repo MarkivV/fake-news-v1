@@ -3,6 +3,72 @@ h3{
     font-weight: bold;
     font-size: 20px;
 }
+
+ul {
+    display: flex;
+    list-style: none; /*убираем маркеры списка*/
+    margin: 0; /*убираем верхнее и нижнее поле, равное 1em*/
+    padding-left: 0; /*убираем левый отступ, равный 40px*/
+}
+a {text-decoration: none; /*убираем подчеркивание текста ссылок*/}
+
+
+.menu-main {
+    list-style: none;
+    /*margin: 40px 0 5px;*/
+    /*padding: 25px 0 5px;*/
+    padding: 2em 8.5% 5px;
+    text-align: center;
+    background: #5cacee;
+}
+
+.menu-main li {display: inline-block;}
+.menu-main li:after {
+    color: #fff;
+    display: inline-block;
+    vertical-align:top;
+}
+
+.menu-main li:last-child:after {content: none;}
+.menu-main h3 {
+    text-decoration: none;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 20px;
+    margin: 0 34px 0 30px;
+    font-size: 20px;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: color .2s;
+}
+
+.menu-main h3, .menu-main h3:visited {color: #fff;}
+.menu-main h3.current, .menu-main h3:hover{color: #E9B2B2;}
+.menu-main h3:before,
+.menu-main h3:after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    top: auto;
+    right: 50%;
+    bottom: -5px;
+    left: 50%;
+    background: #E9B2B2;
+    transition: .8s;
+}
+.menu-main h3:hover:before, .menu-main .current:before {left: 0;}
+.menu-main h3:hover:after, .menu-main .current:after {right: 0;}
+@media (max-width: 550px) {
+    .menu-main {padding-top: 0;}
+    .menu-main li {display: block;}
+    .menu-main li:after {content: none;}
+    .menu-main h3 {
+        padding: 25px 0 20px;
+        margin: 0 30px;
+    }
+}
+
 @media screen and (max-width: 800px) {
 
 }
+

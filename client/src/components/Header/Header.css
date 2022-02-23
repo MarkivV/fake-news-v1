@@ -1,14 +1,16 @@
-hr {
-    margin: auto !important;
-    border: 0;
-    height: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    width: 55%;
+.header {
+    text-align: justify;
+    letter-spacing: 2px;
+    height: 9.5em;
+    padding: 2em 10%;
+    background: #fff;
+    color: #fff;
 }
 
 h1{
-    margin-top: 100px;
+    display: inline;
+    font-weight: bold;
+    font-size: 40px;
 }
 
 @media screen and (max-width: 800px) {

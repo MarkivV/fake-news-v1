@@ -40,26 +40,26 @@ const Navbar = () => {
                 <MenuOutlined/>
             </Button>
         {activeMenu && (
-            <Row justify="end">
-                <Col span={4} >
+            <ul className={"menu-main"}>
+                <li>
                     <Link to={"/"}><h3>Главная</h3></Link>
-                </Col>
-                <Col span={4} >
-                    <Link to={"/politic"}><h3 style={{color: "red"}}>Политика</h3></Link>
-                </Col >
-                <Col span={4} >
+                </li>
+                <li>
+                    <Link to={"/politic"}><h3>Политика</h3></Link>
+                </li >
+                <li>
                     <Link to={"/society"}><h3>Общество</h3></Link>
-                </Col>
-                <Col span={4} >
+                </li>
+                <li>
                     <Link to={"/covid"}><h3>Ковид</h3></Link>
-                </Col>
-                <Col span={4} >
+                </li>
+                <li>
                     <Link to={"/sport"}><h3>Спорт</h3></Link>
-                </Col>
-                <Col span={4} >
+                </li>
+                <li>
                     <Link to={"/media"}><h3>Шоу-бизнес</h3></Link>
-                </Col>
-            </Row>
+                </li>
+            </ul>
         )}
         </>
 

@@ -34,20 +34,20 @@ function App() {
             {/*            <Option value={'ua'}>Українська</Option>*/}
             {/*    </Select>*/}
             {/*</Col>*/}
-        <div className="navbar">
             <Navbar/>
-        </div>
         <div className="routes">
             <Routes>
                 <Route exact path={"/"} element={<NewsTop />}>
                 </Route>
-                <Route exact path={"/client"} element={<JustNews/>}>
+                <Route exact path={"/politic"} element={<JustNews/>}>
                 </Route>
-                <Route exact path={"/covid"} element={<Covid/>}>
+                <Route exact path={"/society"} element={<Covid/>}>
                 </Route>
-                <Route exact path={"/war"} element={<War/>}>
+                <Route exact path={"/covid"} element={<War/>}>
                 </Route>
-                <Route exact path={"/about"} element={<About />}>
+                <Route exact path={"/sport"} element={<About />}>
+                </Route>
+                <Route exact path={"/media"} element={<About />}>
                 </Route>
             </Routes>
         </div>
