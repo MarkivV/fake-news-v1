@@ -28,3 +28,13 @@ app.get('/api/get', (req, res) =>{
     })
 
 })
+app.get('/api/get/item', (req, res) =>{
+
+    const id = req.query.id
+
+    const sqlSelect = `SELECT * FROM justnews WHERE id = ?`;
+    con.query(sqlSelect, id,(err, result)=>{
+        res.send(result)
+    })
+
+})

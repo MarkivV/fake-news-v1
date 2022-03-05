@@ -6,8 +6,10 @@ import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
 import styles from './JustNews.css'
 import CardM from "../../Card/Card";
+import CardSpec from "../../Card/CardSpec";
 const JustNews = () => {
     const [name, setName] = useState([]);
+
 
 
     useEffect(()=>{
@@ -17,22 +19,9 @@ const JustNews = () => {
             })
     }, [])
 
-    // const translateText = (inputText) => {
-    //
-    //     let data = {
-    //         q : inputText,
-    //         source: 'ru',
-    //         target: 'en'
-    //     }
-    //     axios.post(`https://libretranslate.de/translate`, data)
-    //         .then((response) => {
-    //             return(response.data.translatedText)
-    //         })
-    // }
-
     return (
         <>
-            <CardM name={name}/>
+            <CardSpec name={name}/>
         </>
     );
 };

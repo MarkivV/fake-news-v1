@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {useGetCryptoNewsQuery} from "../../services/newsApi";
 import {Avatar, Card, Col, Row, Typography, Select} from "antd";
 import moment from "moment";
+import './card.css'
 import axios from "axios";
+import {Link} from "react-router-dom";
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News'
 
 const {Text, Title} = Typography
@@ -17,8 +19,11 @@ const CardM = ({name}) => {
         <Row gutter={[24,24]}>
             {
                 name.map((news)=>(
-                    <Col xs={24} sm={12} lg={6} key={news.id}>
-                        <Card hoverable className={"news-card"}>
+
+                    <Col xs={24} sm={12} lg={12} key={news.id}>
+                        {/*<div className={"card"}>*/}
+                        <Link to={`${news.id}`}>
+                        <Card hoverable className={"news-card"} style={{height: "250px"}}>
                             <a href={news.url} target={"_blank"} rel={"noreferrer"}>
                                 <div className="news-image-container">
                                     <Title className={"news-title"} level={4}>{news.name}</Title>
@@ -26,7 +31,7 @@ const CardM = ({name}) => {
                                 </div>
                                 <p>
                                     {
-                                        news.description > 100 ? `${news.description.substring(0, 100)}...`
+                                        news.description.length > 200 ? `${news.description.substring(0, 200)}...`
                                             :news.description
                                     }
                                 </p>
@@ -34,7 +39,9 @@ const CardM = ({name}) => {
                                     <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
                                 </div>
                             </a>
+                        {/*</div>*/}
                         </Card>
+                        </Link>
                     </Col>
                 ))
             }

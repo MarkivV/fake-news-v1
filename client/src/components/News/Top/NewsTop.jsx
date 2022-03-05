@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import CardM from "../../Card/Card";
-
 import axios from "axios";
 import Slider from "../../slider/Slider";
-import {Carousel} from "antd";
-const NewsTop = ({lang}) => {
+import {Col, Row} from "antd";
+import LastNews from "../../LastNews/LastNews";
+const NewsTop = () => {
 
     const [name, setName] = useState([]);
 
@@ -16,21 +16,19 @@ const NewsTop = ({lang}) => {
             })
     }, [])
 
-    const contentStyle = {
-        height: '360px',
-        color: '#fff',
-        lineHeight: '160px',
-        textAlign: 'center',
-        background: '#364d79',
-    };
+
 
     return(
-        <>
-            {/*<Carousel autoplay>*/}
-            {/*    */}
-            {/*</Carousel>*/}
+        <Row>
+        <Col span={16}>
+            <Slider/>
             <CardM name={name}/>
-        </>
+        </Col>
+        <Col span={8}>
+            <LastNews name={name}/>
+        </Col>
+
+        </Row>
     )
 };
 

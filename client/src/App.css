@@ -305,15 +305,16 @@ a:hover{
 }
 .news-image-container{
     display: flex !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
 }
 .news-title{
     width: 70%;
+    margin-left: 10px;
 }
 
 .news-image-container .img{
-    width:100px;
-    height:100px;
+    width:400px;
+    height:400px;
 }
 .news-card p{
     color: black;
@@ -380,7 +381,7 @@ a:hover{
 }
 
 .footer {
-    background-color: #001529;
+    background-color: #5cacee;
     display: flex;
     flex-direction: column;
     padding: 20px;
