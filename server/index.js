@@ -24,7 +24,7 @@ app.get('/api/get', (req, res) =>{
 
     const id = req.query.id
     console.log(id)
-    const sqlSelect = "SELECT * FROM justnews WHERE category IN (?)";
+    const sqlSelect = "SELECT * FROM justnews WHERE categoryId IN (?)";
     con.query(sqlSelect, id, (err, result)=>{
         res.send(result)
     })
@@ -44,7 +44,7 @@ app.get('/api/get/item', (req, res) =>{
 
 app.get('/api/get/all', (req, res) =>{
 
-    const sqlSelect = "SELECT * FROM justnews ";
+    const sqlSelect = "SELECT * FROM justnews JOIN categories WHERE justnews.categoryId = categories.idCat";
     con.query(sqlSelect, (err, result)=>{
         res.send(result)
     })

@@ -14,11 +14,12 @@ const LastNews = ({name}) => {
 
 
     return (
-        <div style={{marginLeft: "25px"}}>
+        <Row style={{marginLeft: "25px"}}>
             {
                 name.map((news)=>(
                     <Col xs={24} sm={12} lg={24} key={news.id}>
                         <a href={`/${news.id}`}>
+                            <Text mark style={{marginLeft: "5px"}} level={4}>{news.category}</Text>
                             <div style={{height: "150px", display: "flex"}}>
                                     <a href={news.url} target={"_blank"} rel={"noreferrer"}>
                                         <div>
@@ -26,13 +27,12 @@ const LastNews = ({name}) => {
                                         </div>
                                     </a>
                                 <Title style={{marginLeft: "5px"}} level={5}>{news.name}</Title>
-                                <Title style={{marginLeft: "5px"}} level={4}>{news.category}</Title>
                             </div>
                         </a>
                     </Col>
                 ))
             }
-        </div>
+        </Row>
     );
 };
 
