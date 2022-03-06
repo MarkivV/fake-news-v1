@@ -22,8 +22,10 @@ app.listen(3001, ()=>{
 
 app.get('/api/get', (req, res) =>{
 
-    const sqlSelect = "SELECT * FROM justnews";
-    con.query(sqlSelect, (err, result)=>{
+    const id = req.query.id
+    console.log(id)
+    const sqlSelect = "SELECT * FROM justnews WHERE category IN (?)";
+    con.query(sqlSelect, id, (err, result)=>{
         res.send(result)
     })
 
@@ -34,6 +36,16 @@ app.get('/api/get/item', (req, res) =>{
 
     const sqlSelect = `SELECT * FROM justnews WHERE id = ?`;
     con.query(sqlSelect, id,(err, result)=>{
+        res.send(result)
+    })
+
+})
+
+
+app.get('/api/get/all', (req, res) =>{
+
+    const sqlSelect = "SELECT * FROM justnews ";
+    con.query(sqlSelect, (err, result)=>{
         res.send(result)
     })
 

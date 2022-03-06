@@ -6,7 +6,11 @@ const War = () => {
     const [name, setName] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:3001/api/get')
+        axios.get('http://localhost:3001/api/get', {
+            params: {
+                id: 2
+            }
+        })
             .then((response)=>{
                 setName(response.data)
             })

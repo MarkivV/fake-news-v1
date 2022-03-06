@@ -32,10 +32,10 @@ function App() {
                 <Route exact path={"/politic"} element={<JustNews/>}/>
                 <Route exact path={"/politic/:id"} element={<CardDetails/>}/>
 
-                <Route exact path={"/society"} element={<Covid/>}/>
+                <Route exact path={"/society"} element={<War/>}/>
                 <Route exact path={"/society/:id"} element={<CardDetails/>}/>
 
-                <Route exact path={"/covid"} element={<War/>}/>
+                <Route exact path={"/covid"} element={<Covid/>}/>
                 <Route exact path={"/covid/:id"} element={<CardDetails/>}/>
 
                 <Route exact path={"/sport"} element={<About />}/>
@@ -46,17 +46,7 @@ function App() {
 
             </Routes>
         </div>
-        <div className="footer">
-            <Typography.Title level={5} style={{color: 'white', textAlign: 'center'}}>
-                Latters<br/>
-                All rights reserved
-            </Typography.Title>
-            <Space>
-                <Link to={"/"}>Связь</Link>
-                <Link to={"/politic"}>Главная</Link>
-                <Link to={"/society"}>Общество</Link>
-            </Space>
-        </div>
+        <Footer/>
     </div>
   );
 }

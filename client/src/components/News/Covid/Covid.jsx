@@ -7,7 +7,11 @@ const Covid = () => {
     const [name, setName] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:3001/api/get')
+        axios.get('http://localhost:3001/api/get', {
+            params: {
+                id: 3
+            }
+        })
             .then((response)=>{
                 setName(response.data)
             })

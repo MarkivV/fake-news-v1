@@ -10,7 +10,7 @@ const NewsTop = () => {
 
 
     useEffect(()=>{
-        axios.get('http://localhost:3001/api/get')
+        axios.get('http://localhost:3001/api/get/all')
             .then((response)=>{
                 setName(response.data)
             })
