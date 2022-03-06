@@ -1,1 +1,28 @@
+.image {
+    vertical-align: center;
+    overflow:hidden;
+    text-align: center;
+    position	: relative;
+    width		: 100%; /* for IE 6 */
+}
 
+.image img{
+    top:50%;
+    left:50%;
+    width: 998px;
+    height: 350px;
+    object-fit:cover;
+}
+
+h2 {
+    position	: absolute;
+    top: 35%;
+    left		: 0;
+    width		: 100%;
+}
+
+h2 {
+    color			: white;
+    font			: bold 45px/45px Helvetica, Sans-Serif;
+    letter-spacing		: -1px;
+}

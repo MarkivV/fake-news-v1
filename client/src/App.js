@@ -13,6 +13,7 @@ import axios from "axios";
 import {Col, Row, Select, Space, Typography} from "antd";
 import Footer from "./components/Footer/Footer";
 import CardDetails from "./components/CardDetails/CardDetails";
+import Sport from "./components/News/Sport/Sport";
 
 
 const {Option} = Select
@@ -38,7 +39,7 @@ function App() {
                 <Route exact path={"/covid"} element={<Covid/>}/>
                 <Route exact path={"/covid/:id"} element={<CardDetails/>}/>
 
-                <Route exact path={"/sport"} element={<About />}/>
+                <Route exact path={"/sport"} element={<Sport />}/>
                 <Route exact path={"/sport/:id"} element={<CardDetails />}/>
 
                 <Route exact path={"/media"} element={<About />}/>

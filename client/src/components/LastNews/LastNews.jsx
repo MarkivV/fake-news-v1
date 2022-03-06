@@ -26,7 +26,7 @@ const LastNews = ({name}) => {
                                             <img style={{width: '170px', height: '100px'}} src={news.image} alt={"news"}/>
                                         </div>
                                     </a>
-                                <Title style={{marginLeft: "5px"}} level={5}>{news.name}</Title>
+                                <h3 style={{marginLeft: "5px", fontSize: "20px" }}>{news.name}</h3>
                             </div>
                         </a>
                     </Col>

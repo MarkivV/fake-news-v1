@@ -21,7 +21,7 @@ const NewsTop = () => {
     return(
         <Row>
         <Col span={16}>
-            <Slider/>
+            <Slider name={name}/>
             <CardM name={name}/>
         </Col>
         <Col span={8}>
