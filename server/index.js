@@ -24,7 +24,7 @@ app.get('/api/get', (req, res) =>{
 
     const id = req.query.id
     console.log(id)
-    const sqlSelect = "SELECT * FROM justnews WHERE categoryId IN (?)";
+    const sqlSelect = "SELECT * FROM justnews WHERE categoryId IN (?) ORDER BY id DESC";
     con.query(sqlSelect, id, (err, result)=>{
         res.send(result)
     })
@@ -34,9 +34,10 @@ app.get('/api/get/item', (req, res) =>{
 
     const id = req.query.id
 
-    const sqlSelect = `SELECT * FROM justnews WHERE id = ?`;
+    const sqlSelect = `SELECT * FROM justnews INNER JOIN categories ON categoryId = idCat WHERE id = ? ORDER BY id DESC`;
     con.query(sqlSelect, id,(err, result)=>{
         res.send(result)
+        console.log(result)
     })
 
 })
@@ -44,7 +45,7 @@ app.get('/api/get/item', (req, res) =>{
 
 app.get('/api/get/all', (req, res) =>{
 
-    const sqlSelect = "SELECT * FROM justnews JOIN categories WHERE justnews.categoryId = categories.idCat";
+    const sqlSelect = "SELECT * FROM justnews JOIN categories WHERE justnews.categoryId = categories.idCat ORDER BY id DESC";
     con.query(sqlSelect, (err, result)=>{
         res.send(result)
     })

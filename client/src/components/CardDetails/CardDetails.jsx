@@ -3,6 +3,7 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 import {Col, Row, Typography} from "antd";
 import LastNews from "../LastNews/LastNews";
+import './CardDetails.css'
 
 const {Text, Title} = Typography
 
@@ -35,13 +36,15 @@ const CardDetails = () => {
     return (
         <Row>
             <Col span={16}>
-                {item.map(i=>(
+                {item.slice(0,1).map(i=>(
                     <div key={i.id}>
                         <div>
-                            <img style={{width: "1000px"}} src={i.image} alt=""/>
+                            <img style={{width: "1000px"}} src={i.image} alt="image"/>
                         </div>
-                        <Title style={{marginTop: "40px"}} level={7}>{i.name}</Title>
-                        <p style = {{fontSize: "40px", marginTop: "15px"}}>
+                        <Title mark level={4}>{i.category}</Title>
+                        <Title>{i.name}</Title>
+                        <hr/>
+                        <p style = {{fontSize: "30px", marginTop: "15px"}}>
                             {i.description}
                         </p>
                     </div>

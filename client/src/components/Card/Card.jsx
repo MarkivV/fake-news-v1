@@ -31,7 +31,7 @@ const CardM = ({name}) => {
                                 </div>
                                 <p>
                                     {
-                                        news.description.length > 200 ? `${news.description.substring(0, 200)}...`
+                                        news.description.length > 150 ? `${news.description.substring(0, 150)}...`
                                             :news.description
                                     }
                                 </p>

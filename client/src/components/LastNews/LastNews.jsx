@@ -16,7 +16,7 @@ const LastNews = ({name}) => {
     return (
         <Row style={{marginLeft: "25px"}}>
             {
-                name.map((news)=>(
+                name.slice(0,10).map((news)=>(
                     <Col xs={24} sm={12} lg={24} key={news.id}>
                         <a href={`/${news.id}`}>
                             <Text mark style={{marginLeft: "5px"}} level={4}>{news.category}</Text>
