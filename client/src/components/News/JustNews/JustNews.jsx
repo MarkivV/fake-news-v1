@@ -11,8 +11,6 @@ import Footer from "../../Footer/Footer";
 const JustNews = () => {
     const [name, setName] = useState([]);
 
-
-
     useEffect(()=>{
         axios.get('http://localhost:3001/api/get', {
             params: {

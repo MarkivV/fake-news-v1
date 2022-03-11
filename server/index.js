@@ -30,6 +30,16 @@ app.get('/api/get', (req, res) =>{
     })
 
 })
+app.get('/api/get/propose', (req, res) =>{
+
+    const sqlSelect = "SELECT * FROM Propose JOIN categories WHERE Propose.categoryId = categories.idCat ORDER BY id DESC";
+    con.query(sqlSelect, (err, result)=>{
+        res.send(result)
+    })
+
+})
+
+
 app.get('/api/get/item', (req, res) =>{
 
     const id = req.query.id
@@ -52,12 +62,40 @@ app.get('/api/get/all', (req, res) =>{
 
 })
 
-app.get('/api/post/item', (req, res) =>{
+app.post('/api/post/item', (req, res) =>{
+
+    const author = req.body.author
+    const image = req.body.image
+    const title = req.body.title
+    const text = req.body.text
+    const category = req.body.category
 
 
-    const sqlInsert = "INSERT INTO `Propose` (`id`, `name`, `image`, `description`, `author`, `categoryId`) VALUES (NULL, ?, ?, ?, ?, ?);"
-    con.query(sqlInsert, (err, result)=>{
+    const sqlInsert = "INSERT INTO Propose (name, image, description, author, categoryId) VALUES (?, ?, ?, ?, ?);"
+    con.query(sqlInsert, [title, image, text, author, category], (err, result)=>{
+        console.log(result)
         res.send(result)
     })
+})
+app.post('/api/publish/item', (req, res) =>{
+
+    const author = req.body.author
+    const image = req.body.image
+    const title = req.body.title
+    const text = req.body.text
+    const categoryId = req.body.categoryId
+
+
+    const sqlInsert = "INSERT INTO justnews (name, image, description, author, categoryId) VALUES (?, ?, ?, ?, ?);"
+    con.query(sqlInsert, [title, image, text, author, categoryId], (err, result)=>{
+        console.log(result)
+        res.send(result)
+    })
+})
+app.delete('/api/delete', (req, res) =>{
+
+    const id = req.query.id
+    const sqlInsert = "DELETE FROM Propose WHERE id = ?"
+    con.query(sqlInsert, id)
 })
 

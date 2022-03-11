@@ -16,6 +16,7 @@ import CardDetails from "./components/CardDetails/CardDetails";
 import Sport from "./components/News/Sport/Sport";
 import Media from "./components/News/Media/Media";
 import Propose from "./components/Propose/Propose";
+import Admin from "./components/Admin/Admin";
 
 
 const {Option} = Select
@@ -48,6 +49,8 @@ function App() {
                 <Route exact path={"/media/:id"} element={<CardDetails />}/>
 
                 <Route exact path={"/propose"} element={<Propose />}/>
+
+                <Route exact path={"/admin"} element={<Admin />}/>
 
             </Routes>
         </div>
