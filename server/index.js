@@ -51,3 +51,13 @@ app.get('/api/get/all', (req, res) =>{
     })
 
 })
+
+app.get('/api/post/item', (req, res) =>{
+
+
+    const sqlInsert = "INSERT INTO `Propose` (`id`, `name`, `image`, `description`, `author`, `categoryId`) VALUES (NULL, ?, ?, ?, ?, ?);"
+    con.query(sqlInsert, (err, result)=>{
+        res.send(result)
+    })
+})
+

@@ -14,6 +14,7 @@ const Footer = () => {
                     <Link to={"/"}>Связь</Link>
                     <Link to={"/politic"}>Главная</Link>
                     <Link to={"/society"}>Общество</Link>
+                    <Link to={"/propose"}>Предложить</Link>
                 </Space>
             </div>
         </div>
