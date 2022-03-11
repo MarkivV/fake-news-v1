@@ -37,6 +37,7 @@ a:hover{
 
 }
 .routes{
+    margin: 0px 10% 0px;
     padding: 20px;
     background-color: #F9F9F9;
 }
@@ -82,6 +83,19 @@ a:hover{
 @media screen and (max-width:1300px){
     .main{
         margin-left: 50px;
+    }
+    .routes{
+        margin: 0px 2% 0px;
+    }
+
+    .slider{
+        max-width: 100%;
+    }
+    .slider .image img{
+        top:50%;
+        left:50%;
+        max-width: 100%;
+        object-fit:cover;
     }
 }
 
@@ -139,6 +153,19 @@ a:hover{
 
     .lang-select{
         text-align: center;
+    }
+    .routes{
+        margin: 0px 2% 0px;
+    }
+
+    .slider{
+        max-width: 100%;
+    }
+    .slider .image img{
+        top:50%;
+        left:50%;
+        max-width: 100%;
+        object-fit:cover;
     }
 
 }

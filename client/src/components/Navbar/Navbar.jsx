@@ -40,26 +40,27 @@ const Navbar = () => {
                 <MenuOutlined/>
             </Button>
         {activeMenu && (
-            <ul className={"menu-main"}>
+
+            <Col className={"menu-main"}>
                 <li>
-                    <Link to={"/"}><h3>Главная</h3></Link>
+                    <Link to={"/"} ><h3>Главная</h3></Link>
                 </li>
                 <li>
-                    <Link to={"/politic"}><h3>Политика</h3></Link>
+                    <Link to={"/politic"} ><h3>Политика</h3></Link>
                 </li >
                 <li>
-                    <Link to={"/society"}><h3>Общество</h3></Link>
+                    <Link to={"/society"} ><h3>Общество</h3></Link>
                 </li>
                 <li>
-                    <Link to={"/covid"}><h3>Ковид</h3></Link>
+                    <Link to={"/covid"} ><h3>Ковид</h3></Link>
                 </li>
                 <li>
-                    <Link to={"/sport"}><h3>Спорт</h3></Link>
+                    <Link to={"/sport"} ><h3>Спорт</h3></Link>
                 </li>
                 <li>
-                    <Link to={"/media"}><h3>Шоу-бизнес</h3></Link>
+                    <Link to={"/media"} ><h3>Шоу-бизнес</h3></Link>
                 </li>
-            </ul>
+            </Col>
         )}
         </>
 

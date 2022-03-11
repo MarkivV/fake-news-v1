@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import CardM from "../../Card/Card";
 import axios from "axios";
+import CardSpec from "../../Card/CardSpec";
 
 const War = () => {
     const [name, setName] = useState([]);
@@ -19,7 +20,7 @@ const War = () => {
 
 return(
     <>
-        <CardM name={name}/>
+        <CardSpec name={name}/>
     </>
 )
 };

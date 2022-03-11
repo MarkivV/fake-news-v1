@@ -30,7 +30,7 @@ const CardM = ({category}) => {
             {
                 name.slice(0,2).map((news)=>(
 
-                    <Col xs={24} sm={12} lg={12} key={news.id}>
+                    <Col xs={24} sm={24} lg={12} key={news.id}>
                         {/*<div className={"card"}>*/}
                         <Link to={`${news.id}`}>
                             <Card hoverable className={"news-card"} style={{height: "250px"}}>
@@ -41,7 +41,7 @@ const CardM = ({category}) => {
                                     </div>
                                     <p>
                                         {
-                                            news.description.length > 150 ? `${news.description.substring(0, 150)}...`
+                                            news.description.length > 120 ? `${news.description.substring(0, 120)}...`
                                                 :news.description
                                         }
                                     </p>

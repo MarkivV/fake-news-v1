@@ -3,14 +3,14 @@ import CardM from "../../Card/Card";
 import axios from "axios";
 import CardSpec from "../../Card/CardSpec";
 
-const Sport = () => {
+const Media = () => {
 
     const [name, setName] = useState([]);
 
     useEffect(()=>{
         axios.get('http://localhost:3001/api/get', {
             params: {
-                id: 4
+                id: 5
             }
         })
             .then((response)=>{
@@ -23,4 +23,4 @@ const Sport = () => {
     )
 };
 
-export default Sport;
+export default Media;

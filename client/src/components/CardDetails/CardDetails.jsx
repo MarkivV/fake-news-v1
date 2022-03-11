@@ -12,6 +12,30 @@ const CardDetails = () => {
     const [item, setItem] = useState([]);
     const [name, setName] = useState([]);
     let {id} = useParams()
+    const [activeMenu, setActiveMenu] = useState(true);
+    const [screenSize, setScreenSize] = useState(null);
+
+
+    useEffect(() => {
+        const handleResizeFunc = () =>{
+            setScreenSize(window.innerWidth)
+        }
+
+        window.addEventListener('resize', handleResizeFunc)
+
+        handleResizeFunc()
+        return () => window.removeEventListener('resize', handleResizeFunc)
+
+    }, []);
+
+
+    useEffect(()=> {
+        if(screenSize < 768){
+            setActiveMenu(false)
+        }else{
+            setActiveMenu(true)
+        }
+    }, [screenSize])
 
 
     useEffect(() => {
@@ -35,25 +59,51 @@ const CardDetails = () => {
 
     return (
         <Row>
-            <Col span={16}>
-                {item.slice(0,1).map(i=>(
-                    <div key={i.id}>
-                        <div>
-                            <img style={{width: "1000px"}} src={i.image} alt="image"/>
-                        </div>
-                        <Title mark level={4}>{i.category}</Title>
-                        <Title>{i.name}</Title>
-                        <hr/>
-                        <p style = {{fontSize: "30px", marginTop: "15px"}}>
-                            {i.description}
-                        </p>
-                    </div>
-                ))
-                }
-            </Col>
-            <Col span={8}>
-                <LastNews name={name}/>
-            </Col>
+            {
+                activeMenu
+                    ?
+                    <>
+                        <Col span={16}>
+                            {item.slice(0,1).map(i=>(
+                                <div key={i.id}>
+                                    <div>
+                                        <img style={{width: "1000px"}} src={i.image} alt="image"/>
+                                    </div>
+                                    <Title mark level={4}>{i.category}</Title>
+                                    <Title>{i.name}</Title>
+                                    <hr/>
+                                    <p style = {{fontSize: "30px", marginTop: "15px"}}>
+                                        {i.description}
+                                    </p>
+                                </div>
+                            ))
+                            }
+                        </Col>
+                        <Col span={8}>
+                            <LastNews name={name}/>
+                        </Col>
+                    </>
+                    :
+                    <>
+                        <Col span={24}>
+                            {item.slice(0,1).map(i=>(
+                                <div key={i.id}>
+                                    <div>
+                                        <img style={{maxWidth: "100%"}} src={i.image} alt="image"/>
+                                    </div>
+                                    <Title mark level={4}>{i.category}</Title>
+                                    <Title>{i.name}</Title>
+                                    <hr/>
+                                    <p style = {{fontSize: "30px", marginTop: "15px", textAlign: "justify"}}>
+                                        {i.description}
+                                    </p>
+                                </div>
+                            ))
+                            }
+                        </Col>
+                    </>
+            }
+
 
         </Row>
     );

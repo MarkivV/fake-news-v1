@@ -23,11 +23,6 @@ a {text-decoration: none; /*убираем подчеркивание текст
 }
 
 .menu-main li {display: inline-block;}
-.menu-main li:after {
-    color: #fff;
-    display: inline-block;
-    vertical-align:top;
-}
 
 .menu-main li:last-child:after {content: none;}
 .menu-main h3 {
@@ -43,22 +38,9 @@ a {text-decoration: none; /*убираем подчеркивание текст
 }
 
 .menu-main h3, .menu-main h3:visited {color: #fff;}
-.menu-main h3.current, .menu-main h3:hover{color: #E9B2B2;}
-.menu-main h3:before,
-.menu-main h3:after {
-    content: "";
-    position: absolute;
-    height: 4px;
-    top: auto;
-    right: 50%;
-    bottom: -5px;
-    left: 50%;
-    background: #E9B2B2;
-    transition: .8s;
-}
-.menu-main h3:hover:before, .menu-main .current:before {left: 0;}
-.menu-main h3:hover:after, .menu-main .current:after {right: 0;}
-@media (max-width: 550px) {
+.menu-main h3.current, .menu-main h3:hover{color: #344be3;}
+
+@media (max-width: 850px) {
     .menu-main {padding-top: 0;}
     .menu-main li {display: block;}
     .menu-main li:after {content: none;}

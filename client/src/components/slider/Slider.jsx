@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const Slider = ({name}) => {
 
     return (
-        <div style={{width: "998px", height: "450px", marginBottom: "15px"}} >
+        <div className={"slider"} style={{width: "998px", height: "450px", marginBottom: "15px"}} >
             <Carousel autoplay>
                 {name.slice(0,5).map(item => (
                     <div className={"image"}>

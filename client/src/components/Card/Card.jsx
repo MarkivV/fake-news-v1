@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useGetCryptoNewsQuery} from "../../services/newsApi";
 import {Avatar, Card, Col, Row, Typography, Select} from "antd";
 import moment from "moment";
@@ -11,8 +11,6 @@ const {Text, Title} = Typography
 const {Option} = Select
 
 const CardM = ({name}) => {
-
-
 
     return (
 
@@ -31,7 +29,7 @@ const CardM = ({name}) => {
                                 </div>
                                 <p>
                                     {
-                                        news.description.length > 150 ? `${news.description.substring(0, 150)}...`
+                                        news.description.length > 120 ? `${news.description.substring(0, 120)}...`
                                             :news.description
                                     }
                                 </p>

@@ -14,6 +14,7 @@ import {Col, Row, Select, Space, Typography} from "antd";
 import Footer from "./components/Footer/Footer";
 import CardDetails from "./components/CardDetails/CardDetails";
 import Sport from "./components/News/Sport/Sport";
+import Media from "./components/News/Media/Media";
 
 
 const {Option} = Select
@@ -25,7 +26,7 @@ function App() {
     <div className="App">
       <Header/>
             <Navbar/>
-        <div className="routes" style={{margin: "0px 10% 0px"}}>
+        <div className="routes" >
             <Routes>
                 <Route exact path={"/"} element={<NewsTop />}/>
                 <Route exact path={"/:id"} element={<CardDetails />}/>
@@ -42,7 +43,7 @@ function App() {
                 <Route exact path={"/sport"} element={<Sport />}/>
                 <Route exact path={"/sport/:id"} element={<CardDetails />}/>
 
-                <Route exact path={"/media"} element={<About />}/>
+                <Route exact path={"/media"} element={<Media />}/>
                 <Route exact path={"/media/:id"} element={<CardDetails />}/>
 
             </Routes>
