@@ -103,22 +103,6 @@ const Registration = () => {
             >
                 <Input />
             </Form.Item>
-
-
-            <Form.Item
-                name="agreement"
-                valuePropName="checked"
-                rules={[
-                    {
-                        validator: (_, value) =>
-                            value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
-                    },
-                ]}
-            >
-                <Checkbox>
-                    I have read the <a href="">agreement</a>
-                </Checkbox>
-            </Form.Item>
             <Form.Item>
                 <Button type="primary" htmlType="submit">
                     Register

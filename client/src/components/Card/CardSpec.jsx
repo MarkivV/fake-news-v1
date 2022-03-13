@@ -45,17 +45,18 @@ const CardSpec = ({name}) => {
                         <>
                             <Col xs={24} sm={12} lg={8} key={news.id}>
                                 <Link to={`${news.id}`}>
-                                    <div>
+                                    <div >
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
                                         <a href={news.url} target={"_blank"} rel={"noreferrer"}>
                                             <div className="news-image-container">
-                                                <img style={{width: '400px'}} src={news.image} alt={"news"}/>
+                                                <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={news.image} alt={"news"}/>
                                             </div>
-                                            <div style={{marginLeft: "40px"}}>
+                                            <div >
                                                 <Title level={8}>{news.name}</Title>
                                             </div>
-                                            <div style={{marginLeft: "40px", marginTop: "10px"}} className="provider-container">
-                                                <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                                            <div style={{marginTop: "10px"}} className="provider-container">
+                                                <Text>{moment(news.datePublished).format('L')}</Text>
+                                                <h5>Автор: {news.author}</h5>
                                             </div>
                                         </a>
                                     </div>
@@ -77,7 +78,8 @@ const CardSpec = ({name}) => {
                                                 <Title level={8}>{news.name}</Title>
                                             </div>
                                             <div style={{marginLeft: "0px", marginTop: "10px"}} className="provider-container">
-                                                <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                                                <Text>{moment(news.datePublished).format('L')}</Text>
+                                                <h5>Автор: {news.author}</h5>
                                             </div>
                                         </a>
                                     </div>
