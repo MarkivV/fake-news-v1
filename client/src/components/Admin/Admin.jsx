@@ -18,16 +18,22 @@ const Admin = () => {
 
     const Publish = (news) => {
         axios.post('http://localhost:3001/api/publish/item',
-            {author: news.author, image: news.image, title: news.name, text: news.description, categoryId: news.categoryId})
-
+            {
+                author: news.author,
+                image: news.image,
+                title: news.name,
+                 text: news.description,
+                categoryId: news.categoryId
+            })
+        axios.delete(`http://localhost:3001/api/delete/${news.id}`)
     }
 
     const Delete = (news) =>{
-        axios.delete('http://localhost:3001/api/delete', news.id)
+        axios.delete(`http://localhost:3001/api/delete/${news.id}` )
     }
 
     if(!proposes){
-        return 'loading'
+        return 'No proposes'
     }
 
 
@@ -36,7 +42,7 @@ const Admin = () => {
             {
                 proposes.map((news)=>(
 
-                    <Col xs={24} sm={12} lg={12} key={news.id}>
+                    <Col xs={24} sm={24} lg={12} key={news.id}>
                         {/*<div className={"card"}>*/}
                             <Card hoverable className={"news-card"}>
                                     <div className="news-image-container">
@@ -47,7 +53,11 @@ const Admin = () => {
                                     <p>{news.description}</p>
                                     <Title mark level={4}>{news.category}</Title>
                                 {/*</div>*/}
-                                <Button type="primary" onClick={()=>Publish(news)}>
+                                <Button type="primary" onClick={()=>
+                                    Publish(news)
+                                }
+
+                                >
                                     Опубликовать
                                 </Button>
                             </Card>

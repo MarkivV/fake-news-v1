@@ -334,10 +334,9 @@ a:hover{
     display: flex !important;
     justify-content: center !important;
 }
-.news-title{
-    width: 70%;
-    margin-left: 10px;
-}
+/*.news-title{*/
+/*    width: 100%;*/
+/*}*/
 
 .news-image-container .img{
     width:400px;

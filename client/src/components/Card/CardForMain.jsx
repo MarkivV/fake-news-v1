@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 
 const {Text, Title} = Typography
 const {Option} = Select
+moment.locale('russian')
 
 const CardM = ({category}) => {
 
@@ -33,11 +34,11 @@ const CardM = ({category}) => {
                     <Col xs={24} sm={24} lg={12} key={news.id}>
                         {/*<div className={"card"}>*/}
                         <Link to={`${news.id}`}>
-                            <Card hoverable className={"news-card"} style={{height: "250px"}}>
+                            <Card hoverable className={"news-card"} style={{height: "310px"}}>
                                 <a href={news.url} target={"_blank"} rel={"noreferrer"}>
                                     <div className="news-image-container">
                                         <Title className={"news-title"} level={4}>{news.name}</Title>
-                                        <img style={{maxWidth: '200px', maxHeight: '100px'}} src={news.image} alt={"news"}/>
+                                        <img style={{maxWidth: '250px', maxHeight: '120px'}} src={news.image} alt={"news"}/>
                                     </div>
                                     <p>
                                         {
@@ -46,8 +47,10 @@ const CardM = ({category}) => {
                                         }
                                     </p>
                                     <div className="provider-container">
-                                        <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                                        <Text>{moment(news.datePublished).format('L')}</Text>
+                                        <h5>Автор: {news.author}</h5>
                                     </div>
+
                                 </a>
                                 {/*</div>*/}
                             </Card>

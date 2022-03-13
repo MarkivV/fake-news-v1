@@ -17,6 +17,8 @@ import Sport from "./components/News/Sport/Sport";
 import Media from "./components/News/Media/Media";
 import Propose from "./components/Propose/Propose";
 import Admin from "./components/Admin/Admin";
+import Login from "./components/Auth/Login";
+import Registration from "./components/Auth/Registration";
 
 
 const {Option} = Select
@@ -51,6 +53,9 @@ function App() {
                 <Route exact path={"/propose"} element={<Propose />}/>
 
                 <Route exact path={"/admin"} element={<Admin />}/>
+
+                <Route exact path={"/login"} element={<Login />}/>
+                <Route exact path={"/registration"} element={<Registration />}/>
 
             </Routes>
         </div>

@@ -92,10 +92,12 @@ app.post('/api/publish/item', (req, res) =>{
         res.send(result)
     })
 })
-app.delete('/api/delete', (req, res) =>{
+app.delete('/api/delete/:id', (req, res) =>{
 
-    const id = req.query.id
+    const id = req.params.id
     const sqlInsert = "DELETE FROM Propose WHERE id = ?"
-    con.query(sqlInsert, id)
+    con.query(sqlInsert, id, (err, result)=>{
+        if(err) console.log(err)
+    })
 })
 
