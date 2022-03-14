@@ -38,7 +38,7 @@ const CardM = ({category}) => {
                                 <a href={news.url} target={"_blank"} rel={"noreferrer"}>
                                     <div className="news-image-container">
                                         <Title className={"news-title"} level={4}>{news.name}</Title>
-                                        <img style={{maxWidth: '250px', maxHeight: '120px'}} src={news.image} alt={"news"}/>
+                                        <img style={{width: '250px', height: '120px', objectFit: "cover"}} src={news.image} alt={"news"}/>
                                     </div>
                                     <p>
                                         {

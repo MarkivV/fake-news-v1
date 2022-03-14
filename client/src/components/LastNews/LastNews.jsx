@@ -16,14 +16,14 @@ const LastNews = ({name}) => {
     return (
         <Row style={{marginLeft: "25px"}}>
             {
-                name.slice(0,10).map((news)=>(
+                name.slice(0,14).map((news)=>(
                     <Col xs={24} sm={12} lg={24} key={news.id}>
                         <a href={`/${news.id}`}>
-                            <Text mark style={{marginLeft: "5px"}} level={4}>{news.category}</Text>
+                            <Text mark level={4}>{news.category}</Text>
                             <div style={{height: "150px", display: "flex"}}>
                                     <a href={news.url} target={"_blank"} rel={"noreferrer"}>
                                         <div>
-                                            <img style={{width: '170px', height: '100px'}} src={news.image} alt={"news"}/>
+                                            <img style={{width: '170px', height: '120px', objectFit: "cover"}} src={news.image} alt={"news"}/>
                                         </div>
                                     </a>
                                 <h3 style={{marginLeft: "5px", fontSize: "20px" }}>{news.name}</h3>
