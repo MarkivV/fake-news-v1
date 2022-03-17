@@ -115,7 +115,6 @@ app.delete('/api/delete/:id', (req, res) =>{
 })
 
 
-
 //Auth
 
 app.post("/registration", (req,res) =>{
@@ -157,8 +156,9 @@ app.post("/login", async (req, res)=>{
                 })
                 // window.localStorage.setItem('access_token', accessToken)
 
-                res.json("Logged")
-                console.log("logged")
+                res.send({
+                    username: result[0].username
+                })
             }
         })
     })
@@ -192,6 +192,10 @@ app.post("/login", async (req, res)=>{
 // const verify = (req,res,next) =>{
 //
 // }
+
+app.post("/auth", (req,res)=>{
+
+})
 
 app.post("/profile", validateToken, (req,res) =>{
     res.json("Profile")

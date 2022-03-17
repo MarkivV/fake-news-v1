@@ -31,3 +31,13 @@ const validateToken = (req, res, next) =>{
 
 
 module.exports = {createTokens, validateToken}
+
+
+// <Row gutter={[24,24]}>
+//     <Col>
+//         <Link to={"/"} style={{textDecoration: "none", fontSize: "25px", color: "#fff"}}>Связь</Link>
+//         <Link to={"/politic"} style={{textDecoration: "none", fontSize: "25px", color: "#fff"}}>Главная</Link>
+//         <Link to={"/society"} style={{textDecoration: "none", fontSize: "25px", color: "#fff"}}>Общество</Link>
+//         <Link to={"/propose"} style={{textDecoration: "none", fontSize: "25px", color: "#fff"}}>Предложить</Link>
+//     </Col>
+// </Row>

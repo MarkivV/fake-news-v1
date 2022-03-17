@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Button, Card, Col, Row, Select, Typography} from "antd";
+import {Button, Card, Col, Row, Select, Skeleton, Typography} from "antd";
 
 const {Text, Title} = Typography
 const {Option} = Select
@@ -33,7 +33,7 @@ const Admin = () => {
     }
 
     if(!proposes){
-        return 'No proposes'
+        return <Skeleton />
     }
 
 

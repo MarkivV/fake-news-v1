@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Avatar, Card, Col, Row} from "antd";
+import {Avatar, Card, Col, Row, Skeleton} from "antd";
 import moment from "moment";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
@@ -23,7 +23,7 @@ const JustNews = () => {
     }, [])
 
     if(!name){
-        return 'loading'
+        return "LOading"
     }
 
     return (

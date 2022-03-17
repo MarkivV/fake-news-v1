@@ -406,10 +406,9 @@ a:hover{
     margin-top: 20px !important;
 }
 
-.footer {
-    background-color: #5cacee;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    align-items: center;
-}
+/*.footer {*/
+/*    background-color: #5cacee;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    padding: 20px;*/
+/*}*/

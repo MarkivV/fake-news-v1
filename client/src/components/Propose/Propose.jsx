@@ -36,9 +36,10 @@ const Propose = () => {
     const setValues = () => {
         axios.post('http://localhost:3001/api/post/item',
             {author: author, image: image, title: title, text: text, category: category}, {withCredentials: true}).then(
-
         )
     }
+
+
 
 
     return (
