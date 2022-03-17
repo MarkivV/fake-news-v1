@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Form, Input, Select, Checkbox, Button} from 'antd';
+import axios from "axios";
 const { Option } = Select;
 
 const Registration = () => {
@@ -9,72 +10,31 @@ const Registration = () => {
         console.log('Received values of form: ', values);
     };
 
-    const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    const onWebsiteChange = (value) => {
-        if (!value) {
-            setAutoCompleteResult([]);
-        } else {
-            setAutoCompleteResult(['.com', '.org', '.net'].map((domain) => `${value}${domain}`));
-        }
-    };
+    const setValues = () => {
+        axios.post('http://localhost:3001/registration',
+            {email: email, username: username, password: password}, {withCredentials: true})
+    }
 
-    const websiteOptions = autoCompleteResult.map((website) => ({
-        label: website,
-        value: website,
-    }));
+
     return (
-        <Form
-            form={form}
-            name="register"
-            onFinish={onFinish}
-            initialValues={{
-                residence: ['zhejiang', 'hangzhou', 'xihu'],
-                prefix: '86',
-            }}
+        <Form form={form} name="register" onFinish={onFinish} initialValues={{residence: ['zhejiang', 'hangzhou', 'xihu'], prefix: '86'}}
             scrollToFirstError
         >
-            <Form.Item
-                name="email"
-                label="E-mail"
-                rules={[
-                    {
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
-                    },
-                    {
-                        required: true,
-                        message: 'Please input your E-mail!',
-                    },
-                ]}
-            >
-                <Input />
+            <Form.Item name="email" label="E-mail" rules={[{type: 'email', message: 'The input is not valid E-mail!',}, {required: true, message: 'Please input your E-mail!',},]}>
+                <Input onChange={(e)=>setEmail(e.target.value)}/>
             </Form.Item>
 
-            <Form.Item
-                name="password"
-                label="Password"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your password!',
-                    },
-                ]}
+            <Form.Item name="password" label="Password" rules={[{required: true, message: 'Please input your password!',}]}
                 hasFeedback
             >
-                <Input.Password />
+                <Input.Password onChange={(e)=>setPassword(e.target.value)} />
             </Form.Item>
 
-            <Form.Item
-                name="confirm"
-                label="Confirm Password"
-                dependencies={['password']}
-                hasFeedback
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please confirm your password!',
-                    },
+            <Form.Item name="confirm" label="Confirm Password" dependencies={['password']} hasFeedback rules={[{required: true, message: 'Please confirm your password!',},
                     ({ getFieldValue }) => ({
                         validator(_, value) {
                             if (!value || getFieldValue('password') === value) {
@@ -89,11 +49,7 @@ const Registration = () => {
                 <Input.Password />
             </Form.Item>
 
-            <Form.Item
-                name="nickname"
-                label="Nickname"
-                tooltip="What do you want others to call you?"
-                rules={[
+            <Form.Item name="nickname" label="Nickname" tooltip="What do you want others to call you?" rules={[
                     {
                         required: true,
                         message: 'Please input your nickname!',
@@ -101,11 +57,14 @@ const Registration = () => {
                     },
                 ]}
             >
-                <Input />
+                <Input onChange={(e)=>setUsername(e.target.value)}/>
             </Form.Item>
             <Form.Item>
-                <Button type="primary" htmlType="submit">
-                    Register
+                <Button type="primary" htmlType="submit" onClick={()=>{
+                    setValues()
+                    form.resetFields();
+                }}>
+                    Sign up
                 </Button>
             </Form.Item>
         </Form>

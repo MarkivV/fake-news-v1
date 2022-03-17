@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Form, Input, Button, Col, Select, Typography, Row, Checkbox} from 'antd';
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
+import axios from "axios";
 
 const Login = () => {
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-    };
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const setValues = () => {
+        axios.post('http://localhost:3001/login',
+            {username: username, password: password}, {withCredentials: true})
+    }
 
     return (
         <Form
@@ -14,7 +20,6 @@ const Login = () => {
             initialValues={{
                 remember: true,
             }}
-            onFinish={onFinish}
         >
             <Form.Item
                 name="username"
@@ -25,7 +30,7 @@ const Login = () => {
                     },
                 ]}
             >
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username"  onChange={(e)=>setUsername(e.target.value)}/>
             </Form.Item>
             <Form.Item
                 name="password"
@@ -40,20 +45,19 @@ const Login = () => {
                     prefix={<LockOutlined className="site-form-item-icon" />}
                     type="password"
                     placeholder="Password"
+                    onChange={(e)=>setPassword(e.target.value)}
                 />
             </Form.Item>
             <Form.Item>
-                <Form.Item name="remember" valuePropName="checked" noStyle>
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-
                 <a className="login-form-forgot" href="">
                     Forgot password
                 </a>
             </Form.Item>
 
             <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button">
+                <Button type="primary" htmlType="submit" className="login-form-button" onClick={()=>{
+                    setValues()
+                }}>
                     Log in
                 </Button>
                 Or <a href="/registration">register now!</a>
