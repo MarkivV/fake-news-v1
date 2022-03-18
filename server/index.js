@@ -165,34 +165,6 @@ app.post("/login", async (req, res)=>{
 })
 
 
-// app.post("/login", (req,res) =>{
-//     const {username, password} = req.body
-//     const user = users.find(u=>{
-//         return u.username === username && u.password === password
-//     })
-//
-//     if(user){
-//         // res.json(user)
-//         const accessToken = jwt.sign({
-//             id: user.id,
-//             isAdmin: user.isAdmin
-//         },
-//         "mySecretKey")
-//         res.json({
-//             username: user.username,
-//             isAdmin: user.isAdmin,
-//             accessToken
-//         })
-//     }else{
-//         res.status(400).json("Username or password incorrect")
-//     }
-//
-// })
-//
-// const verify = (req,res,next) =>{
-//
-// }
-
 app.post("/auth", (req,res)=>{
 
 })
