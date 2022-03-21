@@ -19,7 +19,7 @@ const CardM = ({category}) => {
             params: {
                 id: category
             }
-        })
+        },{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })

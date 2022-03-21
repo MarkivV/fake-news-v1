@@ -40,7 +40,7 @@ const NewsTop = () => {
 
 
     useEffect(()=>{
-        axios.get('https://lattersreact.herokuapp.com/api/get/all')
+        axios.get('https://lattersreact.herokuapp.com/api/get/all',{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })

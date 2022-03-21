@@ -9,7 +9,7 @@ const Admin = () => {
     const [proposes, setProposes] = useState([]);
 
     useEffect(()=>{
-        axios.get('https://lattersreact.herokuapp.com/api/get/propose')
+        axios.get('https://lattersreact.herokuapp.com/api/get/propose',{withCredentials: true})
             .then((response)=>{
                 setProposes(response.data)
                 console.log(response.data)

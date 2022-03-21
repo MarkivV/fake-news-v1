@@ -12,7 +12,7 @@ const Media = () => {
             params: {
                 id: 5
             }
-        })
+        },{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })

@@ -16,7 +16,7 @@ const JustNews = () => {
             params: {
                 id: 1
             }
-        })
+        },{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })

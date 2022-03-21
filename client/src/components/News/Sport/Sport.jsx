@@ -12,7 +12,7 @@ const Sport = () => {
             params: {
                 id: 4
             }
-        })
+        },{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })

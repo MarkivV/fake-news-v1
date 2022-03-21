@@ -12,7 +12,7 @@ const Covid = () => {
             params: {
                 id: 3
             }
-        })
+        },{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })

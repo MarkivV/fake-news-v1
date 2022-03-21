@@ -17,12 +17,12 @@ let con = mysql.createPool({
 });
 
 
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, origin: '*'}));
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
 app.all('*', function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", 'http://localhost:3000');
+    res.header("Access-Control-Allow-Origin", '*');
     res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,token");
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     res.header("Content-Type", "application/json;charset=utf-8");

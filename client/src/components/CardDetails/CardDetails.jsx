@@ -43,7 +43,7 @@ const CardDetails = () => {
             params: {
                 id: id
             }
-        })
+        },{withCredentials: true})
             .then((response) => {
                 setItem(response.data)
                 console.log(response.data)
@@ -51,7 +51,7 @@ const CardDetails = () => {
     }, [])
 
     useEffect(()=>{
-        axios.get('https://lattersreact.herokuapp.com/api/get/all')
+        axios.get('https://lattersreact.herokuapp.com/api/get/all',{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })
