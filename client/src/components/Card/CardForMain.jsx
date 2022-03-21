@@ -15,7 +15,7 @@ const CardM = ({category}) => {
     const [name, setName] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:3001/api/get', {
+        axios.get('https://lattersreact.herokuapp.com/api/get', {
             params: {
                 id: category
             }

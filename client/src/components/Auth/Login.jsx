@@ -13,7 +13,7 @@ const Login = () => {
 
 
     const setValues = () => {
-        axios.post('http://localhost:3001/login',
+        axios.post('https://lattersreact.herokuapp.com/login',
             {username: username, password: password}, {withCredentials: true}).then((user)=>{
                 setUser(user?.data.username)
         })

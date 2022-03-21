@@ -15,7 +15,7 @@ const Registration = () => {
     const [password, setPassword] = useState('');
 
     const setValues = () => {
-        axios.post('http://localhost:3001/registration',
+        axios.post('https://lattersreact.herokuapp.com/registration',
             {email: email, username: username, password: password}, {withCredentials: true})
     }
 

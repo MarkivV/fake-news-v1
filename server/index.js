@@ -7,16 +7,15 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const cookieParser = require("cookie-parser")
 const {createTokens, validateToken} = require("./JWT")
+const port = process.env.PORT || 3001
 
 let con = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'justnews',
-    port: 8889
+    host: 'eu-cdbr-west-02.cleardb.net',
+    user: 'b5005a6251479d',
+    password: '8a1ce7a8',
+    database: 'heroku_fd4c78f0a943f8a'
 });
 
-const ENV = "http://localhost:3000"
 
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json())
@@ -30,7 +29,7 @@ app.all('*', function (req, res, next) {
     next();
 });
 
-app.listen(3001, ()=>{
+app.listen(port, ()=>{
     console.log("Running on port 3001")
 })
 
