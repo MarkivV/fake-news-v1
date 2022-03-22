@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import CardM from "../../Card/Card";
 import axios from "axios";
-import Slider from "../../slider/Slider";
+import Slider from "../../Slider/Slider";
 import {Col, Row, Typography} from "antd";
 import LastNews from "../../LastNews/LastNews";
 import Paginate from "../../Paginate/Paginate";
