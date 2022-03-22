@@ -11,7 +11,7 @@ const Slider = ({name}) => {
                 {name.slice(0,5).map(item => (
                     <div className={"image"}>
                         <Link to={`${item.id}`}>
-                        <img src={item.image} key={"bidon"} />
+                        <img src={item.image}/>
                         <h2 style={{color: "#fff", fontWeight: "bold"}}>{item.name}</h2>
                         </Link>
                     </div>
