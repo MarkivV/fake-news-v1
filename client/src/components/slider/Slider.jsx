@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Carousel} from "antd";
-import "./slider.css"
+import "./Slider.css"
 import {Link} from "react-router-dom";
 
 const Slider = ({name}) => {
