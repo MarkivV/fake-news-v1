@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from "./Navbar.css"
+import "./Navbar.css"
 import {Link} from "react-router-dom";
 import {Button, Col, Row} from "antd";
 import {MenuOutlined} from "@ant-design/icons";
@@ -59,6 +59,9 @@ const Navbar = () => {
                 </li>
                 <li>
                     <Link to={"/media"} ><h3>Шоу-бизнес</h3></Link>
+                </li>
+                <li>
+                    <Link to={"/live-news"} ><h3>LiveNews</h3></Link>
                 </li>
             </Col>
         )}

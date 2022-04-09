@@ -39,7 +39,7 @@ const CardM = ({category}) => {
     const [name, setName] = useState([]);
 
     useEffect(()=>{
-        axios.get('https://lattersreact.herokuapp.com/api/get', {
+        axios.get('http://localhost:3001/api/get', {
             params: {
                 id: category
             }
@@ -61,16 +61,16 @@ const CardM = ({category}) => {
                         <>
                             <Col xs={24} sm={12} lg={12} key={news.id}>
                                 <Link to={`${news.id}`}>
-                                    <div >
+                                    <div>
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
-                                        <a href={news.url} target={"_blank"} rel={"noreferrer"}>
+                                        <a href={news.url} target={"_blank"} rel={"noreferrer"} >
                                             <div className="news-image-container">
                                                 <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div>
-                                                <Title level={4} style={{fontSize: "25px"}}>{news.name}</Title>
+                                                <Title level={4} style={{fontSize: "25px"}} className={"mainCard"}>{news.name}</Title>
                                             </div>
-                                            <p style={{color: "black"}}>
+                                            <p className={"mainCard"}>
                                                 {
                                                     news.description.length > 120 ? `${news.description.substring(0, 120)}...`
                                                         :news.description

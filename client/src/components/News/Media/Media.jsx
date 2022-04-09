@@ -8,7 +8,7 @@ const Media = () => {
     const [name, setName] = useState([]);
 
     useEffect(()=>{
-        axios.get('https://lattersreact.herokuapp.com/api/get', {
+        axios.get('http://localhost:3001/api/get', {
             params: {
                 id: 5
             }

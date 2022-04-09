@@ -4,6 +4,8 @@ import Slider from "../../Slider/Slider";
 import {Col, Row, Typography} from "antd";
 import LastNews from "../../LastNews/LastNews";
 import CardForMain from "../../Card/CardForMain";
+import LiveNews from "../LiveNews/LiveNews";
+import LastLive from "../../LastNews/LastLive";
 const {Text, Title} = Typography
 
 
@@ -12,6 +14,7 @@ const NewsTop = () => {
     const [name, setName] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(8);
+    const [liveNews, setliveNews] = useState([]);
 
     const [activeMenu, setActiveMenu] = useState(true);
     const [screenSize, setScreenSize] = useState(null);
@@ -40,9 +43,13 @@ const NewsTop = () => {
 
 
     useEffect(()=>{
-        axios.get('https://lattersreact.herokuapp.com/api/get/all',{withCredentials: true})
+        axios.get('http://localhost:3001/api/get/all',{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
+            })
+        axios.get('http://localhost:3001/api/get/live',{withCredentials: true})
+            .then((response)=>{
+                setliveNews(response.data)
             })
     }, [])
 
@@ -92,6 +99,10 @@ const NewsTop = () => {
 
             </Col>
             <Col xs={0} sm={0} lg={8} className={"column8"}>
+                <div style={{textAlign: "center"}}>
+                    <Title  level={4}>LiveNews</Title>
+                </div>
+                <LastLive live={liveNews}/>
                 <div style={{textAlign: "center"}}>
                     <Title  level={4}>Последние новости</Title>
                 </div>

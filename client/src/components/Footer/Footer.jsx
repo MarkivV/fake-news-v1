@@ -29,6 +29,8 @@ const Footer = () => {
                         </li>
                         <li>                        <Link to={"/media"}>Шоу-бизнес</Link>
                         </li>
+                        <li>                        <Link to={"/live-news"}>LiveNews</Link>
+                        </li>
                     </Col>
                 </Col>
                 <Col className="nav__item">
@@ -36,6 +38,8 @@ const Footer = () => {
 
                     <Col className="nav__ul">
                         <li>                        <Link to={"/propose"}>Предложить</Link>
+                        </li>
+                        <li>                        <Link to={"/propose-live"}>LiveNews</Link>
                         </li>
                         <li>                        <Link to={"/registration"}>Регистрация</Link>
                         </li>

@@ -3,3 +3,11 @@
     border: 0.5px solid gray;
     padding: 10px;
 }
+
+.mainCard{
+    color: black;
+}
+
+.mainCard:hover{
+    color: #5cacee;
+}

@@ -9,7 +9,7 @@ const Admin = () => {
     const [proposes, setProposes] = useState([]);
 
     useEffect(()=>{
-        axios.get('https://lattersreact.herokuapp.com/api/get/propose',{withCredentials: true})
+        axios.get('http://localhost:3001/api/get/propose',{withCredentials: true})
             .then((response)=>{
                 setProposes(response.data)
                 console.log(response.data)
@@ -17,7 +17,7 @@ const Admin = () => {
     }, [])
 
     const Publish = (news) => {
-        axios.post('https://lattersreact.herokuapp.com/api/publish/item',
+        axios.post('http://localhost:3001/api/publish/item',
             {
                 author: news.author,
                 image: news.image,
@@ -25,11 +25,11 @@ const Admin = () => {
                  text: news.description,
                 categoryId: news.categoryId
             })
-        axios.delete(`https://lattersreact.herokuapp.com/api/delete/${news.id}`)
+        axios.delete(`http://localhost:3001/api/delete/${news.id}`)
     }
 
     const Delete = (news) =>{
-        axios.delete(`https://lattersreact.herokuapp.com/api/delete/${news.id}` )
+        axios.delete(`http://localhost:3001/api/delete/${news.id}` )
     }
 
     if(!proposes){

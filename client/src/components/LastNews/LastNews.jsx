@@ -1,22 +1,16 @@
 import React, {useState} from 'react';
-import {useGetCryptoNewsQuery} from "../../services/newsApi";
-import {Avatar, Card, Col, Row, Typography, Select} from "antd";
-import moment from "moment";
+import { Col, Row, Typography, Select} from "antd";
 import './LastNews.css'
-import axios from "axios";
-import {Link} from "react-router-dom";
-const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News'
 
 const {Text, Title} = Typography
-const {Option} = Select
 
 const LastNews = ({name}) => {
 
 
     return (
-        <Row style={{marginLeft: "25px"}}>
+        <Row>
             {
-                name.slice(0,14).map((news)=>(
+                name.slice(0,7).map((news)=>(
                     <Col xs={24} sm={12} lg={24} key={news.id}>
                         <a href={`/${news.id}`}>
                             <Text mark level={4}>{news.category}</Text>
@@ -26,9 +20,10 @@ const LastNews = ({name}) => {
                                             <img style={{width: '170px', height: '120px', objectFit: "cover"}} src={news.image} alt={"news"}/>
                                         </div>
                                     </a>
-                                <h3 style={{marginLeft: "5px", fontSize: "20px" }}>{news.name}</h3>
+                                <h3 style={{marginLeft: "5px", fontSize: "20px" }} className={"mainCard"}>{news.name}</h3>
                             </div>
                         </a>
+                        <hr/>
                     </Col>
                 ))
             }

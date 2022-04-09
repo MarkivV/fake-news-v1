@@ -39,7 +39,7 @@ const CardDetails = () => {
 
 
     useEffect(() => {
-        axios.get('https://lattersreact.herokuapp.com/api/get/item', {
+        axios.get('http://localhost:3001/api/get/item', {
             params: {
                 id: id
             }
@@ -51,14 +51,14 @@ const CardDetails = () => {
     }, [])
 
     useEffect(()=>{
-        axios.get('https://lattersreact.herokuapp.com/api/get/all',{withCredentials: true})
+        axios.get('http://localhost:3001/api/get/all',{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })
     }, [])
 
     return (
-        <Row>
+        <Row gutter={[24,24]}>
             {
                 activeMenu
                     ?
@@ -67,7 +67,7 @@ const CardDetails = () => {
                             {item.slice(0,1).map(i=>(
                                 <div key={i.id}>
                                     <div>
-                                        <img style={{width: "1000px"}} src={i.image} alt="image"/>
+                                        <img style={{width: "100%"}} src={i.image} alt="image"/>
                                     </div>
                                     <Title mark level={4}>{i.category}</Title>
                                     <Title>{i.name}</Title>
@@ -91,10 +91,10 @@ const CardDetails = () => {
                                     <div>
                                         <img style={{maxWidth: "100%"}} src={i.image} alt="image"/>
                                     </div>
-                                    <Title mark level={4}>{i.category}</Title>
-                                    <Title>{i.name}</Title>
+                                    <Title mark level={3}>{i.category}</Title>
+                                    <Title style={{fontSize: "27px",  textAlign: "justify"}}>{i.name}</Title>
                                     <hr/>
-                                    <p style = {{fontSize: "30px", marginTop: "15px", textAlign: "justify"}}>
+                                    <p style = {{fontSize: "20px", marginTop: "15px", textAlign: "justify"}}>
                                         {i.description}
                                     </p>
                                 </div>

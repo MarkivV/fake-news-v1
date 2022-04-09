@@ -9,14 +9,22 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState('');
+    const [accessToken1, setAccessToken] = useState('');
     let navigate = useNavigate()
 
 
     const setValues = () => {
-        axios.post('https://lattersreact.herokuapp.com/login',
-            {username: username, password: password}, {withCredentials: true}).then((user)=>{
+        axios.post('http://localhost:3001/login',
+            {username: username, password: password},
+            {withCredentials: true}).
+        then((user)=>{
                 setUser(user?.data.username)
+            setAccessToken(user?.data.accessToken)
         })
+
+        if(accessToken1){
+            window.localStorage.setItem("access-token", accessToken1)
+        }
     }
 
     return (
