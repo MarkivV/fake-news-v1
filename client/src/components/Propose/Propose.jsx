@@ -67,7 +67,7 @@ const Propose = () => {
             <Col xs={24} sm={24} lg={14} >
                 <Form form={form} >
                     <Form.Item name={['user', 'name']} label="Имя автора">
-                        <Input style={{height:"40px"}} prefix={userName} disabled/>
+                        <Input style={{height:"40px"}} prefix={userName} disabled />
                     </Form.Item>
                     <Form.Item name={['user', 'img']} label="URL картинки" rules={[{ required: true }]}>
                         <Input style={{height:"40px"}} onChange={(e)=>setImage(e.target.value)}/>
@@ -94,6 +94,7 @@ const Propose = () => {
                     </Form.Item>
                     <Form.Item>
                         <Button type="primary" onClick={()=> {
+                            setAuthor(userName)
                             setValues()
                             form.resetFields();
                         }

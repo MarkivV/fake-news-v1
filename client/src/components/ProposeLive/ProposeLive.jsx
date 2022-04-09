@@ -47,6 +47,7 @@ const ProposeLive = () => {
                         </Form.Item>
                         <Form.Item>
                             <Button type="primary" onClick={()=> {
+                                setAuthor(userName)
                                 setValues()
                                 form.resetFields();
                             }

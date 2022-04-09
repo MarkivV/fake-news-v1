@@ -31,10 +31,6 @@ const Admin = () => {
         axios.delete(ENV + `/api/delete/${news.id}`)
     }
 
-    const Delete = (news) =>{
-        axios.delete(ENV +`/api/delete/${news.id}` )
-    }
-
     if(!proposes){
         return <Skeleton />
     }

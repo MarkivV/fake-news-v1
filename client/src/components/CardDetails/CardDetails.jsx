@@ -5,6 +5,7 @@ import {Col, Row, Typography} from "antd";
 import LastNews from "../LastNews/LastNews";
 import './CardDetails.css'
 import {ENV} from "../env";
+import moment from "moment";
 
 const {Text, Title} = Typography
 
@@ -70,10 +71,14 @@ const CardDetails = () => {
                                     <div>
                                         <img style={{width: "100%"}} src={i.image} alt="image"/>
                                     </div>
-                                    <Title mark level={4}>{i.category}</Title>
-                                    <Title>{i.name}</Title>
-                                    <hr/>
-                                    <p style = {{fontSize: "30px", marginTop: "15px"}}>
+                                    <Title style={{marginTop: "15px"}} mark level={3}>{i.category}</Title>
+                                    <Title level={2}>{i.name}</Title>
+                                    <div style={{display: "flex"}}>
+                                        <h4>Автор: {i.author}</h4>
+                                        <h4 style={{marginLeft: "auto"}}>{moment(i.datePublished).format('L')}</h4>
+                                    </div>
+                                    <hr style={{marginTop: "15px"}}/>
+                                    <p style = {{fontSize: "20px", marginTop: "15px"}}>
                                         {i.description}
                                     </p>
                                 </div>
@@ -92,10 +97,13 @@ const CardDetails = () => {
                                     <div>
                                         <img style={{maxWidth: "100%"}} src={i.image} alt="image"/>
                                     </div>
-                                    <Title mark level={3}>{i.category}</Title>
-                                    <Title style={{fontSize: "27px",  textAlign: "justify"}}>{i.name}</Title>
-                                    <hr/>
-                                    <p style = {{fontSize: "20px", marginTop: "15px", textAlign: "justify"}}>
+                                    <Title mark level={3} style={{marginTop: "15px"}}>{i.category}</Title>
+                                    <Title style={{fontSize: "22px",  textAlign: "justify"}}>{i.name}</Title>
+                                    <div style={{display: "flex", marginTop: "15px"}}>
+                                        <h4>Автор: {i.author}</h4>
+                                        <h4 style={{marginLeft: "auto"}}>{moment(i.datePublished).format('L')}</h4>
+                                    </div>
+                                    <p style = {{fontSize: "18px", marginTop: "15px", textAlign: "justify"}}>
                                         {i.description}
                                     </p>
                                 </div>
