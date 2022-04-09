@@ -19,7 +19,7 @@ const LiveNews = () => {
         <Row gutter={[24,24]}>
             {
                 liveNews.map((live)=>(
-                    <Col span={8}>
+                    <Col xs={24} sm={12} lg={8}>
                         <Card>
                             <div style={{height: "200px"}}>
                                 <h2>{live.name}</h2>
