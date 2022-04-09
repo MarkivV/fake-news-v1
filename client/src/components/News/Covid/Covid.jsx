@@ -9,7 +9,7 @@ const Covid = () => {
     const [name, setName] = useState([]);
 
     useEffect(()=>{
-        axios.get('https://purple-omega.vercel.app/api/get', {
+        axios.get(ENV + '/api/get', {
             params: {
                 id: 3
             }
