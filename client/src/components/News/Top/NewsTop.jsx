@@ -6,6 +6,7 @@ import LastNews from "../../LastNews/LastNews";
 import CardForMain from "../../Card/CardForMain";
 import LiveNews from "../LiveNews/LiveNews";
 import LastLive from "../../LastNews/LastLive";
+import {ENV} from "../../env";
 const {Text, Title} = Typography
 
 
@@ -43,11 +44,11 @@ const NewsTop = () => {
 
 
     useEffect(()=>{
-        axios.get('http://localhost:3001/api/get/all',{withCredentials: true})
+        axios.get(ENV +'/api/get/all',{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })
-        axios.get('http://localhost:3001/api/get/live',{withCredentials: true})
+        axios.get(ENV +'/api/get/live',{withCredentials: true})
             .then((response)=>{
                 setliveNews(response.data)
             })

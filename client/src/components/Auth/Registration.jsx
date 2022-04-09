@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Form, Input, Select, Checkbox, Button, Row, Col} from 'antd';
 import axios from "axios";
+import {ENV} from "../env";
 const { Option } = Select;
 
 const Registration = () => {
@@ -15,7 +16,7 @@ const Registration = () => {
     const [password, setPassword] = useState('');
 
     const setValues = () => {
-        axios.post('http://localhost:3001/registration',
+        axios.post(ENV + '/registration',
             {email: email, username: username, password: password}, {withCredentials: true})
     }
 

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Col, Form, Input, Row, Select} from "antd";
 import axios from "axios";
+import {ENV} from "../env";
 
 const ProposeLive = () => {
     const [form] = Form.useForm();
@@ -9,7 +10,7 @@ const ProposeLive = () => {
     const [text, setText] = useState('');
 
     const setValues = () => {
-        axios.post('http://localhost:3001/api/post/live',
+        axios.post(ENV + '/api/post/live',
             {author: author,  title: title, text: text}, {withCredentials: true}).then(
         )
     }

@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Card, Col, Row} from "antd";
 import moment from "moment";
+import {ENV} from "../../env";
 
 const LiveNews = () => {
     const [liveNews, setLiveNews] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/api/get/live',{withCredentials: true})
+        axios.get(ENV +'/api/get/live',{withCredentials: true})
             .then((response)=>{
                 setLiveNews(response.data)
             })

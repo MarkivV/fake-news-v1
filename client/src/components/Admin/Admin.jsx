@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Button, Card, Col, Row, Select, Skeleton, Typography} from "antd";
+import {ENV} from './../env'
 
 const {Text, Title} = Typography
 const {Option} = Select
+
 
 const Admin = () => {
     const [proposes, setProposes] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:3001/api/get/propose',{withCredentials: true})
+        axios.get(ENV + '/api/get/propose',{withCredentials: true})
             .then((response)=>{
                 setProposes(response.data)
                 console.log(response.data)
@@ -17,7 +19,7 @@ const Admin = () => {
     }, [])
 
     const Publish = (news) => {
-        axios.post('http://localhost:3001/api/publish/item',
+        axios.post(ENV + '/api/publish/item',
             {
                 author: news.author,
                 image: news.image,
@@ -25,11 +27,11 @@ const Admin = () => {
                  text: news.description,
                 categoryId: news.categoryId
             })
-        axios.delete(`http://localhost:3001/api/delete/${news.id}`)
+        axios.delete(ENV + `/api/delete/${news.id}`)
     }
 
     const Delete = (news) =>{
-        axios.delete(`http://localhost:3001/api/delete/${news.id}` )
+        axios.delete(ENV +`/api/delete/${news.id}` )
     }
 
     if(!proposes){

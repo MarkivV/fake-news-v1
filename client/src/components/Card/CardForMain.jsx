@@ -4,6 +4,7 @@ import moment from "moment";
 import './card.css'
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {ENV} from "../env";
 
 const {Text, Title} = Typography
 const {Option} = Select
@@ -39,7 +40,7 @@ const CardM = ({category}) => {
     const [name, setName] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:3001/api/get', {
+        axios.get(ENV +'/api/get', {
             params: {
                 id: category
             }

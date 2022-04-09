@@ -3,6 +3,7 @@ import {Form, Input, Button, Col, Select, Typography, Row, Checkbox} from 'antd'
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
+import {ENV} from "../env";
 
 const Login = () => {
 
@@ -14,7 +15,7 @@ const Login = () => {
 
 
     const setValues = () => {
-        axios.post('http://localhost:3001/login',
+        axios.post(ENV + '/login',
             {username: username, password: password},
             {withCredentials: true}).
         then((user)=>{

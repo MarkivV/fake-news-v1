@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Form, Input, Button, Col, Select, Typography, Row} from 'antd';
 import axios from "axios";
+import {ENV} from "../env";
 
 const {Text, Title} = Typography
 
@@ -34,7 +35,7 @@ const Propose = () => {
     };
 
     const setValues = () => {
-        axios.post('http://localhost:3001/api/post/item',
+        axios.post(ENV +'/api/post/item',
             {author: author, image: image,  title: title, text: text, category: category}, {withCredentials: true}).then(
         )
     }

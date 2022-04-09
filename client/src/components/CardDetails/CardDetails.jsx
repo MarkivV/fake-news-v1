@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import {Col, Row, Typography} from "antd";
 import LastNews from "../LastNews/LastNews";
 import './CardDetails.css'
+import {ENV} from "../env";
 
 const {Text, Title} = Typography
 
@@ -39,7 +40,7 @@ const CardDetails = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3001/api/get/item', {
+        axios.get(ENV + '/api/get/item', {
             params: {
                 id: id
             }
@@ -51,7 +52,7 @@ const CardDetails = () => {
     }, [])
 
     useEffect(()=>{
-        axios.get('http://localhost:3001/api/get/all',{withCredentials: true})
+        axios.get(ENV + '/api/get/all',{withCredentials: true})
             .then((response)=>{
                 setName(response.data)
             })
