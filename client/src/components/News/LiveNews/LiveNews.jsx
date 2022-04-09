@@ -8,6 +8,7 @@ const LiveNews = () => {
     const [liveNews, setLiveNews] = useState([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         axios.get(ENV +'/api/get/live',{withCredentials: true})
             .then((response)=>{
                 setLiveNews(response.data)

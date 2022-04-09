@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {Form, Input, Select, Checkbox, Button, Row, Col} from 'antd';
 import axios from "axios";
 import {ENV} from "../env";
@@ -10,6 +10,11 @@ const Registration = () => {
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
 
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');

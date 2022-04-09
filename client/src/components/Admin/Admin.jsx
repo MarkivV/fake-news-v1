@@ -11,6 +11,7 @@ const Admin = () => {
     const [proposes, setProposes] = useState([]);
 
     useEffect(()=>{
+        window.scrollTo(0, 0)
         axios.get(ENV + '/api/get/propose',{withCredentials: true})
             .then((response)=>{
                 setProposes(response.data)

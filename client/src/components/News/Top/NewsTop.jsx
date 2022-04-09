@@ -22,6 +22,7 @@ const NewsTop = () => {
 
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         const handleResizeFunc = () =>{
             setScreenSize(window.innerWidth)
         }

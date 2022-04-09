@@ -9,6 +9,7 @@ const Sport = () => {
     const [name, setName] = useState([]);
 
     useEffect(()=>{
+        window.scrollTo(0, 0)
         axios.get(ENV +'/api/get', {
             params: {
                 id: 4

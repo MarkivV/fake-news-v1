@@ -18,6 +18,7 @@ const Propose = () => {
     const [userName, setUserName] = useState('');
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         let accessToken = JSON.parse(localStorage.getItem("access-token"))
         if(!accessToken){
             navigate('/login')
