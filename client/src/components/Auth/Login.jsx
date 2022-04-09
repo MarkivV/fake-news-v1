@@ -23,8 +23,9 @@ const Login = () => {
             setAccessToken(user?.data.accessToken)
         })
 
-        if(accessToken1){
-            window.localStorage.setItem("access-token", accessToken1)
+        if(user){
+            window.localStorage.setItem("username", JSON.stringify(user))
+            window.localStorage.setItem("access-token", JSON.stringify(accessToken1))
         }
     }
 

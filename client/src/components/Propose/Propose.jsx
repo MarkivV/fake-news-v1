@@ -1,18 +1,32 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Form, Input, Button, Col, Select, Typography, Row} from 'antd';
 import axios from "axios";
 import {ENV} from "../env";
+import {useNavigate} from "react-router-dom";
 
 const {Text, Title} = Typography
 
 const Propose = () => {
 
+    const navigate = useNavigate()
     const [form] = Form.useForm();
     const [author, setAuthor] = useState('');
     const [image, setImage] = useState('');
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [category, setCategory] = useState('');
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        let accessToken = JSON.parse(localStorage.getItem("access-token"))
+        if(!accessToken){
+            navigate('/login')
+        }
+        let username = JSON.parse(localStorage.getItem("username"))
+        if(username){
+            setUserName(username)
+        }
+    }, []);
 
     const onGenderChange = (value) => {
         switch (value) {
@@ -34,6 +48,8 @@ const Propose = () => {
         }
     };
 
+
+
     const setValues = () => {
         axios.post(ENV +'/api/post/item',
             {author: author, image: image,  title: title, text: text, category: category}, {withCredentials: true}).then(
@@ -49,8 +65,8 @@ const Propose = () => {
         <Row gutter={[24,24]}>
             <Col xs={24} sm={24} lg={14} >
                 <Form form={form} >
-                    <Form.Item name={['user', 'name']} label="Имя автора" rules={[{ required: true }]}>
-                        <Input style={{height:"40px"}} onChange={(e)=>setAuthor(e.target.value)}/>
+                    <Form.Item name={['user', 'name']} label="Имя автора">
+                        <Input style={{height:"40px"}} prefix={userName} disabled/>
                     </Form.Item>
                     <Form.Item name={['user', 'img']} label="URL картинки" rules={[{ required: true }]}>
                         <Input style={{height:"40px"}} onChange={(e)=>setImage(e.target.value)}/>
