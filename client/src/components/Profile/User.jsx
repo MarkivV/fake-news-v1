@@ -1,15 +1,34 @@
 import React, {useEffect, useState} from 'react';
-import {Card, Col, Row, Typography, Select} from "antd";
+import axios from "axios";
+import {ENV} from "../env";
+import {Link, useParams} from "react-router-dom";
+import CardSpec from "../Card/CardSpec";
+import {Col, Row} from "antd";
 import moment from "moment";
-import './card.css'
-import {Link} from "react-router-dom";
-const {Text, Title} = Typography
-const {Option} = Select
+import Title from "antd/es/typography/Title";
+import Text from "antd/es/typography/Text";
 
-const CardSpec = ({name}) => {
+const User = () => {
 
+    const [news, setNews] = useState([]);
+    const [name, setName] = useState('');
+    const {id} = useParams()
     const [activeMenu, setActiveMenu] = useState(true);
     const [screenSize, setScreenSize] = useState(null);
+
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+        axios.get(ENV +'/api/get/user', {
+            params: {
+                idUser: id
+            }
+        },{withCredentials: true})
+            .then((response)=>{
+                setNews(response.data)
+                setName(response.data[0].username)
+
+            })
+    }, [])
 
 
     useEffect(() => {
@@ -34,62 +53,57 @@ const CardSpec = ({name}) => {
         }
     }, [screenSize])
 
-
     return (
-        <Row gutter={[24,24]}>
-
+        <>
+            <Title level={1}>{name}</Title>
+            <Row gutter={[24,24]}>
             {
-                name.map((news)=>(
+                news.map((item)=>(
 
-                        activeMenu
+                    activeMenu
                         ?
+
                         <>
                             <Col xs={24} sm={12} lg={8} key={news.id}>
-                                <Link to={`${news.id}`}>
+                                <a href={`/${item.id}`}>
                                     <div >
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
-                                        <a href={news.url} target={"_blank"} rel={"noreferrer"}>
+                                        <a href={item.url} target={"_blank"} rel={"noreferrer"}>
                                             <div className="news-image-container">
-                                                <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={news.image} alt={"news"}/>
+                                                <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={item.image} alt={"news"}/>
                                             </div>
                                             <div >
-                                                <Title level={2}>{news.name}</Title>
+                                                <Title level={2}>{item.name}</Title>
                                             </div>
                                             <div style={{marginTop: "10px"}} className="provider-container">
-                                                <Text>{moment(news.datePublished).format('L')}</Text>
-                                                <Link to={`/user/${news.authorId}`}>
-                                                    <h5>Автор: {news.username}</h5>
-                                                </Link>
+                                                <Text>{moment(item.datePublished).format('L')}</Text>
                                             </div>
                                         </a>
                                     </div>
                                     {/*</Card>*/}
-                                </Link>
+                                </a>
                             </Col>
                         </>
                         :
                         <>
                             <Col xs={24} sm={12} lg={8} key={news.id}>
-                                <Link to={`${news.id}`}>
+                                <a href={`/${item.id}`}>
                                     <div>
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
-                                        <a href={news.url} target={"_blank"} rel={"noreferrer"}>
+                                        <a href={item.url} target={"_blank"} rel={"noreferrer"}>
                                             <div className="news-image-container">
                                                 <img style={{width: '100%'}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div style={{marginLeft: "0px"}}>
-                                                <Title level={8}>{news.name}</Title>
+                                                <Title level={4}>{item.name}</Title>
                                             </div>
                                             <div style={{marginLeft: "0px", marginTop: "10px"}} className="provider-container">
-                                                <Text>{moment(news.datePublished).format('L')}</Text>
-                                                <Link to={`/user/${news.authorId}`}>
-                                                    <h5>Автор: {news.username}</h5>
-                                                </Link>
+                                                <Text>{moment(item.datePublished).format('L')}</Text>
                                             </div>
                                         </a>
                                     </div>
                                     {/*</Card>*/}
-                                </Link>
+                                </a>
                             </Col>
                         </>
 
@@ -97,7 +111,8 @@ const CardSpec = ({name}) => {
                 ))
             }
         </Row>
+        </>
     );
 };
 
-export default CardSpec;
+export default User;

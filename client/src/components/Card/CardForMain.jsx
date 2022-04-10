@@ -67,7 +67,7 @@ const CardM = ({category}) => {
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
                                         <a href={news.url} target={"_blank"} rel={"noreferrer"} >
                                             <div className="news-image-container">
-                                                <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={news.image} alt={"news"}/>
+                                                <img style={{width: '100%', height: "290px", objectFit: "cover"}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div>
                                                 <Title level={4} style={{fontSize: "25px"}} className={"mainCard"}>{news.name}</Title>
@@ -80,7 +80,9 @@ const CardM = ({category}) => {
                                             </p>
                                             <div style={{marginTop: "10px"}} className="provider-container">
                                                 <Text>{moment(news.datePublished).format('L')}</Text>
-                                                <h5>Автор: {news.author}</h5>
+                                                <Link to={`/user/${news.authorId}`}>
+                                                    <h5>Автор: {news.username}</h5>
+                                                </Link>
                                             </div>
                                         </a>
                                     </div>
@@ -103,7 +105,9 @@ const CardM = ({category}) => {
                                             </div>
                                             <div style={{marginLeft: "0px", marginTop: "10px"}} className="provider-container">
                                                 <Text>{moment(news.datePublished).format('L')}</Text>
-                                                <h5>Автор: {news.author}</h5>
+                                                <Link to={`/user/${news.authorId}`}>
+                                                    <h5>Автор: {news.username}</h5>
+                                                </Link>
                                             </div>
                                         </a>
                                     </div>

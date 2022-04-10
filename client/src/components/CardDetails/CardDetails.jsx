@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {Col, Row, Typography} from "antd";
 import LastNews from "../LastNews/LastNews";
 import './CardDetails.css'
@@ -74,7 +74,9 @@ const CardDetails = () => {
                                     <Title style={{marginTop: "15px"}} mark level={3}>{i.category}</Title>
                                     <Title level={2}>{i.name}</Title>
                                     <div style={{display: "flex"}}>
-                                        <h4>Автор: {i.author}</h4>
+                                        <Link to={`/user/${i.authorId}`}>
+                                            <h4>Автор: {i.username}</h4>
+                                        </Link>
                                         <h4 style={{marginLeft: "auto"}}>{moment(i.datePublished).format('L')}</h4>
                                     </div>
                                     <hr style={{marginTop: "15px"}}/>

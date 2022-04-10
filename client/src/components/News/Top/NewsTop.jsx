@@ -105,7 +105,7 @@ const NewsTop = () => {
                     <Title  level={4}>LiveNews</Title>
                 </div>
                 <LastLive live={liveNews}/>
-                <div style={{textAlign: "center"}}>
+                <div style={{textAlign: "center", marginTop: "25px"}}>
                     <Title  level={4}>Последние новости</Title>
                 </div>
                 <LastNews name={name}/>

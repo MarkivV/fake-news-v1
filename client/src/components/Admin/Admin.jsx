@@ -26,7 +26,8 @@ const Admin = () => {
                 image: news.image,
                 title: news.name,
                  text: news.description,
-                categoryId: news.categoryId
+                categoryId: news.categoryId,
+                authorId: news.authorId
             })
         axios.delete(ENV + `/api/delete/${news.id}`)
     }

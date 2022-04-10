@@ -63,6 +63,9 @@ const Navbar = () => {
                 <li>
                     <Link to={"/live-news"} ><h3>LiveNews</h3></Link>
                 </li>
+                <li>
+                    <Link to={"/live-news"} ><h3>LiveNews</h3></Link>
+                </li>
             </Col>
         )}
         </>

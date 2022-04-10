@@ -11,6 +11,7 @@ const ProposeLive = () => {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [userName, setUserName] = useState('');
+    const [userId, setUserId] = useState('');
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -19,14 +20,16 @@ const ProposeLive = () => {
             navigate('/login')
         }
         let username = JSON.parse(localStorage.getItem("username"))
+        let userId = JSON.parse(localStorage.getItem("userId"))
         if(username){
             setUserName(username)
+            setUserId(userId)
         }
     }, []);
 
     const setValues = () => {
         axios.post(ENV + '/api/post/live',
-            {author: author,  title: title, text: text}, {withCredentials: true}).then(
+            {author: userName,  title: title, text: text, userId: userId}, {withCredentials: true}).then(
         )
     }
 
@@ -47,7 +50,6 @@ const ProposeLive = () => {
                         </Form.Item>
                         <Form.Item>
                             <Button type="primary" onClick={()=> {
-                                setAuthor(userName)
                                 setValues()
                                 form.resetFields();
                             }

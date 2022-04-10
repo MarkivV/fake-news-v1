@@ -1,23 +1,26 @@
 const {sign, verify} = require("jsonwebtoken")
 
+//Token Creation
 const createTokens = (user) => {
     const accessToken = sign(
         { username: user.username, id: user.id },
-        "jwtsecretplschange"
+        "secretKey"
     );
 
     return accessToken;
 }
 
+//Token Validation
 const validateToken = (req, res, next) =>{
     const accessToken = req.cookies["access-token"]
+    // const accessToken =  JSON.parse(localStorage.getItem("access-token"))
 
     if(!accessToken){
         return res.status(400).json({error: "User not Authenticated"})
     }
 
     try{
-        const validToken = verify(accessToken, "jwtsecretplschange")
+        const validToken = verify(accessToken, "secretKey")
         if(validToken){
             req.authenticated = true
             return next()

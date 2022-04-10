@@ -53,11 +53,11 @@ const Footer = () => {
 
                     <Col className="nav__ul">
                         <li>
-                            <a href="#">Instagram</a>
+                            <a href="https://www.instagram.com/vovankuvalda/">Instagram</a>
                         </li>
 
                         <li>
-                            <a href="#">Telegram</a>
+                            <a href="https://t.me/vavankuvalda">Telegram</a>
                         </li>
 
                         <li>

@@ -10,6 +10,7 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState('');
+    const [userId, setUserId] = useState('');
     const [accessToken1, setAccessToken] = useState('');
     let navigate = useNavigate()
 
@@ -24,11 +25,13 @@ const Login = () => {
             {withCredentials: true}).
         then((user)=>{
                 setUser(user?.data.username)
+                setUserId(user?.data.userId)
             setAccessToken(user?.data.accessToken)
         })
 
         if(user){
             window.localStorage.setItem("username", JSON.stringify(user))
+            window.localStorage.setItem("userId", JSON.stringify(userId))
             window.localStorage.setItem("access-token", JSON.stringify(accessToken1))
         }
     }

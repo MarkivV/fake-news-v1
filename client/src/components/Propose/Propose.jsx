@@ -16,6 +16,7 @@ const Propose = () => {
     const [text, setText] = useState('');
     const [category, setCategory] = useState('');
     const [userName, setUserName] = useState('');
+    const [userId, setUserId] = useState('');
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -24,8 +25,11 @@ const Propose = () => {
             navigate('/login')
         }
         let username = JSON.parse(localStorage.getItem("username"))
+        let userId = JSON.parse(localStorage.getItem("userId"))
         if(username){
             setUserName(username)
+            setUserId(userId)
+
         }
     }, []);
 
@@ -53,7 +57,7 @@ const Propose = () => {
 
     const setValues = () => {
         axios.post(ENV +'/api/post/item',
-            {author: author, image: image,  title: title, text: text, category: category}, {withCredentials: true}).then(
+            {author: userName, image: image,  title: title, text: text, category: category, userId: userId}, {withCredentials: true}).then(
         )
     }
 
@@ -94,7 +98,6 @@ const Propose = () => {
                     </Form.Item>
                     <Form.Item>
                         <Button type="primary" onClick={()=> {
-                            setAuthor(userName)
                             setValues()
                             form.resetFields();
                         }
