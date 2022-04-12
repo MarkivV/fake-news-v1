@@ -68,6 +68,27 @@ app.get('/api/get/propose', (req, res) =>{
 
 })
 
+app.get('/api/get/profile', (req, res) =>{
+
+    const id = req.query.id
+
+    const sqlSelect = "SELECT * FROM justnews INNER JOIN users ON authorId = idUser WHERE authorId = ? ORDER BY id DESC";
+    con.query(sqlSelect, id, (err, result)=>{
+        res.send(result)
+    })
+
+})
+app.get('/api/get/profile/propose', (req, res) =>{
+
+    const id = req.query.id
+
+    const sqlSelect = "SELECT * FROM Propose INNER JOIN users ON authorId = idUser WHERE authorId = ? ORDER BY id DESC";
+    con.query(sqlSelect, id, (err, result)=>{
+        res.send(result)
+    })
+
+})
+
 
 app.get('/api/get/item', (req, res) =>{
 
@@ -219,11 +240,4 @@ app.post("/login", async (req, res)=>{
 })
 
 
-app.post("/auth", (req,res)=>{
-
-})
-
-app.post("/profile", validateToken, (req,res) =>{
-    res.json("Profile")
-})
 

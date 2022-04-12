@@ -19,6 +19,7 @@ import Registration from "./components/Auth/Registration";
 import LiveNews from "./components/News/LiveNews/LiveNews";
 import ProposeLive from "./components/ProposeLive/ProposeLive";
 import User from "./components/Profile/User";
+import Profile from "./components/Profile/Profile";
 
 
 const {Option} = Select
@@ -56,6 +57,7 @@ function App() {
                 <Route exact path={"/live-news"} element={<LiveNews />}/>
 
                 <Route exact path={"/user/:id"} element={<User />}/>
+                <Route exact path={"/profile/:id"} element={<Profile />}/>
 
                 <Route exact path={"/admin"} element={<Admin />}/>
 

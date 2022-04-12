@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link, useParams} from "react-router-dom";
-import {Col, Row, Typography} from "antd";
+import {Col, Divider, Row, Typography} from "antd";
 import LastNews from "../LastNews/LastNews";
 import './CardDetails.css'
 import {ENV} from "../env";
@@ -79,7 +79,7 @@ const CardDetails = () => {
                                         </Link>
                                         <h4 style={{marginLeft: "auto"}}>{moment(i.datePublished).format('L')}</h4>
                                     </div>
-                                    <hr style={{marginTop: "15px"}}/>
+                                    <Divider />
                                     <p style = {{fontSize: "20px", marginTop: "15px"}}>
                                         {i.description}
                                     </p>

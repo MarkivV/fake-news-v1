@@ -6,6 +6,8 @@ import './footer.css'
 const {Text, Title} = Typography
 
 const Footer = () => {
+    let accessToken = JSON.parse(localStorage.getItem("access-token"))
+
     return (
         <footer className="footer">
             <Col span={6}>
@@ -45,6 +47,15 @@ const Footer = () => {
                         </li>
                         <li>                        <Link to={"/login"}>Вход</Link>
                         </li>
+                        {
+                            accessToken ? <li style={{cursor: "pointer"}} onClick={()=>
+                            {
+                                localStorage.clear()
+                                window.location.reload(false)
+                            }
+                            }>Выход</li> : <></>
+                        }
+
                     </Col>
                 </Col>
 

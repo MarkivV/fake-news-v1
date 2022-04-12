@@ -12,8 +12,8 @@ const createTokens = (user) => {
 
 //Token Validation
 const validateToken = (req, res, next) =>{
-    const accessToken = req.cookies["access-token"]
-    // const accessToken =  JSON.parse(localStorage.getItem("access-token"))
+    // const accessToken = req.cookies["access-token"]
+    const accessToken =  JSON.parse(localStorage.getItem("access-token"))
 
     if(!accessToken){
         return res.status(400).json({error: "User not Authenticated"})

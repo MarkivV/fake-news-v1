@@ -64,7 +64,7 @@ const Navbar = () => {
                     <Link to={"/live-news"} ><h3>LiveNews</h3></Link>
                 </li>
                 <li>
-                    <Link to={"/live-news"} ><h3>LiveNews</h3></Link>
+                    <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))} ><h3>Profile</h3></Link>
                 </li>
             </Col>
         )}

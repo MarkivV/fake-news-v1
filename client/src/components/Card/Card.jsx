@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {useGetCryptoNewsQuery} from "../../services/newsApi";
-import {Avatar, Card, Col, Row, Typography, Select} from "antd";
+import {Avatar, Card, Col, Row, Typography, Select, Tag} from "antd";
 import moment from "moment";
 import './card.css'
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {CheckCircleOutlined, SyncOutlined} from "@ant-design/icons";
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News'
 
 const {Text, Title} = Typography
 const {Option} = Select
 
-const CardM = ({name}) => {
+const CardM = ({name, step}) => {
 
     return (
 
@@ -18,27 +19,32 @@ const CardM = ({name}) => {
             {
                 name.map((news)=>(
 
-                    <Col xs={24} sm={12} lg={12} key={news.id}>
+                    <Col xs={24} sm={12} lg={8} key={news.id}>
                         {/*<div className={"card"}>*/}
-                        <Link to={`${news.id}`}>
-                        <Card hoverable className={"news-card"} style={{height: "250px"}}>
+                        <Link to={`/${news.id}`}>
                             <a href={news.url} target={"_blank"} rel={"noreferrer"}>
-                                <div className="news-image-container">
-                                    <Title className={"news-title"} level={4}>{news.name}</Title>
-                                    <img style={{maxWidth: '200px', maxHeight: '100px'}} src={news.image} alt={"news"}/>
-                                </div>
-                                <p>
+                                <div>
                                     {
-                                        news.description.length > 120 ? `${news.description.substring(0, 120)}...`
-                                            :news.description
+                                        step
+                                            ?
+                                            <Tag className={"badge"} style={{position: "absolute"}} icon={<CheckCircleOutlined />} color="success">
+                                                Опубликовано
+                                            </Tag>
+                                            :
+                                            <Tag className={"badge"} style={{position: "absolute"}} icon={<SyncOutlined spin />} color="processing">
+                                                Обрабатываеться
+                                            </Tag>
                                     }
-                                </p>
+                                </div>
+                                <div>
+                                    <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={news.image} alt={"news"}/>
+                                    <Title level={2}>{news.name}</Title>
+                                </div>
                                 <div className="provider-container">
-                                    <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                                    <Text>{moment(news.datePublished).format('L')}</Text>
                                 </div>
                             </a>
                         {/*</div>*/}
-                        </Card>
                         </Link>
                     </Col>
                 ))

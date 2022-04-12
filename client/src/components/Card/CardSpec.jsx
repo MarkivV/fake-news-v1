@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {Card, Col, Row, Typography, Select} from "antd";
+import {Card, Col, Row, Typography, Select, Tag, Divider} from "antd";
+import {CheckCircleOutlined, SyncOutlined} from '@ant-design/icons';
 import moment from "moment";
 import './card.css'
 import {Link} from "react-router-dom";
 const {Text, Title} = Typography
 const {Option} = Select
 
-const CardSpec = ({name}) => {
+const CardSpec = ({name, step, profile}) => {
 
     const [activeMenu, setActiveMenu] = useState(true);
     const [screenSize, setScreenSize] = useState(null);
@@ -57,9 +58,9 @@ const CardSpec = ({name}) => {
                                             </div>
                                             <div style={{marginTop: "10px"}} className="provider-container">
                                                 <Text>{moment(news.datePublished).format('L')}</Text>
-                                                <Link to={`/user/${news.authorId}`}>
+                                                    <Link to={`/user/${news.authorId}`}>
                                                     <h5>Автор: {news.username}</h5>
-                                                </Link>
+                                                    </Link>
                                             </div>
                                         </a>
                                     </div>
