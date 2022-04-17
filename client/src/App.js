@@ -1,13 +1,13 @@
 import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import NewsTop from "./components/News/Top/NewsTop";
 import JustNews from "./components/News/JustNews/JustNews";
 import Covid from "./components/News/Covid/Covid";
 import War from "./components/News/War/War";
-import React, {useEffect, useState} from "react";
-import {Col, Row, Select, Space, Typography} from "antd";
+import React from "react";
+import {Select} from "antd";
 import Footer from "./components/Footer/Footer";
 import CardDetails from "./components/CardDetails/CardDetails";
 import Sport from "./components/News/Sport/Sport";

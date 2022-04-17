@@ -3,10 +3,13 @@ let cors = require('cors');
 let bodyParser = require('body-parser')
 let app = express();
 let mysql = require('mysql');
-const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const cookieParser = require("cookie-parser")
-const {createTokens, validateToken} = require("./JWT")
+const {createTokens} = require("./JWT")
+const path = require('path')
+const uuid = require('uuid')
+const multer = require('multer')
+
 const port = process.env.PORT || 3001
 
 let con = mysql.createPool({
@@ -27,8 +30,10 @@ let con = mysql.createPool({
 // let temp = 'http://localhost:3000'
 let temp = 'https://purple-omega.vercel.app'
 
+app.use('/images', express.static(path.join(__dirname, 'images')))
+
 app.use(cors({credentials: true, origin: temp}));
-app.use(express.json())
+app.use(express.json({extended: true}))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
 app.all('*', function (req, res, next) {
@@ -43,9 +48,57 @@ app.all('*', function (req, res, next) {
     next();
 });
 
+
+
+///Images upload
+
+// let filename = uuid.v4() + '.jpg';
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, 'images'),
+    filename(rew, file, cb){
+        cb(null, uuid.v4()+'.jpg')
+    }
+})
+
+app.post('/upload/avatar', async (req, res) => {
+    try {
+        // 'avatar' is the name of our file input field in the HTML form
+
+        let upload = multer({ storage: storage}).single('avatar');
+        const id = req.query.id
+
+        upload(req, res, function(err) {
+            // req.file contains information of uploaded file
+            // req.body contains information of text fields
+
+            if (!req.file) {
+                return res.send('Please select an image to upload');
+            }
+            else if (err instanceof multer.MulterError) {
+                return res.send(err);
+            }
+            else if (err) {
+                return res.send(err);
+            }
+
+            const imageName = req.file.filename
+            const sql = "UPDATE users SET avatar = ? WHERE idUser = ?";
+            con.query(sql, [imageName, id], (err, results) => {  if (err) throw err;
+                res.json({ success: 1, pathImg: req.file.filename})
+            });
+
+        });
+
+    }catch (err) {console.log(err)}
+})
+
+
+
+
 app.listen(port, ()=>{
     console.log("Running on port 3001")
 })
+
 
 app.get('/api/get', (req, res) =>{
 
@@ -88,6 +141,18 @@ app.get('/api/get/profile/propose', (req, res) =>{
     })
 
 })
+app.get('/api/get/user/profile', (req, res) =>{
+
+    const id = req.query.id
+
+    const sqlSelect = "SELECT * FROM users WHERE idUser = ?";
+    con.query(sqlSelect, id, (err, result)=>{
+        res.send(result)
+    })
+
+})
+
+
 
 
 app.get('/api/get/item', (req, res) =>{
@@ -211,14 +276,16 @@ app.post("/login", async (req, res)=>{
     const userFind = "SELECT * FROM users WHERE username = ?"
     con.query(userFind, username, (err, result) =>{
         if(result.length === 0) {
-            return res.status(400).json("User doesn't exist")
+            // return res.status(400).json("User doesn't exist")
+            return res.send(true);
         }
 
         const dbPassword = result[0].password
 
         bcrypt.compare(password, dbPassword).then((match)=>{
             if(!match){
-                return res.status(400).json({error: "Wrong username or password"})
+                // return res.status(405).json({error: "Wrong username or password"})
+                return res.send(true);
             }else{
                 const accessToken = createTokens(result[0])
                 console.log(result[0])
@@ -232,12 +299,18 @@ app.post("/login", async (req, res)=>{
                 res.send({
                     username: result[0].username,
                     accessToken: accessToken,
-                    userId: result[0].idUser
+                    userId: result[0].idUser,
+                    avatar: result[0].avatar
                 })
             }
         })
     })
 })
+
+
+
+
+
 
 
 

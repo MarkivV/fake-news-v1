@@ -35,29 +35,29 @@ const Registration = () => {
                       scrollToFirstError
                 >
                     <Form.Item name="email" label="E-mail"
-                               rules={[{type: 'email', message: 'The input is not valid E-mail!',}, {
+                               rules={[{type: 'email', message: 'Некоректні дані',}, {
                                    required: true,
-                                   message: 'Please input your E-mail!',
+                                   message: 'Введіть email!',
                                },]}>
                         <Input onChange={(e) => setEmail(e.target.value)}/>
                     </Form.Item>
 
-                    <Form.Item name="password" label="Password"
-                               rules={[{required: true, message: 'Please input your password!',}]}
+                    <Form.Item name="password" label="Пароль"
+                               rules={[{required: true, message: 'Введіть пароль!',}]}
                                hasFeedback
                     >
                         <Input.Password onChange={(e) => setPassword(e.target.value)}/>
                     </Form.Item>
 
-                    <Form.Item name="confirm" label="Confirm Password" dependencies={['password']} hasFeedback
-                               rules={[{required: true, message: 'Please confirm your password!',},
+                    <Form.Item name="confirm" label="Підтвердіть пароль" dependencies={['password']} hasFeedback
+                               rules={[{required: true, message: 'Підтвердіть email!',},
                                    ({getFieldValue}) => ({
                                        validator(_, value) {
                                            if (!value || getFieldValue('password') === value) {
                                                return Promise.resolve();
                                            }
 
-                                           return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                           return Promise.reject(new Error('Паролі не співпадають!'));
                                        },
                                    }),
                                ]}
@@ -65,10 +65,10 @@ const Registration = () => {
                         <Input.Password/>
                     </Form.Item>
 
-                    <Form.Item name="nickname" label="Nickname" tooltip="What do you want others to call you?" rules={[
+                    <Form.Item name="nickname" label="Ім'я" tooltip="What do you want others to call you?" rules={[
                         {
                             required: true,
-                            message: 'Please input your nickname!',
+                            message: "Введіть ім'я користувача",
                             whitespace: true,
                         },
                     ]}
@@ -80,7 +80,7 @@ const Registration = () => {
                             setValues()
                             form.resetFields();
                         }}>
-                            Sign up
+                            Зареєструватися
                         </Button>
                     </Form.Item>
                 </Form>

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {useGetCryptoNewsQuery} from "../../services/newsApi";
 import {Avatar, Card, Col, Row, Typography, Select, Tag} from "antd";
 import moment from "moment";
 import './card.css'
@@ -19,7 +18,7 @@ const CardM = ({name, step}) => {
             {
                 name.map((news)=>(
 
-                    <Col xs={24} sm={12} lg={8} key={news.id}>
+                    <Col xs={24} sm={12} lg={12} key={news.id}>
                         {/*<div className={"card"}>*/}
                         <Link to={`/${news.id}`}>
                             <a href={news.url} target={"_blank"} rel={"noreferrer"}>
@@ -28,11 +27,11 @@ const CardM = ({name, step}) => {
                                         step
                                             ?
                                             <Tag className={"badge"} style={{position: "absolute"}} icon={<CheckCircleOutlined />} color="success">
-                                                Опубликовано
+                                                Опубліковано
                                             </Tag>
                                             :
                                             <Tag className={"badge"} style={{position: "absolute"}} icon={<SyncOutlined spin />} color="processing">
-                                                Обрабатываеться
+                                                Оброблюється
                                             </Tag>
                                     }
                                 </div>

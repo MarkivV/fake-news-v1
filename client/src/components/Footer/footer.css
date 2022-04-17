@@ -11,9 +11,10 @@ body {
     margin: 0;
     grid-template-rows: auto 1fr auto;
     font-size: 13px;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     align-items: start;
     min-height: 100vh;
+
 }
 
 .footer {
@@ -21,8 +22,7 @@ body {
     flex-flow: row wrap;
     padding: 30px 30px 20px 30px;
     color: #2f2f2f;
-    background-color: #fff;
-    border-top: 1px solid #e5e5e5;
+    background-color: #ffffff;
 }
 
 .footer > * {

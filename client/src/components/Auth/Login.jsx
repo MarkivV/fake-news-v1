@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Form, Input, Button, Col, Select, Typography, Row, Checkbox} from 'antd';
+import {Form, Input, Button, Col, Select, Typography, Row, Checkbox, Modal,message, Alert} from 'antd';
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
@@ -12,11 +12,28 @@ const Login = () => {
     const [user, setUser] = useState('');
     const [userId, setUserId] = useState('');
     const [accessToken1, setAccessToken] = useState('');
-    let navigate = useNavigate()
+    const [error, setError] = useState(false);
+    const [imageUrl, setImageUrl] = useState(false);
+
+
+    const [isModalVisible, setIsModalVisible] = useState(true);
+
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleOk = () => {
+        setIsModalVisible(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, []);
+
 
 
     const setValues = () => {
@@ -26,13 +43,20 @@ const Login = () => {
         then((user)=>{
                 setUser(user?.data.username)
                 setUserId(user?.data.userId)
-            setAccessToken(user?.data.accessToken)
+                setAccessToken(user?.data.accessToken)
+                setImageUrl(user?.data.avatar)
+                if(user.data === true){
+                    setError(true)
+                }else {
+                    setError(false)
+                }
         })
 
         if(user){
             window.localStorage.setItem("username", JSON.stringify(user))
             window.localStorage.setItem("userId", JSON.stringify(userId))
             window.localStorage.setItem("access-token", JSON.stringify(accessToken1))
+            window.localStorage.setItem("imageUrl", JSON.stringify(imageUrl))
         }
     }
 
@@ -52,41 +76,53 @@ const Login = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your Username!',
+                                message: "Будь-ласка задайте ім'я користувача",
                             },
                         ]}
                     >
-                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username"  onChange={(e)=>setUsername(e.target.value)}/>
+                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Ім'я користувача"  onChange={(e)=>setUsername(e.target.value)}/>
                     </Form.Item>
+
                     <Form.Item
                         name="password"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your Password!',
+                                message: 'Будь-ласка задайте пароль',
                             },
                         ]}
                     >
                         <Input
                             prefix={<LockOutlined className="site-form-item-icon" />}
                             type="password"
-                            placeholder="Password"
+                            placeholder="Пароль"
                             onChange={(e)=>setPassword(e.target.value)}
                         />
                     </Form.Item>
-                    <Form.Item>
-                        <a className="login-form-forgot" href="">
-                            Forgot password
-                        </a>
-                    </Form.Item>
+                    {
+                        error
+                            ?
 
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit" className="login-form-button" onClick={()=>{
+                            <Alert
+                                message="Виникла помилка"
+                                description="Перевірте правильність введених Вами даних!"
+                                type="error"
+                            />
+
+                            // {message.info('This is a normal message')}
+                            // <Modal title="Произошла ошибка, проверьте равильность введённых данных" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                            // </Modal>
+                            :
+                            <></>
+                    }
+                    <Form.Item style={{marginTop: "15px"}}>
+                        <Button style={{marginRight: "10px"}} type="primary" htmlType="submit" className="login-form-button" onClick={()=>{
                             setValues()
                         }}>
-                            Log in
+                            Війти
                         </Button>
-                        Or <a href="/registration">register now!</a>
+
+                        Немає акаунту?<a href="/registration" style={{margin: "10px"}}> Зареєструйтеся</a>
                     </Form.Item>
                 </Form>
                 </Col>

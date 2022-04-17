@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Button, Card, Col, Row, Select, Skeleton, Typography} from "antd";
+import {Button, Card, Col, Row, Select, Typography} from "antd";
 import {ENV} from './../env'
 
 const {Text, Title} = Typography
@@ -32,9 +32,6 @@ const Admin = () => {
         axios.delete(ENV + `/api/delete/${news.id}`)
     }
 
-    if(!proposes){
-        return <Skeleton />
-    }
 
 
     return (
@@ -58,7 +55,7 @@ const Admin = () => {
                                 }
 
                                 >
-                                    Опубликовать
+                                    Опублікувати
                                 </Button>
                             </Card>
 

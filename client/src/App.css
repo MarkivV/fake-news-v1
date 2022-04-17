@@ -14,7 +14,7 @@
 }
 
 .App{
-    background-color: #F9F9F9;
+    background-color: #ffffff;
 }
 
 a:hover{
@@ -37,9 +37,9 @@ a:hover{
 
 }
 .routes{
-    margin: 0px 10% 0px;
+    margin: 0px 13% 0px;
     padding: 20px;
-    background-color: #F9F9F9;
+    background-color: #ffffff;
 }
 .nav-container{
     position: fixed;
@@ -80,6 +80,10 @@ a:hover{
     align-items: center;
 }
 
+img{
+    border-radius: 1%;
+}
+
 @media screen and (max-width:1300px){
     .main{
         margin-left: 50px;
@@ -113,9 +117,11 @@ a:hover{
 }
 
 @media screen and (max-width:800px){
+
     .app{
         flex-direction: column;
         overflow: hidden;
+
     }
 
     .navbar{
@@ -135,6 +141,7 @@ a:hover{
         width: 100%;
         z-index: 100;
         background-color: var(--bgSecondary);
+
     }
 
     .menu-control-container{
@@ -144,6 +151,7 @@ a:hover{
     .ant-menu{
         position: absolute;
         right: 0px;
+
     }
     .home-title{
         font-size: 1.4rem !important;

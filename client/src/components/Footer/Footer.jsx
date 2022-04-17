@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row, Space, Typography} from "antd";
+import {Col, Divider, Row, Space, Typography} from "antd";
 import {Link} from "react-router-dom";
 import './footer.css'
 
@@ -10,42 +10,42 @@ const Footer = () => {
 
     return (
         <footer className="footer">
+            <Divider />
             <Col span={6}>
-                <h2 style={{fontSize: "35px"}}>Latters</h2>
             </Col>
 
             <Row className="footer__nav">
                 <Col className="nav__item">
-                    <h2 className="nav__title">Разделы</h2>
+                    <h2 className="nav__title">Розділи</h2>
 
                     <Col className="nav__ul">
-                        <li>                        <Link to={"/"}>Главная</Link>
+                        <li>                        <Link to={"/"}>Головна</Link>
                         </li>
-                        <li>                        <Link to={"/politic"}>Политика</Link>
+                        <li>                        <Link to={"/politic"}>Політика</Link>
                         </li>
-                        <li>                        <Link to={"/society"}>Общество</Link>
+                        <li>                        <Link to={"/society"}>Суспільство</Link>
                         </li>
-                        <li>                        <Link to={"/сovid"}>Ковид</Link>
+                        <li>                        <Link to={"/сovid"}>Covid</Link>
                         </li>
                         <li>                        <Link to={"/sport"}>Спорт</Link>
                         </li>
-                        <li>                        <Link to={"/media"}>Шоу-бизнес</Link>
+                        <li>                        <Link to={"/media"}>Шоу-бізнес</Link>
                         </li>
                         <li>                        <Link to={"/live-news"}>LiveNews</Link>
                         </li>
                     </Col>
                 </Col>
                 <Col className="nav__item">
-                    <h2 className="nav__title">Полезная инфо.</h2>
+                    <h2 className="nav__title">Корисна інфо.</h2>
 
                     <Col className="nav__ul">
-                        <li>                        <Link to={"/propose"}>Предложить</Link>
+                        <li>                        <Link to={"/propose"}>Запропонувати</Link>
                         </li>
                         <li>                        <Link to={"/propose-live"}>LiveNews</Link>
                         </li>
-                        <li>                        <Link to={"/registration"}>Регистрация</Link>
+                        <li>                        <Link to={"/registration"}>Реєстрація</Link>
                         </li>
-                        <li>                        <Link to={"/login"}>Вход</Link>
+                        <li>                        <Link to={"/login"}>Вхід</Link>
                         </li>
                         {
                             accessToken ? <li style={{cursor: "pointer"}} onClick={()=>
@@ -53,14 +53,14 @@ const Footer = () => {
                                 localStorage.clear()
                                 window.location.reload(false)
                             }
-                            }>Выход</li> : <></>
+                            }>Вихід</li> : <></>
                         }
 
                     </Col>
                 </Col>
 
                 <Col className="nav__item">
-                    <h2 className="nav__title">Связь</h2>
+                    <h2 className="nav__title">Зв'язок</h2>
 
                     <Col className="nav__ul">
                         <li>

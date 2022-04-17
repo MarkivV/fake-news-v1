@@ -67,19 +67,19 @@ const NewsTop = () => {
                 <Slider name={name}/>
                 <div style={{marginTop: "35px"}}>
                     <a  href="/politic">
-                        <Title mark >Политика</Title>
+                        <Title mark >Політика</Title>
                     </a>
                 </div>
                 <CardForMain category={1}/>
                 <div style={{marginTop: "35px"}}>
                     <a  href="/society">
-                        <Title mark >Общество</Title>
+                        <Title mark >Суспільство</Title>
                     </a>
                 </div>
                 <CardForMain category={2}/>
                 <div style={{marginTop: "35px"}}>
                     <a  href="/covid">
-                        <Title mark >Ковид</Title>
+                        <Title mark >Covid</Title>
                     </a>
                 </div>
                 <CardForMain category={3}/>
@@ -91,7 +91,7 @@ const NewsTop = () => {
                 <CardForMain category={4}/>
                 <div style={{marginTop: "35px"}}>
                     <a  href="/media">
-                        <Title mark >Шоу-бизнес</Title>
+                        <Title mark >Шоу-бізнес</Title>
                     </a>
                 </div>
                 <CardForMain category={5}/>
@@ -106,7 +106,7 @@ const NewsTop = () => {
                 </div>
                 <LastLive live={liveNews}/>
                 <div style={{textAlign: "center", marginTop: "25px"}}>
-                    <Title  level={4}>Последние новости</Title>
+                    <Title  level={4}>Останні новини</Title>
                 </div>
                 <LastNews name={name}/>
             </Col>
