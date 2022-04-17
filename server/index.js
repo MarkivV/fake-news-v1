@@ -12,23 +12,23 @@ const multer = require('multer')
 
 const port = process.env.PORT || 3001
 
-let con = mysql.createPool({
-    host: 'eu-cdbr-west-02.cleardb.net',
-    user: 'b5005a6251479d',
-    password: '8a1ce7a8',
-    database: 'heroku_fd4c78f0a943f8a'
-});
-
 // let con = mysql.createPool({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'root',
-//     database: 'justnews',
-//     port: 8889
+//     host: 'eu-cdbr-west-02.cleardb.net',
+//     user: 'b5005a6251479d',
+//     password: '8a1ce7a8',
+//     database: 'heroku_fd4c78f0a943f8a'
 // });
 
-// let temp = 'http://localhost:3000'
-let temp = 'https://purple-omega.vercel.app'
+let con = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'justnews',
+    port: 8889
+});
+
+let temp = 'http://localhost:3000'
+// let temp = 'https://purple-omega.vercel.app'
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
 
