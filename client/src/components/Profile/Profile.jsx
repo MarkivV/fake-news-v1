@@ -91,6 +91,7 @@ const Profile = () => {
             .then(res => { // then print response status
                 console.warn(res);
                 setAvatar(res.data.pathImg)
+                window.localStorage.setItem("imageUrl", JSON.stringify(res.data.pathImg))
             })
     }
 

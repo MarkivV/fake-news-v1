@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import "./Navbar.css"
 import {Link} from "react-router-dom";
-import {Avatar, Button, Col, Input, Row, Typography} from "antd";
-import {MenuOutlined, PlusOutlined, UserOutlined} from "@ant-design/icons";
+import {Avatar, Button, Col, Input, Row, Typography, Menu, Dropdown} from "antd";
+import {MenuOutlined, PlusOutlined, UserOutlined, DownOutlined, CaretDownOutlined} from "@ant-design/icons";
 import {ENV} from "../env";
 const {Text, Title} = Typography
 
@@ -13,6 +13,8 @@ const Navbar = () => {
     const [screenSize, setScreenSize] = useState(null);
     const [imageUrl, setImageUrl] = useState('');
     const [username, setUsername] = useState('');
+    let accessToken = JSON.parse(localStorage.getItem("access-token"))
+
 
 
     useEffect(() => {
@@ -30,8 +32,22 @@ const Navbar = () => {
         handleResizeFunc()
         return () => window.removeEventListener('resize', handleResizeFunc)
 
-    }, []);
+    }, [accessToken]);
 
+    const menu = (
+        <Menu>
+            <Menu.Item>
+                {
+                    accessToken ? <a style={{cursor: "pointer"}} onClick={()=>
+                    {
+                        localStorage.clear()
+                        window.location.reload(false)
+                    }
+                    }>Вихід</a> : <></>
+                }
+            </Menu.Item>
+        </Menu>
+    );
 
 
     return (
@@ -76,6 +92,11 @@ const Navbar = () => {
                     <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))}>
                         <Avatar shape="circle" size={64} src={ENV +`/images/${imageUrl}`} />
                     </Link>
+                    <Dropdown  overlay={menu}>
+                        <div style={{marginLeft: "10px", transform: "scale(1.2)"}} onClick={e => e.preventDefault()}>
+                            <CaretDownOutlined />
+                        </div>
+                    </Dropdown>
                 </div>
             </Col>
             <div className={activeMenu ? "menu-items active" : "menu-items"} >

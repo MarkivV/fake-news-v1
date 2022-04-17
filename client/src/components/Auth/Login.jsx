@@ -14,6 +14,7 @@ const Login = () => {
     const [accessToken1, setAccessToken] = useState('');
     const [error, setError] = useState(false);
     const [imageUrl, setImageUrl] = useState(false);
+    let navigation = useNavigate()
 
 
     const [isModalVisible, setIsModalVisible] = useState(true);
@@ -49,17 +50,21 @@ const Login = () => {
                     setError(true)
                 }else {
                     setError(false)
-                    // window.location.reload(false)
+                    window.localStorage.setItem("username", JSON.stringify(user?.data.username))
+                    window.localStorage.setItem("userId", JSON.stringify(user?.data.userId))
+                    window.localStorage.setItem("access-token", JSON.stringify(user?.data.accessToken))
+                    window.localStorage.setItem("imageUrl", JSON.stringify(user?.data.avatar))
+                    navigation("/profile/"+ user?.data.userId)
                 }
 
         })
 
-        if(user){
-            window.localStorage.setItem("username", JSON.stringify(user))
-            window.localStorage.setItem("userId", JSON.stringify(userId))
-            window.localStorage.setItem("access-token", JSON.stringify(accessToken1))
-            window.localStorage.setItem("imageUrl", JSON.stringify(imageUrl))
-        }
+        // if(user){
+        //     window.localStorage.setItem("username", JSON.stringify(user))
+        //     window.localStorage.setItem("userId", JSON.stringify(userId))
+        //     window.localStorage.setItem("access-token", JSON.stringify(accessToken1))
+        //     window.localStorage.setItem("imageUrl", JSON.stringify(imageUrl))
+        // }
     }
 
     return (
@@ -118,7 +123,9 @@ const Login = () => {
                             <></>
                     }
                     <Form.Item style={{marginTop: "15px"}}>
-                        <Button style={{marginRight: "10px"}} type="primary" htmlType="submit" className="login-form-button" onClick={setValues}>
+                        <Button style={{marginRight: "10px"}} type="primary" htmlType="submit" className="login-form-button" onClick={()=>{
+                            setValues()
+                        }}>
                             Війти
                         </Button>
 
