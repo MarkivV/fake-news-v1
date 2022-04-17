@@ -68,15 +68,19 @@ const Navbar = () => {
                 </Link>
 
                 <Input className={"inputClass"} placeholder="Пошук..." bordered={false}  />
+                <Button className={"proposeDesc"} type="dashed" shape="round" style={{marginLeft: "15px", height: "35px"}}>
+                    <Link to={"/propose"}><h3><PlusOutlined />Запропонувати</h3></Link>
+                </Button>
 
-                <div style={{display: "flex", marginLeft: "auto"}}>
+                <div style={{display: "flex", marginLeft: "auto", alignItems: "center"}}>
                     <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))}>
                         <Avatar shape="circle" size={64} src={ENV +`/images/${imageUrl}`} />
                     </Link>
                 </div>
             </Col>
-            <div className={activeMenu ? "menu-items active" : "menu-items"} onClick={()=>setActiveMenu(false)}>
-                <div className={"menuAdapt"}>
+            <div className={activeMenu ? "menu-items active" : "menu-items"} >
+                <Input className={"inputClass"} placeholder="Пошук..." bordered={false}  style={{marginTop: "15px", marginLeft: "45px"}}/>
+                <div className={"menuAdapt"} onClick={()=>setActiveMenu(false)}>
                     <li>
                         <Link to={"/"} ><h3>Головна</h3></Link>
                     </li>
@@ -101,7 +105,7 @@ const Navbar = () => {
                     <li>
                         <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))} ><h3>Профіль</h3></Link>
                     </li>
-                    <Button type="dashed" shape="round">
+                    <Button className={"proposeMob"} type="dashed" shape="round">
                         <Link to={"/propose"}><h3><PlusOutlined />Запропонувати</h3></Link>
                     </Button>
                 </div>

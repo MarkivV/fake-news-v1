@@ -3,7 +3,7 @@ import axios from "axios";
 import {ENV} from "../env";
 import {Link, useParams} from "react-router-dom";
 import CardSpec from "../Card/CardSpec";
-import {Col, Row} from "antd";
+import {Avatar, Col, Row} from "antd";
 import moment from "moment";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
@@ -15,6 +15,7 @@ const User = () => {
     const {id} = useParams()
     const [activeMenu, setActiveMenu] = useState(true);
     const [screenSize, setScreenSize] = useState(null);
+    const [imageUrl, setImageUrl] = useState('');
 
     useEffect(()=>{
         window.scrollTo(0, 0)
@@ -26,6 +27,7 @@ const User = () => {
             .then((response)=>{
                 setNews(response.data)
                 setName(response.data[0].username)
+                setImageUrl(response.data[0].avatar)
 
             })
     }, [])
@@ -36,6 +38,8 @@ const User = () => {
         const handleResizeFunc = () =>{
             setScreenSize(window.innerWidth)
         }
+        // const imageUrlLS = JSON.parse(localStorage.getItem("imageUrl"))
+        // setImageUrl(imageUrlLS)
 
         window.addEventListener('resize', handleResizeFunc)
 
@@ -55,7 +59,20 @@ const User = () => {
 
     return (
         <>
-            <Title level={1}>{name}</Title>
+            <div>
+                {
+                    imageUrl &&(
+                        <div style={{display: "flex", marginLeft: "auto", alignItems: "center"}}>
+                            <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))}>
+                                <Avatar shape="square" size={128} src={ENV +`/images/${imageUrl}`} />
+                            </Link>
+                        </div>
+                    )
+
+                }
+
+                <Title level={1}>{name}</Title>
+            </div>
             <Row gutter={[24,24]}>
             {
                 news.map((item)=>(

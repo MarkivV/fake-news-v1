@@ -23,7 +23,12 @@ a {text-decoration: none; /*убираем подчеркивание текст
 .menu-main .inputClass{
     background-color: #fff;
     margin-left: 25px;
-    width: 15%;
+    width: 25%;
+    height: 40px;
+}
+
+.menu-items .inputClass{
+    display: none;
 }
 
 .menu-main .menu-lines{
@@ -57,6 +62,10 @@ a {text-decoration: none; /*убираем подчеркивание текст
 .menu-main h3.current, .menu-main h3:hover{
     color: black;
     transition: all ease 1s;
+}
+
+.menu-items .proposeMob{
+    display: none;
 }
 
 .menu-items{
@@ -95,13 +104,27 @@ a {text-decoration: none; /*убираем подчеркивание текст
         z-index: 50;
     }
 
+    .menu-main .proposeDesc{
+        display: none;
+    }
 
     .menu-items .menuAdapt{
         margin-top: 25px;
         margin-left: 55px;
     }
 
+    .menu-items .inputClass{
+        display: flex;
+    }
 
+
+    .menu-main .inputClass{
+        display: none;
+    }
+
+    .menu-items .proposeMob{
+        display: flex;
+    }
 }
 
 

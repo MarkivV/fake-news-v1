@@ -49,7 +49,9 @@ const Login = () => {
                     setError(true)
                 }else {
                     setError(false)
+                    // window.location.reload(false)
                 }
+
         })
 
         if(user){
@@ -116,9 +118,7 @@ const Login = () => {
                             <></>
                     }
                     <Form.Item style={{marginTop: "15px"}}>
-                        <Button style={{marginRight: "10px"}} type="primary" htmlType="submit" className="login-form-button" onClick={()=>{
-                            setValues()
-                        }}>
+                        <Button style={{marginRight: "10px"}} type="primary" htmlType="submit" className="login-form-button" onClick={setValues}>
                             Війти
                         </Button>
 

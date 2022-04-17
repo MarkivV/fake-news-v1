@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Form, Input, Button, Col, Select, Typography, Row} from 'antd';
+import {Form, Input, Button, Col, Select, Typography, Row, Divider} from 'antd';
 import axios from "axios";
 import {ENV} from "../env";
 import {useNavigate} from "react-router-dom";
@@ -66,11 +66,11 @@ const Propose = () => {
 
     return (
         <>
-            <h3 style={{color: "red"}}>Заполните все поля *</h3>
+            <h3 style={{color: "red"}}>Заповніть всі поля *</h3>
         <Row gutter={[24,24]}>
             <Col xs={24} sm={24} lg={14} >
                 <Form form={form} >
-                    <Form.Item name={['user', 'name']} label="Имя автора">
+                    <Form.Item name={['user', 'name']} label="Ім'я автора">
                         <Input style={{height:"40px"}} prefix={userName} disabled />
                     </Form.Item>
                     <Form.Item name={['user', 'img']} label="URL картинки" rules={[{ required: true }]}>
@@ -82,47 +82,36 @@ const Propose = () => {
                     <Form.Item name={['user', 'news']} label="Текст" rules={[{ required: true }]}>
                         <Input.TextArea style={{height:"250px"}} onChange={(e)=>setText(e.target.value)}/>
                     </Form.Item>
-                    <Form.Item name="category" label="Category" rules={[{ required: true }]}>
+                    <Form.Item name="category" label="Категорія" rules={[{ required: true }]}>
                         <Select
-                            placeholder="Выберите категорию"
+                            placeholder="Виберіть категорію"
                             allowClear
                             onChange={onGenderChange}
                             style={{height:"40px"}}
                         >
-                            <Select.Option value={'1'}>Политика</Select.Option>
-                            <Select.Option value={'2'}>Общество</Select.Option>
-                            <Select.Option value={'3'}>Ковид</Select.Option>
+                            <Select.Option value={'1'}>Політика</Select.Option>
+                            <Select.Option value={'2'}>Суспільство</Select.Option>
+                            <Select.Option value={'3'}>Covid</Select.Option>
                             <Select.Option value={'4'}>Спорт</Select.Option>
-                            <Select.Option value={'5'}>Шоу-бизнес</Select.Option>
+                            <Select.Option value={'5'}>Шоу-бізнес</Select.Option>
                         </Select>
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" onClick={()=> {
+                        <Button type="dashed" onClick={()=> {
                             setValues()
                             form.resetFields();
                         }
                         } >
-                            Submit
+                            Надіслати
                         </Button>
                     </Form.Item>
                 </Form>
             </Col>
             <Col xs={24} sm={24} lg={10}>
-                <h3 style={{color: "red"}}>
-                    Правила приёма публикаций
-                </h3>
-                <h3>
-                    1. Изображение прикрепленное к публикации должно быть строго в горизонтальном формате
-                </h3>
-                <h3>
-                    2. Длина заголовка не должна привышать 80 символов
-                </h3>
-                <h3>
-                    3. Изображение прикрепленное к публикации не должно содержать водяных знаков
-                </h3>
-                <h3>
-                    4. Выбирайте только актуальную категорию
-                </h3>
+                <h1>Запропонувати новину</h1>
+                <Divider/>
+                <h2>Маєте цікаву новину та бажаєте нею поділитись?</h2>
+                <h3>Надішліть її нам, наші редактори опублікують її якщо вона підходить за форматом</h3>
             </Col>
         </Row>
         </>

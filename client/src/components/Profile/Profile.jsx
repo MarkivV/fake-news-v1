@@ -113,20 +113,20 @@ const Profile = () => {
 
     return (
         <Row gutter={[24,24]}>
-            <Col span={16}>
+            <Col xs={24} sm={24} lg={16}>
                 <Card name={news} step={true}/>
                 <Divider />
                 <Card name={newsProp} step={false}/>
             </Col>
-            <Col span={8}>
+            <Col xs={24} sm={24} lg={8}>
                 <div>
                     {
                         avatar
                             ?
-                            <img style={{width: '35%', objectFit: "cover", borderRadius: "5%"}} src={ENV+`/images/${avatar}`}/>
+                            <img style={{width: '100%', objectFit: "cover", borderRadius: "5%"}} src={ENV+`/images/${avatar}`}/>
                             :
                             user.map((img)=>(
-                            <img style={{width: '35%', objectFit: "cover", borderRadius: "5%"}} src={ENV+`/images/${img.avatar}` || ava}/>
+                            <img style={{width: '100%', objectFit: "cover", borderRadius: "5%"}} src={ENV+`/images/${img.avatar}` || ava}/>
 
                             ))
 
