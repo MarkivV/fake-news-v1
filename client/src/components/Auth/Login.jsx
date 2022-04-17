@@ -49,7 +49,7 @@ const Login = () => {
                     setError(true)
                 }else {
                     setError(false)
-                    window.location.reload(false)
+                    // window.location.reload(false)
                 }
 
         })
