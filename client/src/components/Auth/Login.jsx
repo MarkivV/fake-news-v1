@@ -54,7 +54,7 @@ const Login = () => {
                     window.localStorage.setItem("userId", JSON.stringify(user?.data.userId))
                     window.localStorage.setItem("access-token", JSON.stringify(user?.data.accessToken))
                     window.localStorage.setItem("imageUrl", JSON.stringify(user?.data.avatar))
-                    navigation("/profile/"+ user?.data.userId)
+                    navigation("/")
                 }
 
         })

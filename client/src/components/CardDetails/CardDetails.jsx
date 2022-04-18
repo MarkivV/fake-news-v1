@@ -1,11 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, createElement} from 'react';
 import axios from "axios";
 import {Link, useParams} from "react-router-dom";
-import {Col, Divider, Row, Typography} from "antd";
+import {Col, Divider, Row, Typography, Comment, Tooltip, Avatar, Input, Button} from "antd";
 import LastNews from "../LastNews/LastNews";
 import './CardDetails.css'
 import {ENV} from "../env";
 import moment from "moment";
+import {
+    ExclamationCircleOutlined,
+    DislikeOutlined,
+    LikeOutlined,
+    DislikeFilled,
+    LikeFilled,
+    HeartOutlined
+} from "@ant-design/icons";
 
 const {Text, Title} = Typography
 
@@ -16,6 +24,13 @@ const CardDetails = () => {
     let {id} = useParams()
     const [activeMenu, setActiveMenu] = useState(true);
     const [screenSize, setScreenSize] = useState(null);
+    const [comments, setComments] = useState([]);
+    const [likes, setLikes] = useState(0);
+    const [dislikes, setDislikes] = useState(0);
+    const [action, setAction] = useState(null);
+
+
+    const [comment, setComment] = useState('');
 
 
     useEffect(() => {
@@ -50,6 +65,15 @@ const CardDetails = () => {
                 setItem(response.data)
                 console.log(response.data)
             })
+
+        axios.get(ENV + '/api/get/comments', {
+            params: {
+                id: id
+            }
+        },{withCredentials: true})
+            .then((response) => {
+                setComments(response.data)
+            })
     }, [])
 
     useEffect(()=>{
@@ -58,6 +82,47 @@ const CardDetails = () => {
                 setName(response.data)
             })
     }, [])
+
+
+    const setValues = () => {
+        axios.post(ENV +'/api/post/comment',
+            {authorId:JSON.parse(localStorage.getItem("userId")), cardId: id,  text: comment}, {withCredentials: true}).then(
+                    setComments([...comments, {authorId: JSON.parse(localStorage.getItem("userId")), cardId: id,  text: comment, username: JSON.parse(localStorage.getItem("username")), avatar: JSON.parse(localStorage.getItem("imageUrl"))}])
+                )
+    }
+
+
+
+
+    const like = () => {
+        setLikes(1);
+        setDislikes(0);
+        setAction('liked');
+    };
+
+    const dislike = () => {
+        setLikes(0);
+        setDislikes(1);
+        setAction('disliked');
+    };
+
+    const actions = [
+        <Tooltip key="comment-basic-like" title="Like">
+      <span onClick={like}>
+        {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}
+          <span className="comment-action">{likes}</span>
+      </span>
+        </Tooltip>,
+        <Tooltip key="comment-basic-dislike" title="Dislike" >
+      <span onClick={dislike}>
+        {React.createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}
+          <span className="comment-action">{dislikes}</span>
+      </span>
+        </Tooltip>,
+    ];
+
+
+
 
     return (
         <Row gutter={[24,24]}>
@@ -71,7 +136,11 @@ const CardDetails = () => {
                                     <div>
                                         <img style={{width: "100%"}} src={i.image} alt="image"/>
                                     </div>
-                                    <Title style={{marginTop: "15px"}} mark level={3}>{i.category}</Title>
+                                    <div style={{display: "flex", alignItems: "center"}}>
+                                        <Title style={{marginTop: "15px"}} mark level={3}>{i.category}</Title>
+                                        <HeartOutlined style={{transform: "scale(1.8)", marginLeft: "auto", marginRight: "15px"}}/>
+                                        <h5>{i.likes}</h5>
+                                    </div>
                                     <Title level={2}>{i.name}</Title>
                                     <div style={{display: "flex"}}>
                                         <Link to={`/user/${i.authorId}`}>
@@ -83,7 +152,37 @@ const CardDetails = () => {
                                     <p style = {{fontSize: "20px", marginTop: "15px"}}>
                                         {i.description}
                                     </p>
+                                    <Divider/>
+                                    <h5 style={{fontWeight: "bold", color: "#4f4f4f"}}><ExclamationCircleOutlined />  Всі статті на цьому веб-сайті вигадані, та не відповідають дійсності</h5>
+                                    <div style={{display: "flex"}}>
+                                        <Input bordered={false} placeholder={"Напишіть Ваш коментар"} style={{width: "35%", backgroundColor: "#fcfcfc"}} onChange={(e)=>setComment(e.target.value)}/>
+                                        <Button type={"dashed"} style={{marginLeft: "10px"}} onClick={()=>setValues()}>Опублікувати</Button>
+                                    </div>
+                                    <div className={"comments"}>
+                                        {
+                                            comments.map((comments)=>(
+                                                <Comment
+                                                    actions={actions}
+                                                    author={<a>{comments.username}</a>}
+                                                    avatar={<Avatar src={ENV +`/images/${comments.avatar}`} alt={comments.username} />}
+                                                    content={
+                                                        <p style={{fontSize: "17px"}}>
+                                                            {
+                                                                comments.text
+                                                            }
+                                                        </p>
+                                                    }
+                                                    datetime={
+                                                        <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+                                                            <span>{moment(comments.datePublished).fromNow('L')}</span>
+                                                        </Tooltip>
+                                                    }
+                                                />
+                                            ))
+                                        }
+                                    </div>
                                 </div>
+
                             ))
                             }
                         </Col>
@@ -108,6 +207,35 @@ const CardDetails = () => {
                                     <p style = {{fontSize: "18px", marginTop: "15px", textAlign: "justify"}}>
                                         {i.description}
                                     </p>
+                                    <Divider/>
+                                    <h5 style={{fontWeight: "bold", color: "#4f4f4f"}}><ExclamationCircleOutlined />  Всі статті на цьому веб-сайті вигадані, та не відповідають дійсності</h5>
+                                    <div >
+                                        <Input bordered={false} placeholder={"Напишіть Ваш коментар"} style={{width: "100%", backgroundColor: "#fcfcfc"}} onChange={(e)=>setComment(e.target.value)}/>
+                                        <Button type={"dashed"} style={{marginTop: "10px"}} onClick={()=>setValues()}>Опублікувати</Button>
+                                    </div>
+                                    <div className={"comments"}>
+                                        {
+                                            comments.map((comments)=>(
+                                                <Comment
+                                                    actions={actions}
+                                                    author={<a>{comments.username}</a>}
+                                                    avatar={<Avatar src={ENV +`/images/${comments.avatar}`} alt={comments.username} />}
+                                                    content={
+                                                        <p>
+                                                            {
+                                                                comments.text
+                                                            }
+                                                        </p>
+                                                    }
+                                                    datetime={
+                                                        <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+                                                            <span>{moment(comments.datePublished).fromNow('L')}</span>
+                                                        </Tooltip>
+                                                    }
+                                                />
+                                            ))
+                                        }
+                                    </div>
                                 </div>
                             ))
                             }

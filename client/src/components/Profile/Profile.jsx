@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import "./profile.css"
 import axios from "axios";
 import {ENV} from "../env";
-import {Col, Divider, Row, Avatar,Image, Upload, message, Button} from "antd";
+import {Col, Divider, Row, Avatar, Image, Upload, message, Button, Empty} from "antd";
 import Card from "../Card/Card";
 import Title from "antd/es/typography/Title";
 import {UploadOutlined, UserOutlined} from '@ant-design/icons';
@@ -24,17 +24,8 @@ const Profile = () => {
         file: [],
     });
     const [avatar, setAvatar] = useState('')
-    // const [avatar, setAvatar] = useState('')
 
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0)
-    //     let accessToken = JSON.parse(localStorage.getItem("access-token"))
-    //     if(!accessToken){
-    //         navigate('/login')
-    //     }
-    //     // validateToken()
-    // }, []);
 
     useEffect(()=>{
         window.scrollTo(0, 0)
@@ -69,6 +60,7 @@ const Profile = () => {
         },{withCredentials: true})
             .then((response)=>{
                 setNewsProp(response.data)
+                // console.log(response.data)
 
             })
     }, [])
@@ -96,20 +88,6 @@ const Profile = () => {
     }
 
 
-
-    // const sendFile = useCallback(
-    //     async () => {
-    //         try {
-    //             const formData = new FormData()
-    //             formData.append('avatar', img)
-    //             await axios.post(ENV +"/upload/avatar", formData,{
-    //                 headers: { 'content-type': 'multipart/form-data'}
-    //             }).then(res=>setAvatar(res.data.path))
-    //         }catch (error){
-    //
-    //         }
-    //     },[img]
-    // );
 
 
     return (
