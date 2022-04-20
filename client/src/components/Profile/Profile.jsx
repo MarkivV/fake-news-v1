@@ -102,10 +102,10 @@ const Profile = () => {
                     {
                         avatar
                             ?
-                            <img style={{width: '100%', objectFit: "cover", borderRadius: "5%"}} src={ENV+`/images/${avatar}`}/>
+                            <img style={{width: '100%', objectFit: "cover", borderRadius: "2%"}} src={ENV+`/images/${avatar}`}/>
                             :
                             user.map((img)=>(
-                            <img style={{width: '100%', objectFit: "cover", borderRadius: "5%"}} src={ENV+`/images/${img.avatar}` || ava}/>
+                            <img style={{width: '100%', objectFit: "cover", borderRadius: "2%"}} src={ENV+`/images/${img.avatar}` || ava}/>
 
                             ))
 

@@ -29,7 +29,6 @@ function App() {
     return (
 
     <div className="App">
-      <Header/>
             <Navbar/>
         <div className="routes" >
             <Routes>

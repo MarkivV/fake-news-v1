@@ -67,31 +67,31 @@ const NewsTop = () => {
                 <Slider name={name}/>
                 <div style={{marginTop: "35px"}}>
                     <a  href="/politic">
-                        <Title mark >Політика</Title>
+                        <Title mark level={2}>Політика</Title>
                     </a>
                 </div>
-                <CardForMain category={1}/>
+                <CardForMain category={1} />
                 <div style={{marginTop: "35px"}}>
                     <a  href="/society">
-                        <Title mark >Суспільство</Title>
+                        <Title mark level={2}>Суспільство</Title>
                     </a>
                 </div>
                 <CardForMain category={2}/>
                 <div style={{marginTop: "35px"}}>
                     <a  href="/covid">
-                        <Title mark >Covid</Title>
+                        <Title mark level={2}>Covid</Title>
                     </a>
                 </div>
                 <CardForMain category={3}/>
                 <div style={{marginTop: "35px"}}>
                     <a  href="/sport">
-                        <Title mark >Спорт</Title>
+                        <Title mark level={2}>Спорт</Title>
                     </a>
                 </div>
                 <CardForMain category={4}/>
                 <div style={{marginTop: "35px"}}>
                     <a  href="/media">
-                        <Title mark >Шоу-бізнес</Title>
+                        <Title mark level={2}>Шоу-бізнес</Title>
                     </a>
                 </div>
                 <CardForMain category={5}/>

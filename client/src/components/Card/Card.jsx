@@ -37,7 +37,7 @@ const CardM = ({name, step}) => {
                                 </div>
                                 <div>
                                     <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={news.image} alt={"news"}/>
-                                    <Title level={2}>{news.name}</Title>
+                                    <Title level={3}>{news.name}</Title>
                                 </div>
                                 <div className="provider-container">
                                     <Text>{moment(news.datePublished).format('L')}</Text>

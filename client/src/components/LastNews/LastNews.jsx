@@ -11,16 +11,16 @@ const LastNews = ({name, step}) => {
         <Row>
             {
                 name.slice(0,13).map((news)=>(
-                    <Col xs={24} sm={12} lg={24} key={news.id}>
+                    <Col xs={24} sm={24} lg={24} key={news.id}>
                         <a href={`/${news.id}`}>
                             <Text mark level={4}>{news.category}</Text>
-                            <div style={{height: "150px", display: "flex"}}>
+                            <div style={{height: "110px", display: "flex"}}>
                                     <a href={news.url} target={"_blank"} rel={"noreferrer"}>
                                         <div>
-                                            <img style={{width: '170px', height: '120px', objectFit: "cover"}} src={news.image} alt={"news"}/>
+                                            <img style={{width: '170px', height: '100px', objectFit: "cover"}} src={news.image} alt={"news"}/>
                                         </div>
                                     </a>
-                                <h3 style={{marginLeft: "5px", fontSize: "20px" }} className={"mainCard"}>{news.name}</h3>
+                                <h3 style={{marginLeft: "5px", fontSize: "15px" }} className={"mainCard"}>{news.name}</h3>
                             </div>
                         </a>
                         <hr/>

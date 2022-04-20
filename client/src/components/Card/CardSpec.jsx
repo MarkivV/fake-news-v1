@@ -54,7 +54,7 @@ const CardSpec = ({name, step, profile}) => {
                                                 <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div >
-                                                <Title level={2}>{news.name}</Title>
+                                                <Title level={3}>{news.name}</Title>
                                             </div>
                                             <div style={{marginTop: "10px"}} className="provider-container">
                                                 <Text>{moment(news.datePublished).format('L')}</Text>
@@ -79,7 +79,7 @@ const CardSpec = ({name, step, profile}) => {
                                                 <img style={{width: '100%'}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div style={{marginLeft: "0px"}}>
-                                                <Title level={8}>{news.name}</Title>
+                                                <Title level={3}>{news.name}</Title>
                                             </div>
                                             <div style={{marginLeft: "0px", marginTop: "10px"}} className="provider-container">
                                                 <Text>{moment(news.datePublished).format('L')}</Text>

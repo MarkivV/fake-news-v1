@@ -12,12 +12,15 @@ a {text-decoration: none; /*убираем подчеркивание текст
 .menu-main {
     list-style: none;
     display: flex;
+    position: fixed;
+    width: 100%;
     /*margin: 40px 0 5px;*/
-    padding: 25px 10% 25px;
+    padding: 10px 10% 10px;
     /*padding: 2em 8.5% 5px;*/
     /*text-align: center;*/
     background: #FADE98;
     align-items: center;
+    z-index: 51;
 }
 
 .menu-main .inputClass{
@@ -80,12 +83,19 @@ a {text-decoration: none; /*убираем подчеркивание текст
 }
 
 .menu-items.active{
+
     transform: translateX(0);
     transition: all ease 0.7s;
     margin-left: 45px;
+    height: 100%;
 }
 
 @media (max-width: 790px) {
+    .menu-main{
+        padding: 7px 7% 7px;
+        position: fixed !important;
+
+    }
     .menu-main .inputClass{
         width: 100%;
     }
@@ -99,9 +109,10 @@ a {text-decoration: none; /*убираем подчеркивание текст
     .menu-items{
         background-color: #FADE98;
         height: 100%;
-        width: 65%;
+        width: 60%;
         margin-top: 0px;
         z-index: 50;
+        position: fixed !important;
     }
 
     .menu-main .proposeDesc{
@@ -109,12 +120,12 @@ a {text-decoration: none; /*убираем подчеркивание текст
     }
 
     .menu-items .menuAdapt{
-        margin-top: 25px;
+        margin-top: 34%;
         margin-left: 55px;
     }
 
     .menu-items .inputClass{
-        display: flex;
+        display: none;
     }
 
 

@@ -167,6 +167,34 @@ app.get('/api/get/item', (req, res) =>{
 
 })
 
+app.get('/api/get/comments', (req, res) =>{
+
+    const id = req.query.id
+
+    const sqlSelect = `SELECT * FROM comments INNER JOIN users ON authorId = idUser WHERE cardId = ?`;
+    con.query(sqlSelect, id,(err, result)=>{
+        res.send(result)
+        console.log(result)
+    })
+
+})
+
+
+app.post('/api/post/comment', (req, res) =>{
+
+    const authorId = req.body.authorId
+    const cardId = req.body.cardId
+    const text = req.body.text
+
+
+    const sqlInsert = "INSERT INTO comments (authorId, cardId, text, likes, dislikes) VALUES (?, ?, ?, ?, ?);"
+    con.query(sqlInsert, [authorId, cardId, text, 0, 0], (err, result)=>{
+        console.log(result)
+        res.send(result)
+    })
+})
+
+
 
 app.get('/api/get/all', (req, res) =>{
 

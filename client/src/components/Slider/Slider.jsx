@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const Slider = ({name}) => {
 
     return (
-        <div className={"slider"} style={{maxWidth: "998px", height: "450px", marginBottom: "15px"}} >
+        <div className={"slider"} style={{height: "450px", marginBottom: "15px"}} >
             <Carousel>
                 {name.slice(0,5).map(item => (
                     <div className={"image"} key={item.id}>

@@ -14,6 +14,7 @@ import {
     LikeFilled,
     HeartOutlined
 } from "@ant-design/icons";
+import {isDisabled} from "@testing-library/user-event/dist/utils";
 
 const {Text, Title} = Typography
 
@@ -29,13 +30,21 @@ const CardDetails = () => {
     const [dislikes, setDislikes] = useState(0);
     const [action, setAction] = useState(null);
 
+    const [isAuth, setIsAuth] = useState(true);
 
-    const [comment, setComment] = useState('');
+    const [comment, setComment] = useState(false);
 
 
     useEffect(() => {
         const handleResizeFunc = () =>{
             setScreenSize(window.innerWidth)
+        }
+        let auth = JSON.parse(localStorage.getItem("userId"))
+
+        if(auth){
+            setIsAuth(true)
+        }else {
+            setIsAuth(false)
         }
 
         window.addEventListener('resize', handleResizeFunc)
@@ -146,17 +155,18 @@ const CardDetails = () => {
                                         <Link to={`/user/${i.authorId}`}>
                                             <h4>Автор: {i.username}</h4>
                                         </Link>
-                                        <h4 style={{marginLeft: "auto"}}>{moment(i.datePublished).format('L')}</h4>
+
+                                        <h4 style={{marginLeft: "auto"}}>Опубліковано: {moment(i.datePublished).format('L')}</h4>
                                     </div>
                                     <Divider />
-                                    <p style = {{fontSize: "20px", marginTop: "15px"}}>
+                                    <p style = {{fontSize: "20px", marginTop: "15px", whiteSpace: "pre-line"}}>
                                         {i.description}
                                     </p>
                                     <Divider/>
-                                    <h5 style={{fontWeight: "bold", color: "#4f4f4f"}}><ExclamationCircleOutlined />  Всі статті на цьому веб-сайті вигадані, та не відповідають дійсності</h5>
+                                    <h4 style={{fontWeight: "bold", color: "#4f4f4f", fontStyle: "italic"}}><ExclamationCircleOutlined />  Всі статті на цьому веб-сайті вигадані, та не відповідають дійсності</h4>
                                     <div style={{display: "flex"}}>
-                                        <Input bordered={false} placeholder={"Напишіть Ваш коментар"} style={{width: "35%", backgroundColor: "#fcfcfc"}} onChange={(e)=>setComment(e.target.value)}/>
-                                        <Button type={"dashed"} style={{marginLeft: "10px"}} onClick={()=>setValues()}>Опублікувати</Button>
+                                        <Input bordered={false}  placeholder={isAuth ? "Напишіть Ваш коментар" : "Ввійдіть щоб написати"} style={{width: "100%", backgroundColor: "#fcfcfc"}} onChange={(e)=>setComment(e.target.value)}/>
+                                        <Button disabled={!isAuth} type={"dashed"} style={{marginLeft: "10px"}} onClick={()=>setValues()} >Опублікувати</Button>
                                     </div>
                                     <div className={"comments"}>
                                         {

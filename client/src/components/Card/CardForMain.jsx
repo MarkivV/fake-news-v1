@@ -53,7 +53,7 @@ const CardM = ({category}) => {
 
     return (
 
-        <Row gutter={[24,24]}>
+        <Row gutter={[12,12]}>
 
             {
                 name.slice(0,2).map((news)=>(
@@ -70,7 +70,7 @@ const CardM = ({category}) => {
                                                 <img style={{width: '100%', height: "290px", objectFit: "cover"}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div>
-                                                <Title level={4} style={{fontSize: "25px"}} className={"mainCard"}>{news.name}</Title>
+                                                <Title level={3} style={{fontSize: "25px"}} className={"mainCard"}>{news.name}</Title>
                                             </div>
                                             <p className={"mainCard"}>
                                                 {
@@ -101,7 +101,7 @@ const CardM = ({category}) => {
                                                 <img style={{width: '100%'}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div style={{marginLeft: "0px"}}>
-                                                <Title level={4}>{news.name}</Title>
+                                                <Title level={3}>{news.name}</Title>
                                             </div>
                                             <div style={{marginLeft: "0px", marginTop: "10px"}} className="provider-container">
                                                 <Text>{moment(news.datePublished).format('L')}</Text>

@@ -16,7 +16,7 @@ const Footer = () => {
 
             <Row className="footer__nav">
                 <Col className="nav__item">
-                    <h2 className="nav__title">Розділи</h2>
+                    <h2 style={{marginTop: "15px"}} className="nav__title">Розділи</h2>
 
                     <Col className="nav__ul">
                         <li>                        <Link to={"/"}>Головна</Link>
@@ -36,7 +36,7 @@ const Footer = () => {
                     </Col>
                 </Col>
                 <Col className="nav__item">
-                    <h2 className="nav__title">Корисна інфо.</h2>
+                    <h2 style={{marginTop: "15px"}} className="nav__title">Корисна інфо.</h2>
 
                     <Col className="nav__ul">
                         <li>                        <Link to={"/propose"}>Запропонувати</Link>
@@ -60,7 +60,7 @@ const Footer = () => {
                 </Col>
 
                 <Col className="nav__item">
-                    <h2 className="nav__title">Зв'язок</h2>
+                    <h2 style={{marginTop: "15px"}} className="nav__title">Зв'язок</h2>
 
                     <Col className="nav__ul">
                         <li>

@@ -37,9 +37,10 @@ a:hover{
 
 }
 .routes{
-    margin: 0px 13% 0px;
+    margin: 0px 9% 0px;
     padding: 20px;
     background-color: #ffffff;
+
 }
 .nav-container{
     position: fixed;
@@ -164,7 +165,7 @@ img{
         text-align: center;
     }
     .routes{
-        margin: 0px 2% 0px;
+        padding-top: 22%;
     }
 
     .slider{
