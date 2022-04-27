@@ -47,6 +47,26 @@ const Navbar = () => {
                     }>Вихід</a> : <></>
                 }
             </Menu.Item>
+            <Menu.Item>
+                {
+                    accessToken ? <a style={{cursor: "pointer"}} onClick={()=>
+                    {
+                        localStorage.clear()
+                        window.location.reload(false)
+                    }
+                    }>Вихід</a> : <></>
+                }
+            </Menu.Item>
+            <Menu.Item>
+                {
+                    accessToken ? <a style={{cursor: "pointer"}} onClick={()=>
+                    {
+                        localStorage.clear()
+                        window.location.reload(false)
+                    }
+                    }>Вихід</a> : <></>
+                }
+            </Menu.Item>
         </Menu>
     );
 
@@ -60,7 +80,7 @@ const Navbar = () => {
         {/*    </Button>*/}
         {/*{activeMenu && (*/}
 
-            <Col className={"menu-main"}>
+            <Col className={"menu-main"} style={{position: "fixed"}}>
                 <li className={"menu-lines"} onClick={()=>setActiveMenu(!activeMenu)}>
                     <svg width="25" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="25" height="3" rx="1.5" fill="black"/>
@@ -68,19 +88,30 @@ const Navbar = () => {
                         <rect y="16" width="25" height="3" rx="1.5" fill="black"/>
                     </svg>
                 </li>
-                <Link to={"/"}>
+                <Link to={"/"} className={"logoKik"}>
                     <li style={{marginLeft: "55px"}} >
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="10" y="10" width="10" height="10" fill="black"/>
-                            <rect x="10" y="30" width="10" height="10" fill="black"/>
+                        <svg width="90" height="40" viewBox="0 0 90 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" width="10" height="10" rx="5" fill="#FFB1B1"/>
                             <rect width="10" height="10" fill="black"/>
-                            <rect x="30" y="30" width="10" height="10" fill="#FFB1B1"/>
-                            <rect x="30" y="20" width="10" height="10" fill="black"/>
+                            <rect y="30" width="10" height="10" fill="black"/>
+                            <rect y="20" width="10" height="10" fill="black"/>
                             <rect x="20" y="30" width="10" height="10" fill="black"/>
+                            <rect x="40" y="30" width="10" height="10" fill="black"/>
+                            <rect x="40" y="20" width="10" height="10" fill="black"/>
+                            <rect x="40" y="15" width="10" height="5" fill="black"/>
+                            <rect x="20" width="10" height="10" fill="black"/>
                             <rect x="10" y="20" width="10" height="10" fill="black"/>
-                            <rect x="20" y="10" width="10" height="10" fill="black"/>
-                            <rect x="10" width="10" height="10" fill="black"/>
+                            <rect y="10" width="10" height="10" fill="black"/>
+                            <rect x="60" width="10" height="10" fill="black"/>
+                            <rect x="60" y="30" width="10" height="10" fill="black"/>
+                            <rect x="60" y="20" width="10" height="10" fill="black"/>
+                            <rect x="80" y="30" width="10" height="10" fill="black"/>
+                            <rect x="80" y="10" width="10" height="10" fill="black"/>
+                            <rect x="70" y="20" width="10" height="10" fill="black"/>
+                            <rect x="60" y="10" width="10" height="10" fill="black"/>
+                            <path d="M20 10V20L30 10H20Z" fill="black"/>
                         </svg>
+
                     </li>
                 </Link>
 

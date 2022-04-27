@@ -10,7 +10,7 @@ const LastNews = ({name, step}) => {
     return (
         <Row>
             {
-                name.slice(0,13).map((news)=>(
+                name.slice(0,7).map((news)=>(
                     <Col xs={24} sm={24} lg={24} key={news.id}>
                         <a href={`/${news.id}`}>
                             <Text mark level={4}>{news.category}</Text>

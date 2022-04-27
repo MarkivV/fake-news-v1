@@ -61,6 +61,7 @@ const NewsTop = () => {
     // const paginate = (num) => setCurrentPage(num)
 
 
+
     return(
         <Row gutter={[24,24]}>
             <Col xs={24} sm={24} lg={16}>

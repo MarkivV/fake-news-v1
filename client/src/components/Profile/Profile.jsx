@@ -98,14 +98,14 @@ const Profile = () => {
                 <Card name={newsProp} step={false}/>
             </Col>
             <Col xs={24} sm={24} lg={8}>
-                <div>
+                <div >
                     {
                         avatar
                             ?
-                            <img style={{width: '100%', objectFit: "cover", borderRadius: "2%"}} src={ENV+`/images/${avatar}`}/>
+                            <img style={{width: '100%', objectFit: "cover", borderRadius: "1%"}} src={ENV+`/images/${avatar}`}/>
                             :
                             user.map((img)=>(
-                            <img style={{width: '100%', objectFit: "cover", borderRadius: "2%"}} src={ENV+`/images/${img.avatar}` || ava}/>
+                            <img style={{width: '100%', objectFit: "cover", borderRadius: "1%"}} src={ENV+`/images/${img.avatar}` || ava}/>
 
                             ))
 
@@ -124,6 +124,7 @@ const Profile = () => {
                         ))
                     }
                 </div>
+                <Divider/>
                 <div style={{marginTop: "15px", marginBottom: "10px"}}>
                     <label className={"custom-file-upload"}>
                         <input type="file" name={"avatar"} onChange={handleUploadImage} hidden/>

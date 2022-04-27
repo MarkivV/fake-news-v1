@@ -19,6 +19,7 @@ import {isDisabled} from "@testing-library/user-event/dist/utils";
 const {Text, Title} = Typography
 
 
+
 const CardDetails = () => {
     const [item, setItem] = useState([]);
     const [name, setName] = useState([]);
@@ -33,6 +34,7 @@ const CardDetails = () => {
     const [isAuth, setIsAuth] = useState(true);
 
     const [comment, setComment] = useState(false);
+
 
 
     useEffect(() => {
@@ -132,6 +134,11 @@ const CardDetails = () => {
 
 
 
+    const datePublish = (date) => {
+        moment.locale("ru");
+        return moment(date).format('l')
+    }
+
 
     return (
         <Row gutter={[24,24]}>
@@ -141,22 +148,23 @@ const CardDetails = () => {
                     <>
                         <Col span={16}>
                             {item.slice(0,1).map(i=>(
-                                <div key={i.id}>
+                                <div style={{marginTop: "17px"}}  key={i.id}>
+                                    <Title level={1}>{i.name}</Title>
+                                    <Divider/>
                                     <div>
                                         <img style={{width: "100%"}} src={i.image} alt="image"/>
                                     </div>
-                                    <div style={{display: "flex", alignItems: "center"}}>
-                                        <Title style={{marginTop: "15px"}} mark level={3}>{i.category}</Title>
-                                        <HeartOutlined style={{transform: "scale(1.8)", marginLeft: "auto", marginRight: "15px"}}/>
-                                        <h5>{i.likes}</h5>
-                                    </div>
-                                    <Title level={2}>{i.name}</Title>
-                                    <div style={{display: "flex"}}>
-                                        <Link to={`/user/${i.authorId}`}>
-                                            <h4>Автор: {i.username}</h4>
+                                    {/*<div style={{display: "flex", alignItems: "center"}}>*/}
+                                    {/*    <Title style={{marginTop: "15px"}} mark level={3}>{i.category}</Title>*/}
+                                    {/*    /!*<HeartOutlined style={{transform: "scale(1.8)", marginLeft: "auto", marginRight: "15px"}}/>*!/*/}
+                                    {/*    /!*<h5>{i.likes}</h5>*!/*/}
+                                    {/*</div>*/}
+                                    <div style={{display: "flex", marginTop: "30px"}}>
+                                        <h3 style={{backgroundColor: "#FADE98", paddingLeft: "5px", paddingRight: "5px", borderRadius: "10px"}}>{i.category}</h3>
+                                        <h3 style={{marginLeft: "15px"}}>{datePublish(i.datePublished)}</h3>
+                                        <Link style={{marginLeft: "15px"}} to={`/user/${i.authorId}`}>
+                                            <h3> Автор: {i.username}</h3>
                                         </Link>
-
-                                        <h4 style={{marginLeft: "auto"}}>Опубліковано: {moment(i.datePublished).format('L')}</h4>
                                     </div>
                                     <Divider />
                                     <p style = {{fontSize: "20px", marginTop: "15px", whiteSpace: "pre-line"}}>
@@ -166,7 +174,7 @@ const CardDetails = () => {
                                     <h4 style={{fontWeight: "bold", color: "#4f4f4f", fontStyle: "italic"}}><ExclamationCircleOutlined />  Всі статті на цьому веб-сайті вигадані, та не відповідають дійсності</h4>
                                     <div style={{display: "flex"}}>
                                         <Input bordered={false}  placeholder={isAuth ? "Напишіть Ваш коментар" : "Ввійдіть щоб написати"} style={{width: "100%", backgroundColor: "#fcfcfc"}} onChange={(e)=>setComment(e.target.value)}/>
-                                        <Button disabled={!isAuth} type={"dashed"} style={{marginLeft: "10px"}} onClick={()=>setValues()} >Опублікувати</Button>
+                                        <Button disabled={!isAuth || !comment} type={"dashed"} style={{marginLeft: "10px"}} onClick={()=>setValues()} >Опублікувати</Button>
                                     </div>
                                     <div className={"comments"}>
                                         {
@@ -214,14 +222,14 @@ const CardDetails = () => {
                                         <h4>Автор: {i.author}</h4>
                                         <h4 style={{marginLeft: "auto"}}>{moment(i.datePublished).format('L')}</h4>
                                     </div>
-                                    <p style = {{fontSize: "18px", marginTop: "15px", textAlign: "justify"}}>
+                                    <p style = {{fontSize: "18px", marginTop: "15px", textAlign: "justify", whiteSpace: "pre-line"}}>
                                         {i.description}
                                     </p>
                                     <Divider/>
                                     <h5 style={{fontWeight: "bold", color: "#4f4f4f"}}><ExclamationCircleOutlined />  Всі статті на цьому веб-сайті вигадані, та не відповідають дійсності</h5>
                                     <div >
-                                        <Input bordered={false} placeholder={"Напишіть Ваш коментар"} style={{width: "100%", backgroundColor: "#fcfcfc"}} onChange={(e)=>setComment(e.target.value)}/>
-                                        <Button type={"dashed"} style={{marginTop: "10px"}} onClick={()=>setValues()}>Опублікувати</Button>
+                                        <Input bordered={false} placeholder={isAuth ? "Напишіть Ваш коментар" : "Ввійдіть щоб написати"} style={{width: "100%", backgroundColor: "#fcfcfc"}} onChange={(e)=>setComment(e.target.value)}/>
+                                        <Button disabled={!isAuth || !comment} type={"dashed"} style={{marginLeft: "10px"}} onClick={()=>setValues()} >Опублікувати</Button>
                                     </div>
                                     <div className={"comments"}>
                                         {
@@ -231,7 +239,7 @@ const CardDetails = () => {
                                                     author={<a>{comments.username}</a>}
                                                     avatar={<Avatar src={ENV +`/images/${comments.avatar}`} alt={comments.username} />}
                                                     content={
-                                                        <p>
+                                                        <p style={{fontSize: "17px"}}>
                                                             {
                                                                 comments.text
                                                             }

@@ -10,6 +10,7 @@ a {text-decoration: none; /*убираем подчеркивание текст
 
 
 .menu-main {
+    /*position: fixed;*/
     list-style: none;
     display: flex;
     position: fixed;
@@ -26,8 +27,9 @@ a {text-decoration: none; /*убираем подчеркивание текст
 .menu-main .inputClass{
     background-color: #fff;
     margin-left: 25px;
-    width: 25%;
-    height: 40px;
+    width: 23%;
+    height: 35px;
+    border-radius: 30px;
 }
 
 .menu-items .inputClass{
@@ -73,21 +75,42 @@ a {text-decoration: none; /*убираем подчеркивание текст
 
 .menu-items{
     list-style: none; /*убираем маркеры списка*/
-    margin-top: 25px;
-    font-size: 20px;
-    transform: translateX(-100%);
+    margin-top: 10px;
+    font-size: 22px;
+    transform: translateY(-100%);
     transition: all ease 0.7s;
-    /*margin-left: 45px;*/
+    margin-left: 0px;
     z-index: 50;
     position: absolute;
+    background-color: #FADE98;
+    padding: 70px;
+    height: 100%;
 }
 
 .menu-items.active{
+    position: fixed;
+    /*width: 10%;*/
+    transform: translateY(0);
+    transition: all ease 0.5s;
+    /*font-weight: bold;*/
+    /*margin-left: 45px;*/
 
-    transform: translateX(0);
-    transition: all ease 0.7s;
-    margin-left: 45px;
-    height: 100%;
+}
+.menu-items.active h3{
+    font-weight: bold;
+
+}
+
+.menu-main .logoKik:hover{
+    transform: scale(1.05);
+    transition: all ease 0.5s;
+
+}
+
+.menu-items.active h3:hover{
+    transform: scale(1.1);
+    transition: all ease 0.5s;
+
 }
 
 @media (max-width: 790px) {
@@ -107,6 +130,7 @@ a {text-decoration: none; /*убираем подчеркивание текст
         filter: brightness(90%);
     }
     .menu-items{
+        transform: translateX(-100%);
         background-color: #FADE98;
         height: 100%;
         width: 60%;
@@ -121,7 +145,7 @@ a {text-decoration: none; /*убираем подчеркивание текст
 
     .menu-items .menuAdapt{
         margin-top: 34%;
-        margin-left: 55px;
+        /*margin-left: 55px;*/
     }
 
     .menu-items .inputClass{

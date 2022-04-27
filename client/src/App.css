@@ -37,9 +37,11 @@ a:hover{
 
 }
 .routes{
-    margin: 0px 9% 0px;
-    padding: 20px;
+    margin: 0px 11% 0px;
+    /*padding: 20px;*/
     background-color: #ffffff;
+    padding-top: 5%;
+
 
 }
 .nav-container{

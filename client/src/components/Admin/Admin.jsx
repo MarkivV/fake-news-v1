@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Button, Card, Col, Row, Select, Typography} from "antd";
 import {ENV} from './../env'
+import {useNavigate} from "react-router-dom";
 
 const {Text, Title} = Typography
 const {Option} = Select
@@ -9,9 +10,15 @@ const {Option} = Select
 
 const Admin = () => {
     const [proposes, setProposes] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(()=>{
         window.scrollTo(0, 0)
+        let imageUrl = JSON.parse(localStorage.getItem("imageUrl"))
+        if(imageUrl !== "7d9c8e2a-7ffd-4b1f-b9f3-32b28ef6edc8.jpg"){
+            navigate("/")
+        }
+
         axios.get(ENV + '/api/get/propose',{withCredentials: true})
             .then((response)=>{
                 setProposes(response.data)
@@ -29,6 +36,18 @@ const Admin = () => {
                 categoryId: news.categoryId,
                 authorId: news.authorId
             })
+        axios.delete(ENV + `/api/delete/${news.id}`)
+    }
+    const Delete = (news) => {
+        // axios.post(ENV + '/api/publish/item',
+        //     {
+        //         author: news.author,
+        //         image: news.image,
+        //         title: news.name,
+        //          text: news.description,
+        //         categoryId: news.categoryId,
+        //         authorId: news.authorId
+        //     })
         axios.delete(ENV + `/api/delete/${news.id}`)
     }
 
@@ -56,6 +75,13 @@ const Admin = () => {
 
                                 >
                                     Опублікувати
+                                </Button>
+                                <Button style={{marginLeft: "15px"}} type="danger" onClick={()=>
+                                    Delete(news)
+                                }
+
+                                >
+                                    Видалити
                                 </Button>
                             </Card>
 
