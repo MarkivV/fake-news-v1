@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Card, Col, Row} from "antd";
-import moment from "moment";
 import {ENV} from "../../env";
 
 const LiveNews = () => {

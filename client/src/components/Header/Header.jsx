@@ -1,8 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {Col, Row, Select} from "antd";
-import axios from "axios";
-import styles from './Header.css'
-import {Link} from "react-router-dom";
+import React from 'react';
 
 const Header = () => {
 

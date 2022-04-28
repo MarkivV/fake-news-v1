@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import CardM from "../../Card/Card";
 import axios from "axios";
 import CardSpec from "../../Card/CardSpec";
 import {ENV} from "../../env";

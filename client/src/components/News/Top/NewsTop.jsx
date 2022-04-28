@@ -4,20 +4,19 @@ import Slider from "../../Slider/Slider";
 import {Col, Row, Typography} from "antd";
 import LastNews from "../../LastNews/LastNews";
 import CardForMain from "../../Card/CardForMain";
-import LiveNews from "../LiveNews/LiveNews";
 import LastLive from "../../LastNews/LastLive";
 import {ENV} from "../../env";
-const {Text, Title} = Typography
+const {Title} = Typography
 
 
 const NewsTop = () => {
 
     const [name, setName] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostPerPage] = useState(8);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [postsPerPage, setPostPerPage] = useState(8);
     const [liveNews, setliveNews] = useState([]);
 
-    const [activeMenu, setActiveMenu] = useState(true);
+    // const [activeMenu, setActiveMenu] = useState(true);
     const [screenSize, setScreenSize] = useState(null);
 
 
@@ -35,13 +34,13 @@ const NewsTop = () => {
     }, []);
 
 
-    useEffect(()=> {
-        if(screenSize < 768){
-            setActiveMenu(false)
-        }else{
-            setActiveMenu(true)
-        }
-    }, [screenSize])
+    // useEffect(()=> {
+    //     if(screenSize < 768){
+    //         setActiveMenu(false)
+    //     }else{
+    //         setActiveMenu(true)
+    //     }
+    // }, [screenSize])
 
 
     useEffect(()=>{

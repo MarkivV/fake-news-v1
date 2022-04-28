@@ -1,9 +1,8 @@
 import React from 'react';
-import {Col, Divider, Row, Space, Typography} from "antd";
+import {Col, Divider, Row} from "antd";
 import {Link} from "react-router-dom";
 import './footer.css'
 
-const {Text, Title} = Typography
 
 const Footer = () => {
     let accessToken = JSON.parse(localStorage.getItem("access-token"))
@@ -72,7 +71,7 @@ const Footer = () => {
                         </li>
 
                         <li>
-                            <a href="#">email</a>
+                            <Link to={'/'}>email</Link>
                         </li>
                     </Col>
                 </Col>

@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Button, Card, Col, Row, Select, Typography} from "antd";
+import {Button, Card, Col, Row, Typography} from "antd";
 import {ENV} from './../env'
 import {useNavigate} from "react-router-dom";
 
-const {Text, Title} = Typography
-const {Option} = Select
+const {Title} = Typography
 
 
 const Admin = () => {

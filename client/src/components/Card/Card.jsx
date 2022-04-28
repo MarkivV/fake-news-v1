@@ -1,14 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {Avatar, Card, Col, Row, Typography, Select, Tag} from "antd";
+import React from 'react';
+import {Col, Row, Typography, Tag} from "antd";
 import moment from "moment";
 import './card.css'
-import axios from "axios";
 import {Link} from "react-router-dom";
 import {CheckCircleOutlined, SyncOutlined} from "@ant-design/icons";
-const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News'
 
 const {Text, Title} = Typography
-const {Option} = Select
 
 const CardM = ({name, step}) => {
 

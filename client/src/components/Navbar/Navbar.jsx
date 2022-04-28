@@ -1,37 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import "./Navbar.css"
 import {Link} from "react-router-dom";
-import {Avatar, Button, Col, Input, Row, Typography, Menu, Dropdown} from "antd";
-import {MenuOutlined, PlusOutlined, UserOutlined, DownOutlined, CaretDownOutlined} from "@ant-design/icons";
+import {Avatar, Button, Col, Input, Menu, Dropdown} from "antd";
+import { PlusOutlined, CaretDownOutlined} from "@ant-design/icons";
 import {ENV} from "../env";
-const {Text, Title} = Typography
 
 const Navbar = () => {
 
 
     const [activeMenu, setActiveMenu] = useState(false);
-    const [screenSize, setScreenSize] = useState(null);
+    // const [screenSize, setScreenSize] = useState(null);
     const [imageUrl, setImageUrl] = useState('');
-    const [username, setUsername] = useState('');
+    // const [username, setUsername] = useState('');
     let accessToken = JSON.parse(localStorage.getItem("access-token"))
 
 
 
     useEffect(() => {
-        const handleResizeFunc = () =>{
-            setScreenSize(window.innerWidth)
-        }
+        // const handleResizeFunc = () =>{
+        //     setScreenSize(window.innerWidth)
+        // }
 
         const imageUrlLS = JSON.parse(localStorage.getItem("imageUrl"))
-        const usernameLS = JSON.parse(localStorage.getItem("username"))
-
         setImageUrl(imageUrlLS)
-        setUsername(usernameLS)
+        // window.addEventListener('resize', handleResizeFunc)
 
-        window.addEventListener('resize', handleResizeFunc)
-
-        handleResizeFunc()
-        return () => window.removeEventListener('resize', handleResizeFunc)
+        // handleResizeFunc()
+        // return () => window.removeEventListener('resize', handleResizeFunc)
 
     }, []);
 
@@ -39,32 +34,32 @@ const Navbar = () => {
         <Menu>
             <Menu.Item>
                 {
-                    accessToken ? <a style={{cursor: "pointer"}} onClick={()=>
+                    accessToken ? <h2 style={{cursor: "pointer"}} onClick={()=>
                     {
                         localStorage.clear()
                         window.location.reload(false)
                     }
-                    }>Вихід</a> : <></>
+                    }>Вихід</h2> : <></>
                 }
             </Menu.Item>
             <Menu.Item>
                 {
-                    accessToken ? <a style={{cursor: "pointer"}} onClick={()=>
+                    accessToken ? <h2 style={{cursor: "pointer"}} onClick={()=>
                     {
                         localStorage.clear()
                         window.location.reload(false)
                     }
-                    }>Вихід</a> : <></>
+                    }>Вихід</h2> : <></>
                 }
             </Menu.Item>
             <Menu.Item>
                 {
-                    accessToken ? <a style={{cursor: "pointer"}} onClick={()=>
+                    accessToken ? <h2 style={{cursor: "pointer"}} onClick={()=>
                     {
                         localStorage.clear()
                         window.location.reload(false)
                     }
-                    }>Вихід</a> : <></>
+                    }>Вихід</h2> : <></>
                 }
             </Menu.Item>
         </Menu>

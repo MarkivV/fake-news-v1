@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Carousel, Col, Row} from "antd";
+import React from 'react';
+import {Carousel} from "antd";
 import './Slider.css'
 import {Link} from "react-router-dom";
 

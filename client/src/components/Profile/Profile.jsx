@@ -1,24 +1,22 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import "./profile.css"
 import axios from "axios";
 import {ENV} from "../env";
-import {Col, Divider, Row, Avatar, Image, Upload, message, Button, Empty} from "antd";
+import {Col, Divider, Row, Button} from "antd";
 import Card from "../Card/Card";
 import Title from "antd/es/typography/Title";
-import {UploadOutlined, UserOutlined} from '@ant-design/icons';
-import FormItemLabel from "antd/es/form/FormItemLabel";
+import {UploadOutlined} from '@ant-design/icons';
+
 const ava = 'https://www.seekpng.com/png/detail/110-1100707_person-avatar-placeholder.png'
 
 
 const Profile = () => {
 
     const navigate = useNavigate()
-    const [userId, setUserId] = useState('');
     const [news, setNews] = useState([]);
     const [newsProp, setNewsProp] = useState([]);
     const [user, setUser] = useState([]);
-    const [name, setName] = useState('');
 
     const [userInfo, setUserInfo] = useState({
         file: [],
@@ -102,10 +100,10 @@ const Profile = () => {
                     {
                         avatar
                             ?
-                            <img style={{width: '100%', objectFit: "cover", borderRadius: "1%"}} src={ENV+`/images/${avatar}`}/>
+                            <img style={{width: '100%', objectFit: "cover", borderRadius: "1%"}} src={ENV+`/images/${avatar}`} alt={"img"}/>
                             :
                             user.map((img)=>(
-                            <img style={{width: '100%', objectFit: "cover", borderRadius: "1%"}} src={ENV+`/images/${img.avatar}` || ava}/>
+                            <img style={{width: '100%', objectFit: "cover", borderRadius: "1%"}} alt={"img"} src={ENV+`/images/${img.avatar}` || ava}/>
 
                             ))
 

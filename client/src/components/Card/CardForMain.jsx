@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Card, Col, Row, Typography, Select} from "antd";
+import {Col, Row, Typography} from "antd";
 import moment from "moment";
 import './card.css'
 import axios from "axios";
@@ -7,7 +7,6 @@ import {Link} from "react-router-dom";
 import {ENV} from "../env";
 
 const {Text, Title} = Typography
-const {Option} = Select
 moment.locale('russian')
 
 const CardM = ({category}) => {

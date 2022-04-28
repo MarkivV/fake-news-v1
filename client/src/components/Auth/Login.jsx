@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Form, Input, Button, Col, Select, Typography, Row, Checkbox, Modal,message, Alert} from 'antd';
+import {Form, Input, Button, Col, Row, Alert} from 'antd';
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
@@ -9,27 +9,27 @@ const Login = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setUser] = useState('');
-    const [userId, setUserId] = useState('');
-    const [accessToken1, setAccessToken] = useState('');
+    // const [user, setUser] = useState('');
+    // const [userId, setUserId] = useState('');
+    // const [accessToken1, setAccessToken] = useState('');
     const [error, setError] = useState(false);
-    const [imageUrl, setImageUrl] = useState(false);
+    // const [imageUrl, setImageUrl] = useState(false);
     let navigation = useNavigate()
 
 
-    const [isModalVisible, setIsModalVisible] = useState(true);
+    // const [isModalVisible, setIsModalVisible] = useState(true);
 
-    const showModal = () => {
-        setIsModalVisible(true);
-    };
+    // const showModal = () => {
+    //     setIsModalVisible(true);
+    // };
 
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
-
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
+    // const handleOk = () => {
+    //     setIsModalVisible(false);
+    // };
+    //
+    // const handleCancel = () => {
+    //     setIsModalVisible(false);
+    // };
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -42,10 +42,10 @@ const Login = () => {
             {username: username, password: password},
             {withCredentials: true}).
         then((user)=>{
-                setUser(user?.data.username)
-                setUserId(user?.data.userId)
-                setAccessToken(user?.data.accessToken)
-                setImageUrl(user?.data.avatar)
+                // setUser(user?.data.username)
+                // setUserId(user?.data.userId)
+                // setAccessToken(user?.data.accessToken)
+                // setImageUrl(user?.data.avatar)
                 if(user.data === true){
                     setError(true)
                 }else {

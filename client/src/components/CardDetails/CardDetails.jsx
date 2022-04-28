@@ -12,11 +12,9 @@ import {
     LikeOutlined,
     DislikeFilled,
     LikeFilled,
-    HeartOutlined
-} from "@ant-design/icons";
-import {isDisabled} from "@testing-library/user-event/dist/utils";
 
-const {Text, Title} = Typography
+} from "@ant-design/icons";
+const {Title} = Typography
 
 
 
@@ -152,7 +150,7 @@ const CardDetails = () => {
                                     <Title level={1}>{i.name}</Title>
                                     <Divider/>
                                     <div>
-                                        <img style={{width: "100%"}} src={i.image} alt="image"/>
+                                        <img style={{width: "100%"}} src={i.image} alt={"img"}/>
                                     </div>
                                     {/*<div style={{display: "flex", alignItems: "center"}}>*/}
                                     {/*    <Title style={{marginTop: "15px"}} mark level={3}>{i.category}</Title>*/}
@@ -214,7 +212,7 @@ const CardDetails = () => {
                             {item.slice(0,1).map(i=>(
                                 <div key={i.id}>
                                     <div>
-                                        <img style={{maxWidth: "100%"}} src={i.image} alt="image"/>
+                                        <img style={{maxWidth: "100%"}} src={i.image} alt={"img"}/>
                                     </div>
                                     <Title mark level={3} style={{marginTop: "15px"}}>{i.category}</Title>
                                     <Title style={{fontSize: "22px",  textAlign: "justify"}}>{i.name}</Title>
@@ -236,7 +234,7 @@ const CardDetails = () => {
                                             comments.map((comments)=>(
                                                 <Comment
                                                     actions={actions}
-                                                    author={<a>{comments.username}</a>}
+                                                    author={<h4>{comments.username}</h4>}
                                                     avatar={<Avatar src={ENV +`/images/${comments.avatar}`} alt={comments.username} />}
                                                     content={
                                                         <p style={{fontSize: "17px"}}>

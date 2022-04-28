@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Col, Form, Input, Row, Select} from "antd";
+import {Button, Col, Form, Input, Row} from "antd";
 import axios from "axios";
 import {ENV} from "../env";
 import {useNavigate} from "react-router-dom";
@@ -7,7 +7,6 @@ import {useNavigate} from "react-router-dom";
 const ProposeLive = () => {
     const navigate = useNavigate()
     const [form] = Form.useForm();
-    const [author, setAuthor] = useState('');
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [userName, setUserName] = useState('');

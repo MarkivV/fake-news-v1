@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Card, Col, Row, Typography, Select, Tag, Divider} from "antd";
-import {CheckCircleOutlined, SyncOutlined} from '@ant-design/icons';
+import {Col, Row, Typography} from "antd";
 import moment from "moment";
 import './card.css'
 import {Link} from "react-router-dom";
 const {Text, Title} = Typography
-const {Option} = Select
 
-const CardSpec = ({name, step, profile}) => {
+const CardSpec = ({name}) => {
 
     const [activeMenu, setActiveMenu] = useState(true);
     const [screenSize, setScreenSize] = useState(null);

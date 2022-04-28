@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Form, Input, Select, Checkbox, Button, Row, Col} from 'antd';
+import {Form, Input, Button, Row, Col} from 'antd';
 import axios from "axios";
 import {ENV} from "../env";
-const { Option } = Select;
 
 const Registration = () => {
     const [form] = Form.useForm();

@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import { Col, Row, Typography, Select} from "antd";
+import React from 'react';
+import { Col, Row, Typography} from "antd";
 import './LastNews.css'
 
-const {Text, Title} = Typography
+const {Text} = Typography
 
-const LastNews = ({name, step}) => {
+const LastNews = ({name}) => {
 
 
     return (

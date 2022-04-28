@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {ENV} from "../env";
 import {Link, useParams} from "react-router-dom";
-import CardSpec from "../Card/CardSpec";
 import {Avatar, Col, Row} from "antd";
 import moment from "moment";
 import Title from "antd/es/typography/Title";

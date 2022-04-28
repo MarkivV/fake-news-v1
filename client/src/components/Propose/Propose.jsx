@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {Form, Input, Button, Col, Select, Typography, Row, Divider} from 'antd';
+import {Form, Input, Button, Col, Select, Row, Divider} from 'antd';
 import axios from "axios";
 import {ENV} from "../env";
 import {useNavigate} from "react-router-dom";
 
-const {Text, Title} = Typography
 
 const Propose = () => {
 
     const navigate = useNavigate()
     const [form] = Form.useForm();
-    const [author, setAuthor] = useState('');
     const [image, setImage] = useState('');
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
