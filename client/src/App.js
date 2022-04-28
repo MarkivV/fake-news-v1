@@ -6,7 +6,6 @@ import JustNews from "./components/News/JustNews/JustNews";
 import Covid from "./components/News/Covid/Covid";
 import War from "./components/News/War/War";
 import React from "react";
-import {Select} from "antd";
 import Footer from "./components/Footer/Footer";
 import CardDetails from "./components/CardDetails/CardDetails";
 import Sport from "./components/News/Sport/Sport";
@@ -20,8 +19,6 @@ import ProposeLive from "./components/ProposeLive/ProposeLive";
 import User from "./components/Profile/User";
 import Profile from "./components/Profile/Profile";
 
-
-const {Option} = Select
 
 function App() {
 
