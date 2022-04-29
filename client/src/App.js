@@ -24,9 +24,9 @@ function App() {
 
     return (
 
-    <div className="App">
+    <div className="Appq">
             <Navbar/>
-        <div className="routes" >
+        <div className="routesq" >
             <Routes>
                 <Route exact path={"/"} element={<NewsTop />}/>
                 <Route exact path={"/:id"} element={<CardDetails />}/>
