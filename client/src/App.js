@@ -1,11 +1,11 @@
+import React from "react";
+import {Routes, Route} from "react-router-dom";
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {Routes, Route} from "react-router-dom";
 import NewsTop from "./components/News/Top/NewsTop";
 import JustNews from "./components/News/JustNews/JustNews";
 import Covid from "./components/News/Covid/Covid";
 import War from "./components/News/War/War";
-import React from "react";
 import Footer from "./components/Footer/Footer";
 import CardDetails from "./components/CardDetails/CardDetails";
 import Sport from "./components/News/Sport/Sport";
