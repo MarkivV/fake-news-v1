@@ -86,7 +86,7 @@ const User = () => {
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
                                         <a href={item.url} target={"_blank"} rel={"noreferrer"}>
                                             <div className="news-image-container">
-                                                <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={item.image} alt={"news"}/>
+                                                <img style={{maxWidth: '100%', height: "300px", objectFit: "cover"}} src={item.image} alt={"news"}/>
                                             </div>
                                             <div >
                                                 <Title level={2}>{item.name}</Title>
@@ -108,7 +108,7 @@ const User = () => {
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
                                         <a href={item.url} target={"_blank"} rel={"noreferrer"}>
                                             <div className="news-image-container">
-                                                <img style={{width: '100%'}} src={item.image} alt={"news"}/>
+                                                <img style={{maxWidth: '100%'}} src={item.image} alt={"news"}/>
                                             </div>
                                             <div style={{marginLeft: "0px"}}>
                                                 <Title level={4}>{item.name}</Title>
