@@ -13,8 +13,10 @@ const Admin = () => {
 
     useEffect(()=>{
         window.scrollTo(0, 0)
+        let admin = "58964e8e-84ae-483f-8d93-6df681ae9de6.jpg"
+        // let admin = "7d9c8e2a-7ffd-4b1f-b9f3-32b28ef6edc8.jpg"
         let imageUrl = JSON.parse(localStorage.getItem("imageUrl"))
-        if(imageUrl !== "7d9c8e2a-7ffd-4b1f-b9f3-32b28ef6edc8.jpg"){
+        if(imageUrl !== admin){
             navigate("/")
         }
 
