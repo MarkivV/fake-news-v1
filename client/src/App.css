@@ -15,6 +15,7 @@
 
 .App{
     background-color: #ffffff;
+    transform: scale(0.9);
 }
 
 a:hover{
