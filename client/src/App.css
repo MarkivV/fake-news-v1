@@ -28,17 +28,17 @@ a:hover{
 }
 
 .navbar{
-    flex: 0.2;
+    /*flex: 0.2;*/
     margin-top: 25px;
 }
 
 .main{
-    flex: 0.8;
+    /*flex: 0.8;*/
     width: 100%;
 
 }
 .routes{
-    margin: 0px 11% 0px;
+    margin: 0px 7% 0px;
     /*padding: 20px;*/
     background-color: #ffffff;
     padding-top: 5%;
