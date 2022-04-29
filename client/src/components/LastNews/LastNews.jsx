@@ -20,7 +20,7 @@ const LastNews = ({name}) => {
                                             <img style={{width: '170px', height: '100px', objectFit: "cover"}} src={news.image} alt={"news"}/>
                                         </div>
                                     </a>
-                                <h3 style={{marginLeft: "5px", fontSize: "15px" }} className={"mainCard"}>{news.name}</h3>
+                                <h3 style={{marginLeft: "5px", fontSize: "15px" }} className={"mainCardLast"}>{news.name}</h3>
                             </div>
                         </a>
                         <hr/>

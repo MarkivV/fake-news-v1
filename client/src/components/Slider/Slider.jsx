@@ -9,7 +9,7 @@ const Slider = ({name}) => {
         <div className={"slider"} style={{height: "450px", marginBottom: "15px"}} >
             <Carousel>
                 {name.slice(0,5).map(item => (
-                    <div className={"image"} key={item.id}>
+                    <div className={"imageSli"} key={item.id}>
                         <Link to={`${item.id}`}>
                             <img src={item.image} alt={item.name} />
                             <h2 style={{color: "#fff", fontWeight: "bold"}}>{item.name}</h2>
