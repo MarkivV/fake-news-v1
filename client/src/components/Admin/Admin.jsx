@@ -66,7 +66,7 @@ const Admin = () => {
                                         <img style={{maxWidth: '100%'}} src={news.image} alt={"news"}/>
                                     </div>
 
-                                    <Title className={"news-title"} level={8}>{news.name}</Title>
+                                    <Title className={"news-title"} level={4}>{news.name}</Title>
                                     <p>{news.description}</p>
                                     <Title mark level={4}>{news.category}</Title>
                                 {/*</div>*/}

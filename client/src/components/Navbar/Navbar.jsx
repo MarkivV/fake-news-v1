@@ -111,13 +111,13 @@ const Navbar = () => {
                 </Link>
 
                 <Input className={"inputClass"} placeholder="Пошук..." bordered={false} />
-                <Button className={"proposeDesc"} type="dashed" shape="round" style={{marginLeft: "15px", height: "35px"}}>
-                    <Link to={"/propose"}><h3><PlusOutlined />Запропонувати</h3></Link>
+                <Button className={"proposeDesc"} type="dashed" shape="round" style={{marginLeft: "15px"}}>
+                    <Link to={"/propose"}><h4><PlusOutlined />Запропонувати</h4></Link>
                 </Button>
 
                 <div style={{display: "flex", marginLeft: "auto", alignItems: "center"}}>
                     <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))}>
-                        <Avatar shape="circle" size={64} src={ENV +`/images/${imageUrl}`} />
+                        <Avatar shape="circle" size={48} src={ENV +`/images/${imageUrl}`} />
                     </Link>
                     <Dropdown  overlay={menu}>
                         <div style={{marginLeft: "10px", transform: "scale(1.2)"}} onClick={e => e.preventDefault()}>

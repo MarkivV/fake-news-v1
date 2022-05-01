@@ -147,10 +147,10 @@ const CardDetails = () => {
                         <Col span={16}>
                             {item.slice(0,1).map(i=>(
                                 <div style={{marginTop: "17px"}}  key={i.id}>
-                                    <Title level={1}>{i.name}</Title>
+                                    <Title level={2}>{i.name}</Title>
                                     <Divider/>
                                     <div>
-                                        <img style={{width: "100%"}} src={i.image} alt={"img"}/>
+                                        <img style={{width: "100%", height: "550px"}} src={i.image} alt={"img"}/>
                                     </div>
                                     {/*<div style={{display: "flex", alignItems: "center"}}>*/}
                                     {/*    <Title style={{marginTop: "15px"}} mark level={3}>{i.category}</Title>*/}

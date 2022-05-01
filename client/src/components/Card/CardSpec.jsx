@@ -49,7 +49,7 @@ const CardSpec = ({name}) => {
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
                                         <a href={news.url} target={"_blank"} rel={"noreferrer"}>
                                             <div className="news-image-container">
-                                                <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={news.image} alt={"news"}/>
+                                                <img style={{width: '100%', height: "250px", objectFit: "cover"}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div >
                                                 <Title level={3}>{news.name}</Title>

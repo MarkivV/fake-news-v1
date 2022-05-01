@@ -8,8 +8,8 @@ const LastLive = ({live}) => {
                 live.slice(0,7).map((news)=>(
                     <Col xs={24} sm={12} lg={24} key={news.id}>
                             <div>
-                                <h3 style={{fontSize: "20px" }}>{news.name}</h3>
-                                <p>{news.text}</p>
+                                <h3 style={{fontSize: "16px" }}>{news.name}</h3>
+                                <p style={{fontSize: "13px" }}>{news.text}</p>
                             </div>
                         <hr/>
                     </Col>

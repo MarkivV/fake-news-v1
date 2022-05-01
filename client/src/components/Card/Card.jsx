@@ -33,7 +33,7 @@ const CardM = ({name, step}) => {
                                     }
                                 </div>
                                 <div>
-                                    <img style={{width: '100%', height: "300px", objectFit: "cover"}} src={news.image} alt={"news"}/>
+                                    <img style={{width: '100%', height: "250px", objectFit: "cover"}} src={news.image} alt={"news"}/>
                                     <Title level={3}>{news.name}</Title>
                                 </div>
                                 <div className="provider-container">

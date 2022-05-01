@@ -16,7 +16,7 @@ a {text-decoration: none; /*убираем подчеркивание текст
     position: fixed;
     width: 100%;
     /*margin: 40px 0 5px;*/
-    padding: 0.4% 7% 0.4%;
+    padding: 4px 10% 4px;
     /*padding: 2em 8.5% 5px;*/
     /*text-align: center;*/
     background: #FADE98;
@@ -27,8 +27,8 @@ a {text-decoration: none; /*убираем подчеркивание текст
 .menu-main .inputClass{
     background-color: #fff;
     margin-left: 25px;
-    width: 23%;
-    height: 35px;
+    width: 15%;
+    height: 23px;
     border-radius: 30px;
 }
 
@@ -97,12 +97,13 @@ a {text-decoration: none; /*убираем подчеркивание текст
 
 }
 .menu-items.active h3{
-    font-weight: bold;
 
 }
 
+
+
 .menu-main .logoKik:hover{
-    transform: scale(1.05);
+    transform: scale(1.01);
     transition: all ease 0.5s;
 
 }
@@ -115,7 +116,7 @@ a {text-decoration: none; /*убираем подчеркивание текст
 
 @media (max-width: 790px) {
     .menu-main{
-        padding: 7px 7% 7px;
+        padding: 4px 10% 4px;
         position: fixed !important;
 
     }

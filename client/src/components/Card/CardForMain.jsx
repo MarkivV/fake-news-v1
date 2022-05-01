@@ -66,10 +66,10 @@ const CardM = ({category}) => {
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
                                         <a href={news.url} target={"_blank"} rel={"noreferrer"} >
                                             <div className="news-image-container">
-                                                <img style={{width: '100%', height: "290px", objectFit: "cover"}} src={news.image} alt={"news"}/>
+                                                <img style={{width: '100%', height: "220px", objectFit: "cover"}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div>
-                                                <Title level={3} style={{fontSize: "25px"}} className={"mainCard"}>{news.name}</Title>
+                                                <Title level={3} style={{fontSize: "20px"}} className={"mainCard"}>{news.name}</Title>
                                             </div>
                                             <p className={"mainCard"}>
                                                 {
@@ -100,7 +100,7 @@ const CardM = ({category}) => {
                                                 <img style={{width: '100%'}} src={news.image} alt={"news"}/>
                                             </div>
                                             <div style={{marginLeft: "0px"}}>
-                                                <Title level={3}>{news.name}</Title>
+                                                <Title level={3} style={{fontSize: "20px"}}>{news.name}</Title>
                                             </div>
                                             <div style={{marginLeft: "0px", marginTop: "10px"}} className="provider-container">
                                                 <Text>{moment(news.datePublished).format('L')}</Text>
