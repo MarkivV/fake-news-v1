@@ -37,7 +37,7 @@
     margin: 0px 10% 0px;
     /*padding: 20px;*/
     background-color: #ffffff;
-    padding-top:4%;
+    padding-top:5%;
 
 
 }
@@ -63,6 +63,7 @@ img{
     }
     .routes{
         margin: 0px 7% 0px;
+        padding-top: 5%;
     }
 
 }
@@ -73,6 +74,7 @@ img{
     }
     .routes{
         margin: 0px 7% 0px;
+        padding-top: 6%;
     }
 }
 
@@ -82,6 +84,7 @@ img{
     }
     .routes{
         margin: 0px 7% 0px;
+        padding-top: 6%;
     }
 }
 
