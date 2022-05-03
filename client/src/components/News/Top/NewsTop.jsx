@@ -6,6 +6,8 @@ import LastNews from "../../LastNews/LastNews";
 import CardForMain from "../../Card/CardForMain";
 import LastLive from "../../LastNews/LastLive";
 import {ENV} from "../../env";
+import { Alert } from 'antd';
+import Marquee from 'react-fast-marquee';
 const {Title} = Typography
 
 
@@ -65,7 +67,21 @@ const NewsTop = () => {
         <Row gutter={[24,24]}>
             <Col xs={24} sm={24} lg={16}>
                 <Slider name={name}/>
-                <div style={{marginTop: "35px"}}>
+                <Alert
+                    banner
+                    message={
+                        <Marquee pauseOnHover gradient={false}>
+                            {
+                                name.map((item) => (
+                                    <>
+                                        &nbsp;&nbsp;{item.name} &nbsp; | &nbsp;
+                                    </>
+                                ))
+                            }
+                        </Marquee>
+                    }
+                />
+                <div style={{marginTop: "15px"}}>
                     <a  href="/politic">
                         <Title mark level={3}>Політика</Title>
                     </a>
@@ -73,7 +89,7 @@ const NewsTop = () => {
                 <CardForMain category={1} />
                 <div style={{marginTop: "35px"}}>
                     <a  href="/society">
-                        <Title mark level={3}>Суспільство</Title>
+                        <Title mark level={3} >Суспільство</Title>
                     </a>
                 </div>
                 <CardForMain category={2}/>

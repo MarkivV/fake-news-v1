@@ -14,6 +14,9 @@ import {
     LikeFilled,
 
 } from "@ant-design/icons";
+import Marquee from 'react-fast-marquee';
+import CardSpec from "../Card/CardSpec";
+
 const {Title} = Typography
 
 
@@ -103,32 +106,32 @@ const CardDetails = () => {
 
 
 
-    const like = () => {
-        setLikes(1);
-        setDislikes(0);
-        setAction('liked');
-    };
-
-    const dislike = () => {
-        setLikes(0);
-        setDislikes(1);
-        setAction('disliked');
-    };
-
-    const actions = [
-        <Tooltip key="comment-basic-like" title="Like">
-      <span onClick={like}>
-        {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}
-          <span className="comment-action">{likes}</span>
-      </span>
-        </Tooltip>,
-        <Tooltip key="comment-basic-dislike" title="Dislike" >
-      <span onClick={dislike}>
-        {React.createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}
-          <span className="comment-action">{dislikes}</span>
-      </span>
-        </Tooltip>,
-    ];
+    // const like = () => {
+    //     setLikes(1);
+    //     setDislikes(0);
+    //     setAction('liked');
+    // };
+    //
+    // const dislike = () => {
+    //     setLikes(0);
+    //     setDislikes(1);
+    //     setAction('disliked');
+    // };
+    //
+    // const actions = [
+    //     <Tooltip key="comment-basic-like" title="Like">
+    //   <span onClick={like}>
+    //     {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}
+    //       <span className="comment-action">{likes}</span>
+    //   </span>
+    //     </Tooltip>,
+    //     <Tooltip key="comment-basic-dislike" title="Dislike" >
+    //   <span onClick={dislike}>
+    //     {React.createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}
+    //       <span className="comment-action">{dislikes}</span>
+    //   </span>
+    //     </Tooltip>,
+    // ];
 
 
 
@@ -178,7 +181,6 @@ const CardDetails = () => {
                                         {
                                             comments.map((comments)=>(
                                                 <Comment
-                                                    actions={actions}
                                                     author={<a>{comments.username}</a>}
                                                     avatar={<Avatar src={ENV +`/images/${comments.avatar}`} alt={comments.username} />}
                                                     content={
@@ -205,20 +207,42 @@ const CardDetails = () => {
                         <Col span={8}>
                             <LastNews name={name}/>
                         </Col>
+                        <Marquee pauseOnHover gradient={false} >
+                            <div style={{display: "flex"}}>
+                            {
+                                name.map((item)=>(
+
+                                    <a href={`${item.id}`}>
+                                        <div className={"sliderDetails"}>
+                                            <img src={item.image} alt={"img"}/>
+                                            {/*<div className={"textSlider"}>*/}
+                                            <h3 style={{marginLeft: "80px"}}>{item.name}</h3>
+                                            {/*</div>*/}
+                                        </div>
+                                    </a>
+
+
+                                ))
+                            }
+                            </div>
+                        </Marquee>
                     </>
                     :
                     <>
                         <Col span={24}>
                             {item.slice(0,1).map(i=>(
                                 <div key={i.id}>
+                                    <Title style={{fontSize: "22px",  textAlign: "justify"}}>{i.name}</Title>
+                                    <Divider/>
                                     <div>
                                         <img style={{maxWidth: "100%"}} src={i.image} alt={"img"}/>
                                     </div>
-                                    <Title mark level={3} style={{marginTop: "15px"}}>{i.category}</Title>
-                                    <Title style={{fontSize: "22px",  textAlign: "justify"}}>{i.name}</Title>
-                                    <div style={{display: "flex", marginTop: "15px"}}>
-                                        <h4>Автор: {i.author}</h4>
-                                        <h4 style={{marginLeft: "auto"}}>{moment(i.datePublished).format('L')}</h4>
+                                    <div style={{display: "flex", marginTop: "30px"}}>
+                                        <h4 style={{backgroundColor: "#FADE98", paddingLeft: "5px", paddingRight: "5px", borderRadius: "10px"}}>{i.category}</h4>
+                                        <h4 style={{marginLeft: "15px"}}>{datePublish(i.datePublished)}</h4>
+                                        <Link style={{marginLeft: "15px"}} to={`/user/${i.authorId}`}>
+                                            <h4> Автор: {i.username}</h4>
+                                        </Link>
                                     </div>
                                     <p style = {{fontSize: "18px", marginTop: "15px", textAlign: "justify", whiteSpace: "pre-line"}}>
                                         {i.description}
@@ -233,7 +257,6 @@ const CardDetails = () => {
                                         {
                                             comments.map((comments)=>(
                                                 <Comment
-                                                    actions={actions}
                                                     author={<h4>{comments.username}</h4>}
                                                     avatar={<Avatar src={ENV +`/images/${comments.avatar}`} alt={comments.username} />}
                                                     content={

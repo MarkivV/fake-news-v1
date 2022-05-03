@@ -1,32 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import "./Navbar.css"
 import {Link} from "react-router-dom";
-import {Avatar, Button, Col, Input, Menu, Dropdown} from "antd";
+import {Avatar, Button, Col, Input, Menu, Dropdown, AutoComplete} from "antd";
 import { PlusOutlined, CaretDownOutlined} from "@ant-design/icons";
 import {ENV} from "../env";
+import axios from "axios";
 
 const Navbar = () => {
 
 
     const [activeMenu, setActiveMenu] = useState(false);
-    // const [screenSize, setScreenSize] = useState(null);
     const [imageUrl, setImageUrl] = useState('');
-    // const [username, setUsername] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [options, setOptions] = useState([]);
+    const [news, setNews] = useState([]);
+
     let accessToken = JSON.parse(localStorage.getItem("access-token"))
 
 
 
     useEffect(() => {
-        // const handleResizeFunc = () =>{
-        //     setScreenSize(window.innerWidth)
-        // }
-
         const imageUrlLS = JSON.parse(localStorage.getItem("imageUrl"))
         setImageUrl(imageUrlLS)
-        // window.addEventListener('resize', handleResizeFunc)
 
-        // handleResizeFunc()
-        // return () => window.removeEventListener('resize', handleResizeFunc)
+        axios.get(ENV + '/api/get/all',{withCredentials: true})
+            .then((response)=>{
+                setNews(response.data)
+            })
 
     }, []);
 
@@ -34,47 +34,28 @@ const Navbar = () => {
         <Menu>
             <Menu.Item>
                 {
-                    accessToken ? <h2 style={{cursor: "pointer"}} onClick={()=>
+                    accessToken ? <h4 style={{cursor: "pointer"}} onClick={()=>
                     {
                         localStorage.clear()
                         window.location.reload(false)
                     }
-                    }>Вихід</h2> : <></>
-                }
-            </Menu.Item>
-            <Menu.Item>
-                {
-                    accessToken ? <h2 style={{cursor: "pointer"}} onClick={()=>
-                    {
-                        localStorage.clear()
-                        window.location.reload(false)
-                    }
-                    }>Вихід</h2> : <></>
-                }
-            </Menu.Item>
-            <Menu.Item>
-                {
-                    accessToken ? <h2 style={{cursor: "pointer"}} onClick={()=>
-                    {
-                        localStorage.clear()
-                        window.location.reload(false)
-                    }
-                    }>Вихід</h2> : <></>
+                    }>Вихід</h4> : <></>
                 }
             </Menu.Item>
         </Menu>
     );
 
+    // const onSearch = (searchTerm) => {
+    //     setOptions(
+    //         news.filter((val)=>{
+    //             return val.username === searchTerm
+    //         })
+    //     )
+    // }
+
 
     return (
         <>
-        {/*    /!* eslint-disable-next-line react/jsx-no-undef *!/*/}
-        {/*    <Button className={"menu-control-container"} onClick={()=>setActiveMenu(!activeMenu)}>*/}
-        {/*        /!* eslint-disable-next-line react/jsx-no-undef *!/*/}
-        {/*        <MenuOutlined/>*/}
-        {/*    </Button>*/}
-        {/*{activeMenu && (*/}
-
             <Col className={"menu-main"} style={{position: "fixed"}}>
                 <li className={"menu-lines"} onClick={()=>setActiveMenu(!activeMenu)}>
                     <svg width="25" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,27 +87,56 @@ const Navbar = () => {
                             <rect x="60" y="10" width="10" height="10" fill="black"/>
                             <path d="M20 10V20L30 10H20Z" fill="black"/>
                         </svg>
-
                     </li>
                 </Link>
 
-                <Input className={"inputClass"} placeholder="Пошук..." bordered={false} />
+                {/*<AutoComplete options={options} onSearch={onSearch} onChange={event => setSearchTerm(event.target.value)}/>*/}
+                <Input className={"inputClass"} placeholder="Пошук..." bordered={false} onChange={event => setSearchTerm(event.target.value)}/>
+                    <div className={"searchParent"}>
+                    {
+                        news.filter((val)=>{
+                            if(searchTerm === ''){
+                                return ''
+                            }else if(val.name.toLowerCase().includes(searchTerm.toLowerCase())){
+                                return val
+                            }
+                        }).slice(0,5).map((item)=>(
+                            <a href={`${item.id}`}>
+                            <div className={"searchDiv"} style={{display: "flex", marginTop: "10px"}}>
+                                <div>
+                                    <img style={{width: '100px', height: '60px', objectFit: "cover"}} src={item.image} alt={"news"}/>
+                                </div>
+                                <div style={{marginLeft: "10px"}}>
+                                   <h5>{item.name}</h5>
+                                </div>
+                            </div>
+                            </a>
+                        ))
+                    }
+                    </div>
+
+
                 <Button className={"proposeDesc"} type="dashed" shape="round" style={{marginLeft: "15px"}}>
+
                     <Link to={"/propose"}><h4><PlusOutlined />Запропонувати</h4></Link>
+
                 </Button>
 
                 <div className={accessToken ? "avatarExist" : "avatarNone"}>
+
                     <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))}>
                         <Avatar shape="circle" size={48} src={ENV +`/images/${imageUrl}`} />
                     </Link>
                     <Dropdown  overlay={menu}>
-                        <div style={{marginLeft: "10px", transform: "scale(1.2)"}} onClick={e => e.preventDefault()}>
+                        <div style={{marginLeft: "10px"}} onClick={e => e.preventDefault()}>
                             <CaretDownOutlined />
                         </div>
                     </Dropdown>
+
                 </div>
             </Col>
             <div className={activeMenu ? "menu-items active" : "menu-items"} >
+
                 <div className={"menuAdapt"} onClick={()=>setActiveMenu(false)}>
                     <Input className={"inputClass"} placeholder="Пошук..." bordered={false}  style={{marginTop: "15px", marginLeft: "45px"}}/>
 
@@ -157,9 +167,10 @@ const Navbar = () => {
                     <Button className={"proposeMob"} type="dashed" shape="round">
                         <Link to={"/propose"}><h4><PlusOutlined />Запропонувати</h4></Link>
                     </Button>
+
                 </div>
+
             </div>
-        {/*)}*/}
         </>
 
     );

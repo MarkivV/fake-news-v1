@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, Row} from "antd";
-
+import Marquee from 'react-fast-marquee';
 const LastLive = ({live}) => {
     return (
         <Row>

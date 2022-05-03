@@ -11,7 +11,7 @@ const uuid = require('uuid')
 const multer = require('multer')
 
 const port = process.env.PORT || 3001
-
+//
 // let con = mysql.createPool({
 //     host: 'eu-cdbr-west-02.cleardb.net',
 //     user: 'b5005a6251479d',
@@ -29,6 +29,7 @@ let con = mysql.createPool({
 
 let temp = 'http://localhost:3000'
 // let temp = 'https://153.92.223.226'
+// let temp = 'https://purple-omega.vercel.app'
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
 
@@ -295,6 +296,7 @@ app.post("/registration", (req,res) =>{
         const sqlInsert = "INSERT INTO users (username, email, password) VALUES (?, ?, ?);"
         con.query(sqlInsert, [username, email, hash], (err, result) =>{
             res.json("User Registered")
+            res.send(200)
         })
     }).catch((err)=>{
         if(err){

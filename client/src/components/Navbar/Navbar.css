@@ -86,7 +86,7 @@ a {text-decoration: none; /*убираем подчеркивание текст
 .menu-items{
     list-style: none; /*убираем маркеры списка*/
     margin-top: 10px;
-    font-size: 22px;
+    font-size: 18px;
     transform: translateY(-100%);
     transition: all ease 0.7s;
     margin-left: 0px;
@@ -111,6 +111,14 @@ a {text-decoration: none; /*убираем подчеркивание текст
     transform: scale(1.1);
     transition: all ease 0.5s;
 
+}
+
+.searchParent{
+    width: 350px;
+    transform: translateY(60%);
+    margin-left: 10%;
+    position: absolute;
+    background-color: #FADE98;
 }
 
 @media (max-width: 790px) {
