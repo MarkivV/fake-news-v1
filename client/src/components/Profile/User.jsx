@@ -11,6 +11,7 @@ const User = () => {
 
     const [news, setNews] = useState([]);
     const [name, setName] = useState('');
+    const [aboutUser, setAboutUser] = useState('');
     const {id} = useParams()
     const [activeMenu, setActiveMenu] = useState(true);
     const [screenSize, setScreenSize] = useState(null);
@@ -26,6 +27,7 @@ const User = () => {
             .then((response)=>{
                 setNews(response.data)
                 setName(response.data[0].username)
+                setAboutUser(response.data[0].aboutUser)
                 setImageUrl(response.data[0].avatar)
 
             })
@@ -58,19 +60,34 @@ const User = () => {
 
     return (
         <>
-            <div>
-                {
-                    imageUrl &&(
-                        <div style={{display: "flex", marginLeft: "auto", alignItems: "center"}}>
-                            <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))}>
-                                <Avatar shape="square" size={128} src={ENV +`/images/${imageUrl}`} />
-                            </Link>
-                        </div>
-                    )
+            <div style={{display: "flex", alignItems: "center"}}>
+                <div>
+                    {
+                        imageUrl &&(
+                            <div style={{display: "flex", marginLeft: "auto", alignItems: "center"}}>
+                                <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))}>
+                                    <Avatar shape="square" size={128} src={ENV +`/images/${imageUrl}`} />
+                                </Link>
+                            </div>
+                        )
 
-                }
+                    }
+                </div>
+                <div >
+                    <div style={{ display: "flex"}}>
+                        <h3>Імʼя:</h3>
+                        <h3 style={{backgroundColor: "#FADE98", paddingLeft: "5px", paddingRight: "5px", borderRadius: "10px", marginLeft:"10px"}}>
+                            {name}
+                        </h3>
+                    </div>
+                    <div style={{ display: "flex"}}>
+                        <h3>Опис:</h3>
+                        <h3 style={{backgroundColor: "#FADE98", paddingLeft: "5px", paddingRight: "5px", borderRadius: "10px", marginLeft:"10px"}}>
+                            {aboutUser}
+                        </h3>
+                    </div>
+                </div>
 
-                <Title level={1}>{name}</Title>
             </div>
             <Row gutter={[24,24]}>
             {

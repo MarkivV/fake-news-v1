@@ -150,7 +150,7 @@ const CardDetails = () => {
                                     <Title level={2}>{i.name}</Title>
                                     <Divider/>
                                     <div>
-                                        <img style={{width: "100%", height: "550px"}} src={i.image} alt={"img"}/>
+                                        <img style={{width: "100%"}} src={i.image} alt={"img"}/>
                                     </div>
                                     {/*<div style={{display: "flex", alignItems: "center"}}>*/}
                                     {/*    <Title style={{marginTop: "15px"}} mark level={3}>{i.category}</Title>*/}
@@ -158,14 +158,14 @@ const CardDetails = () => {
                                     {/*    /!*<h5>{i.likes}</h5>*!/*/}
                                     {/*</div>*/}
                                     <div style={{display: "flex", marginTop: "30px"}}>
-                                        <h3 style={{backgroundColor: "#FADE98", paddingLeft: "5px", paddingRight: "5px", borderRadius: "10px"}}>{i.category}</h3>
-                                        <h3 style={{marginLeft: "15px"}}>{datePublish(i.datePublished)}</h3>
+                                        <h4 style={{backgroundColor: "#FADE98", paddingLeft: "5px", paddingRight: "5px", borderRadius: "10px"}}>{i.category}</h4>
+                                        <h4 style={{marginLeft: "15px"}}>{datePublish(i.datePublished)}</h4>
                                         <Link style={{marginLeft: "15px"}} to={`/user/${i.authorId}`}>
-                                            <h3> Автор: {i.username}</h3>
+                                            <h4> Автор: {i.username}</h4>
                                         </Link>
                                     </div>
                                     <Divider />
-                                    <p style = {{fontSize: "20px", marginTop: "15px", whiteSpace: "pre-line"}}>
+                                    <p style = {{fontSize: "15px", marginTop: "15px", whiteSpace: "pre-line"}}>
                                         {i.description}
                                     </p>
                                     <Divider/>

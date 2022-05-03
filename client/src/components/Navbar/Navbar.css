@@ -16,7 +16,7 @@ a {text-decoration: none; /*убираем подчеркивание текст
     position: fixed;
     width: 100%;
     /*margin: 40px 0 5px;*/
-    padding: 4px 10% 4px;
+    padding: 7px 10% 7px;
     /*padding: 2em 8.5% 5px;*/
     /*text-align: center;*/
     background: #FADE98;
@@ -60,6 +60,16 @@ a {text-decoration: none; /*убираем подчеркивание текст
     transition: color .2s;
 }
 
+.menu-main .avatarNone{
+    display: none;
+}
+
+.menu-main .avatarExist{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
 .menu-main h3, .menu-main h3:visited {
     color: black;
     font-weight: bold;
@@ -83,7 +93,7 @@ a {text-decoration: none; /*убираем подчеркивание текст
     z-index: 50;
     position: absolute;
     background-color: #FADE98;
-    padding: 70px;
+    padding: 50px;
     height: 100%;
 }
 
@@ -96,17 +106,6 @@ a {text-decoration: none; /*убираем подчеркивание текст
     /*margin-left: 45px;*/
 
 }
-.menu-items.active h3{
-
-}
-
-
-
-.menu-main .logoKik:hover{
-    transform: scale(1.01);
-    transition: all ease 0.5s;
-
-}
 
 .menu-items.active h3:hover{
     transform: scale(1.1);
@@ -116,7 +115,7 @@ a {text-decoration: none; /*убираем подчеркивание текст
 
 @media (max-width: 790px) {
     .menu-main{
-        padding: 4px 10% 4px;
+        padding: 5px 10% 5px;
         position: fixed !important;
 
     }
@@ -160,7 +159,15 @@ a {text-decoration: none; /*убираем подчеркивание текст
 
     .menu-items .proposeMob{
         display: flex;
+
     }
+}
+@media (min-width: 1600px) {
+
+    .menu-main {
+        padding: 20px 10% 20px;
+    }
+
 }
 
 

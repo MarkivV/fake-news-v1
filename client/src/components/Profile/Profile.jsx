@@ -110,14 +110,30 @@ const Profile = () => {
                     }
 
                 </div>
+                <Divider/>
 
                 <div style={{display: "flex"}}>
                     {
                         user.map((item)=>(
-                            <div style={{justifyContent: "center"}} key={item.idUser}>
-                                <Title level={1}>
-                                    {item.username}
-                                </Title>
+                            <div>
+                            <div style={{ display: "flex"}} key={item.idUser}>
+                                <h3>Імʼя:</h3>
+                                <h3 style={{backgroundColor: "#FADE98", paddingLeft: "5px", paddingRight: "5px", borderRadius: "10px", marginLeft:"10px"}}>
+                                     {item.username}
+                                </h3>
+                            </div>
+                            <div style={{ display: "flex"}} key={item.idUser}>
+                                <h3>Електронна пошта:</h3>
+                                <h3 style={{backgroundColor: "#FADE98", paddingLeft: "5px", paddingRight: "5px", borderRadius: "10px", marginLeft:"10px"}}>
+                                     {item.email}
+                                </h3>
+                            </div>
+                            <div style={{ display: "flex"}} key={item.idUser}>
+                                <h3>Опис:</h3>
+                                <h3 style={{backgroundColor: "#FADE98", paddingLeft: "5px", paddingRight: "5px", borderRadius: "10px", marginLeft:"10px"}}>
+                                     {item.aboutUser}
+                                </h3>
+                            </div>
                             </div>
                         ))
                     }

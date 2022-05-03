@@ -13,8 +13,8 @@ const Admin = () => {
 
     useEffect(()=>{
         window.scrollTo(0, 0)
-        let admin = "58964e8e-84ae-483f-8d93-6df681ae9de6.jpg"
-        // let admin = "7d9c8e2a-7ffd-4b1f-b9f3-32b28ef6edc8.jpg"
+        // let admin = "58964e8e-84ae-483f-8d93-6df681ae9de6.jpg"
+        let admin = "7d9c8e2a-7ffd-4b1f-b9f3-32b28ef6edc8.jpg"
         let imageUrl = JSON.parse(localStorage.getItem("imageUrl"))
         if(imageUrl !== admin){
             navigate("/")
@@ -28,16 +28,21 @@ const Admin = () => {
     }, [])
 
     const Publish = (news) => {
-        axios.post(ENV + '/api/publish/item',
-            {
-                author: news.author,
-                image: news.image,
-                title: news.name,
-                 text: news.description,
-                categoryId: news.categoryId,
-                authorId: news.authorId
-            })
-        axios.delete(ENV + `/api/delete/${news.id}`)
+        axios.post(ENV + '/api/publish/item', {
+            author: news.author,
+            image: news.image,
+            title: news.name,
+            text: news.description,
+            categoryId: news.categoryId,
+            authorId: news.authorId
+        })
+        axios.delete(ENV + `/api/delete/${news.id}`).then((res)=>{
+            setProposes(
+                proposes.filter((val)=>{
+                    return val.id !== news.id
+                })
+            )
+        })
     }
     const Delete = (news) => {
         // axios.post(ENV + '/api/publish/item',
@@ -49,7 +54,13 @@ const Admin = () => {
         //         categoryId: news.categoryId,
         //         authorId: news.authorId
         //     })
-        axios.delete(ENV + `/api/delete/${news.id}`)
+        axios.delete(ENV + `/api/delete/${news.id}`).then((res)=>{
+            setProposes(
+                proposes.filter((val)=>{
+                    return val.id !== news.id
+                })
+            )
+        })
     }
 
 

@@ -66,7 +66,7 @@ const CardM = ({category}) => {
                                         {/*<Card hoverable className={"news-card"} style={{height: "550px"}}>*/}
                                         <a href={news.url} target={"_blank"} rel={"noreferrer"} >
                                             <div className="news-image-container">
-                                                <img style={{width: '100%', height: "220px", objectFit: "cover"}} src={news.image} alt={"news"}/>
+                                                <img  src={news.image} alt={"news"}/>
                                             </div>
                                             <div>
                                                 <Title level={3} style={{fontSize: "20px"}} className={"mainCard"}>{news.name}</Title>

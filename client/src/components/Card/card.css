@@ -22,3 +22,16 @@
 h5:hover{
     text-decoration: underline;
 }
+
+.news-image-container img{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+
+@media screen and (min-width:1800px) {
+    .news-image-container img {
+        height: 100%;
+    }
+}

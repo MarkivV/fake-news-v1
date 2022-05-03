@@ -12,23 +12,23 @@ const multer = require('multer')
 
 const port = process.env.PORT || 3001
 
-let con = mysql.createPool({
-    host: 'eu-cdbr-west-02.cleardb.net',
-    user: 'b5005a6251479d',
-    password: '8a1ce7a8',
-    database: 'heroku_fd4c78f0a943f8a'
-});
-
 // let con = mysql.createPool({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'root',
-//     database: 'justnews',
-//     port: 8889
+//     host: 'eu-cdbr-west-02.cleardb.net',
+//     user: 'b5005a6251479d',
+//     password: '8a1ce7a8',
+//     database: 'heroku_fd4c78f0a943f8a'
 // });
 
-// let temp = 'http://localhost:3000'
-let temp = 'https://153.92.223.226'
+let con = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'justnews',
+    port: 8889
+});
+
+let temp = 'http://localhost:3000'
+// let temp = 'https://153.92.223.226'
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
 
@@ -269,8 +269,8 @@ app.post('/api/publish/item', (req, res) =>{
     const authorId = req.body.authorId
 
 
-    const sqlInsert = "INSERT INTO justnews (name, image, description, author, categoryId, authorId) VALUES (?, ?, ?, ?, ?, ?);"
-    con.query(sqlInsert, [title, image, text, author, categoryId, authorId], (err, result)=>{
+    const sqlInsert = "INSERT INTO justnews (name, image, description, author, categoryId, authorId, likes) VALUES (?, ?, ?, ?, ?, ?, ?);"
+    con.query(sqlInsert, [title, image, text, author, categoryId, authorId, 0], (err, result)=>{
         console.log(result)
         res.send(result)
     })
@@ -279,7 +279,10 @@ app.delete('/api/delete/:id', (req, res) =>{
     const id = req.params.id
     const sqlInsert = "DELETE FROM Propose WHERE id = ?"
     con.query(sqlInsert, id, (err, result)=>{
-        if(err) console.log(err)
+        if(err)
+        {console.log(err)}else{
+            res.send(result)
+        }
     })
 })
 

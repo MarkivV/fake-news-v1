@@ -115,7 +115,7 @@ const Navbar = () => {
                     <Link to={"/propose"}><h4><PlusOutlined />Запропонувати</h4></Link>
                 </Button>
 
-                <div style={{display: "flex", marginLeft: "auto", alignItems: "center"}}>
+                <div className={accessToken ? "avatarExist" : "avatarNone"}>
                     <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))}>
                         <Avatar shape="circle" size={48} src={ENV +`/images/${imageUrl}`} />
                     </Link>
@@ -155,7 +155,7 @@ const Navbar = () => {
                         <Link to={"/profile/" + JSON.parse(localStorage.getItem("userId"))} ><h3>Профіль</h3></Link>
                     </li>
                     <Button className={"proposeMob"} type="dashed" shape="round">
-                        <Link to={"/propose"}><h3><PlusOutlined />Запропонувати</h3></Link>
+                        <Link to={"/propose"}><h4><PlusOutlined />Запропонувати</h4></Link>
                     </Button>
                 </div>
             </div>
