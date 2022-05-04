@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Form, Input, Button, Row, Col} from 'antd';
+import {Form, Input, Button, Row, Col, message} from 'antd';
 import axios from "axios";
 import {ENV} from "../env";
 
@@ -21,7 +21,9 @@ const Registration = () => {
 
     const setValues = () => {
         axios.post(ENV + '/registration',
-            {email: email, username: username, password: password}, {withCredentials: true})
+            {email: email, username: username, password: password}, {withCredentials: true}).then((res)=>{
+            message.success('This is a prompt message for success, and it will disappear in 10 seconds', 10);
+        })
     }
 
 
