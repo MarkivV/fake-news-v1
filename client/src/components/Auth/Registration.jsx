@@ -21,9 +21,10 @@ const Registration = () => {
 
     const setValues = () => {
         axios.post(ENV + '/registration',
-            {email: email, username: username, password: password}, {withCredentials: true}).then((res)=>{
-            message.success('This is a prompt message for success, and it will disappear in 10 seconds', 10);
-        })
+            {email: email, username: username, password: password}, {withCredentials: true})
+        //     .then((res)=>{
+        //     message.success('This is a prompt message for success, and it will disappear in 10 seconds', 10);
+        // })
     }
 
 

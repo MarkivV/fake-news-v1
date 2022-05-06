@@ -3,6 +3,7 @@ let cors = require('cors');
 let bodyParser = require('body-parser')
 let app = express();
 let mysql = require('mysql');
+let ENV = require('./env')
 const bcrypt = require("bcrypt")
 const cookieParser = require("cookie-parser")
 const {createTokens} = require("./JWT")
@@ -20,15 +21,15 @@ const port = process.env.PORT || 3001
 // });
 
 let con = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
+    host: '153.92.223.226',
+    user: 'kikonline',
+    password: 'Djdf23300714',
     database: 'justnews',
-    port: 8889
+    port: 3306
 });
 
-let temp = 'http://localhost:3000'
-// let temp = 'https://153.92.223.226'
+// let temp = 'http://localhost:3000'
+let temp = ENV
 // let temp = 'https://purple-omega.vercel.app'
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
@@ -296,7 +297,7 @@ app.post("/registration", (req,res) =>{
         const sqlInsert = "INSERT INTO users (username, email, password) VALUES (?, ?, ?);"
         con.query(sqlInsert, [username, email, hash], (err, result) =>{
             res.json("User Registered")
-            res.send(200)
+            // res.send(200)
         })
     }).catch((err)=>{
         if(err){

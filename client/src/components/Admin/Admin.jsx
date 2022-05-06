@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Button, Card, Col, Row, Typography} from "antd";
-import {ENV} from './../env'
+import {ENV, ADMIN} from './../env'
 import {useNavigate} from "react-router-dom";
 
 const {Title} = Typography
@@ -13,8 +13,7 @@ const Admin = () => {
 
     useEffect(()=>{
         window.scrollTo(0, 0)
-        // let admin = "58964e8e-84ae-483f-8d93-6df681ae9de6.jpg"
-        let admin = "7d9c8e2a-7ffd-4b1f-b9f3-32b28ef6edc8.jpg"
+        let admin = ADMIN
         let imageUrl = JSON.parse(localStorage.getItem("imageUrl"))
         if(imageUrl !== admin){
             navigate("/")
