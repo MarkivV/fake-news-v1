@@ -3,7 +3,6 @@ let cors = require('cors');
 let bodyParser = require('body-parser')
 let app = express();
 let mysql = require('mysql');
-let ENV = require('./env')
 const bcrypt = require("bcrypt")
 const cookieParser = require("cookie-parser")
 const {createTokens} = require("./JWT")
@@ -21,15 +20,22 @@ const port = process.env.PORT || 3001
 // });
 
 let con = mysql.createPool({
-    host: '153.92.223.226',
-    user: 'kikonline',
+    host: '127.0.0.1',
+    user: 'kiklocal',
     password: 'Djdf23300714',
     database: 'justnews',
     port: 3306
 });
 
-// let temp = 'http://localhost:3000'
-let temp = ENV
+// let con = mysql.createPool({
+//     host: 'localhost',
+//     user: 'kiklocal',
+//     password: 'Djdf23300714',
+//     database: 'justnews'
+// });
+
+let temp = 'http://localhost:3000'
+// let temp = 'https://153.92.223.226'
 // let temp = 'https://purple-omega.vercel.app'
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
