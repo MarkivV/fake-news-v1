@@ -5,6 +5,7 @@ import {Avatar, Button, Col, Input, Menu, Dropdown, AutoComplete} from "antd";
 import { PlusOutlined, CaretDownOutlined} from "@ant-design/icons";
 import {ENV} from "../env";
 import axios from "axios";
+import logo from "../../frame.png"
 
 const Navbar = () => {
 
@@ -66,27 +67,7 @@ const Navbar = () => {
                 </li>
                 <Link to={"/"} className={"logoKik"}>
                     <li style={{marginLeft: "55px"}} >
-                        <svg width="90" height="40" viewBox="0 0 90 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="40" width="10" height="10" rx="5" fill="#FFB1B1"/>
-                            <rect width="10" height="10" fill="black"/>
-                            <rect y="30" width="10" height="10" fill="black"/>
-                            <rect y="20" width="10" height="10" fill="black"/>
-                            <rect x="20" y="30" width="10" height="10" fill="black"/>
-                            <rect x="40" y="30" width="10" height="10" fill="black"/>
-                            <rect x="40" y="20" width="10" height="10" fill="black"/>
-                            <rect x="40" y="15" width="10" height="5" fill="black"/>
-                            <rect x="20" width="10" height="10" fill="black"/>
-                            <rect x="10" y="20" width="10" height="10" fill="black"/>
-                            <rect y="10" width="10" height="10" fill="black"/>
-                            <rect x="60" width="10" height="10" fill="black"/>
-                            <rect x="60" y="30" width="10" height="10" fill="black"/>
-                            <rect x="60" y="20" width="10" height="10" fill="black"/>
-                            <rect x="80" y="30" width="10" height="10" fill="black"/>
-                            <rect x="80" y="10" width="10" height="10" fill="black"/>
-                            <rect x="70" y="20" width="10" height="10" fill="black"/>
-                            <rect x="60" y="10" width="10" height="10" fill="black"/>
-                            <path d="M20 10V20L30 10H20Z" fill="black"/>
-                        </svg>
+                        <img style={{width: "50px"}} src={logo} alt=""/>
                     </li>
                 </Link>
 
